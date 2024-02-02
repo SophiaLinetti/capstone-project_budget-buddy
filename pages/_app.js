@@ -1,20 +1,19 @@
 import GlobalStyle from "../styles";
-import { transactions } from "@/ressources/data";
+import { initialTransactions } from "@/ressources/data";
 import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [transaction, setTransaction] = useState([]);
-  const addTransaction = (transaction) => {
-    setTransaction([...transactions, transaction]);
+  const [transactions, setTransactions] = useState(initialTransactions);
+  const addTransaction = (newTransaction) => {
+    setTransactions([...transactions, newTransaction]);
   };
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
-        transactions={transactions}
+        initialTransactions={initialTransactions}
         addTransaction={addTransaction}
-        setTransaction={setTransaction}
       />
     </>
   );

@@ -1,4 +1,4 @@
-export const transactions = [
+export const initialTransactions = [
   {
     id: "1",
     type: "income",

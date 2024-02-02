@@ -2,7 +2,7 @@ import Form from "@/components/Form/Form";
 import List from "@/components/List/List";
 
 export default function HomePage({
-  transactions,
+  initialTransactions,
   addTransaction,
   setTransaction,
 }) {
@@ -13,8 +13,8 @@ export default function HomePage({
   return (
     <div>
       <h1>Budget Buddy</h1>
-      <Form addTransaction={addTransaction} setTransaction={setTransaction} />
-      <List transactions={transactions} />
+      <Form />
+      <List initialTransactions={initialTransactions} />
     </div>
   );
 }
