@@ -3,6 +3,7 @@ import List from "@/components/List/List";
 
 export default function HomePage({
   initialTransactions,
+  handleSubmit,
   addTransaction,
   setTransaction,
 }) {
@@ -13,7 +14,7 @@ export default function HomePage({
   return (
     <div>
       <h1>Budget Buddy</h1>
-      <Form />
+      <Form handleSubmit={handleSubmit} />
       <List initialTransactions={initialTransactions} />
     </div>
   );

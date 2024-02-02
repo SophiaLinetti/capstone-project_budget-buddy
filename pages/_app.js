@@ -1,7 +1,6 @@
 import GlobalStyle from "../styles";
 import { initialTransactions } from "@/ressources/data";
 import { useState } from "react";
-import Form from "@/components/Form/Form";
 
 export default function App({ Component, pageProps }) {
   const [transactions, setTransactions] = useState(initialTransactions);
@@ -25,8 +24,8 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         initialTransactions={initialTransactions}
         addTransaction={addTransaction}
+        handleSubmit={handleSubmit}
       />
-      <Form handleSubmit={handleSubmit} />
     </>
   );
 }
