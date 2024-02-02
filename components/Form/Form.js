@@ -1,14 +1,28 @@
-import { transactions } from "@/ressources/data";
 import { useState } from "react";
 import React from "react";
 
-export default function Form() {
+export default function Form({ transactions, addTransaction, setTransaction }) {
+  //   function handleSubmit(event) {
+  //     event.preventDefault();
+  //     const formData = new FormData(event.target);
+  //     const data = Object.fromEntries(formData);
+  //     onSubmit(data);
+  //     console.log(data);
+  //   }
+
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    onSubmit(data);
-    console.log(data);
+
+    const newTransaction = {
+      id: Math.random().toString(36),
+      date,
+      amount,
+      category,
+      incomeOrExpense,
+      description,
+    };
+
+    setTransaction([...transactions, newTransaction]);
   }
 
   return (
