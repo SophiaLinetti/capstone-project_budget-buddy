@@ -1,4 +1,5 @@
 import React from "react";
+import { TransactionForm, FormItems } from "@/styles";
 
 export default function Form({ onAddTransaction }) {
   function handleSubmit(event) {
@@ -12,8 +13,8 @@ export default function Form({ onAddTransaction }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
+      <TransactionForm onSubmit={handleSubmit}>
+        <FormItems>
           <legend> Add a new Transcation</legend>
           <label htmlFor="date__id">*Date: </label>
           <input id="date__id" name="date" type="date" />
@@ -37,6 +38,7 @@ export default function Form({ onAddTransaction }) {
             ></input>
             <label htmlFor="income__id">Income</label>
           </fieldset>
+
           <label htmlFor="amount__id">*Amount in EUR: </label>
           <input
             id="amount__id"
@@ -62,8 +64,8 @@ export default function Form({ onAddTransaction }) {
           <textarea id="description__id" name="description" max="50"></textarea>
           <br></br>
           <button type="submit">Add</button>
-        </fieldset>
-      </form>
+        </FormItems>
+      </TransactionForm>
     </>
   );
 }

@@ -1,15 +1,17 @@
+import { StyledList, StyledItem } from "@/styles";
+
 export default function List({ transactions }) {
   return (
     <>
-      <ul>
+      <StyledList>
         {transactions.map((transaction) => (
-          <li key={transaction.id}>
+          <StyledItem key={transaction.id}>
             {transaction.date} - {transaction.amount} EUR -{" "}
             {transaction.category} - {transaction.type} -{" "}
             {transaction.description}
-          </li>
+          </StyledItem>
         ))}
-      </ul>
+      </StyledList>
     </>
   );
 }
