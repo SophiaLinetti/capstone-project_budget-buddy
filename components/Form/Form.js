@@ -1,13 +1,6 @@
 import React from "react";
 
-export default function Form({ handleSubmit }) {
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target);
-  //   const data = Object.fromEntries(formData);
-  //   console.log(data);
-  //   console.log("Formdata: ", formData);
-  // }
+export default function Form({ handleSubmit }) 
 
   return (
     <>

@@ -7,15 +7,14 @@ export default function App({ Component, pageProps }) {
 
   function addTransaction(newTransaction) {
     setTransactions([newTransaction, ...transactions]);
-  } // wir haben vorher diese function geschrieben, aber nicht genutzt bzw. gecallt
-
+  }
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     console.log(data);
     console.log("Formdata: ", formData);
-    addTransaction(data); // function addTrasaction callen + neue transaktion mitgeben immer wenn wir auf das event submitten
+    addTransaction(data);
   }
 
   return (
@@ -23,8 +22,6 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
-        // initialTransactions={initialTransactions}
-        // addTransaction={addTransaction}
         handleSubmit={handleSubmit}
         transactions={transactions}
       />

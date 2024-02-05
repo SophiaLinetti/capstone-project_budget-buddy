@@ -1,5 +1,3 @@
-// import { transactions } from "@/ressources/data";
-
 export default function List({ transactions }) {
   return (
     <>
