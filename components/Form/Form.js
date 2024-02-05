@@ -1,5 +1,5 @@
 import React from "react";
-import { TransactionForm, FormItems } from "@/styles";
+import { TransactionForm, FormItems, StyledHint } from "@/styles";
 
 export default function Form({ onAddTransaction }) {
   function handleSubmit(event) {
@@ -69,6 +69,7 @@ export default function Form({ onAddTransaction }) {
           <label htmlFor="description__id">Description: </label>
           <textarea id="description__id" name="description" max="50"></textarea>
           <br></br>
+          <StyledHint>All fields with * are required!</StyledHint>
           <button type="submit">Add</button>
         </FormItems>
       </TransactionForm>
