@@ -6,8 +6,8 @@ export default function App({ Component, pageProps }) {
   const [transactions, setTransactions] = useState(initialTransactions);
 
   function addTransaction(newTransaction) {
-    setTransactions([...transactions, newTransaction]);
-  }
+    setTransactions([newTransaction, ...transactions]);
+  } // wir haben vorher diese function geschrieben, aber nicht genutzt bzw. gecallt
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }) {
     const data = Object.fromEntries(formData);
     console.log(data);
     console.log("Formdata: ", formData);
+    addTransaction(data); // function addTrasaction callen + neue transaktion mitgeben immer wenn wir auf das event submitten
   }
 
   return (
@@ -22,9 +23,10 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
-        initialTransactions={initialTransactions}
-        addTransaction={addTransaction}
+        // initialTransactions={initialTransactions}
+        // addTransaction={addTransaction}
         handleSubmit={handleSubmit}
+        transactions={transactions}
       />
     </>
   );

@@ -60,7 +60,7 @@ export default function Form({ handleSubmit }) {
           <label htmlFor="description__id">Description: </label>
           <textarea id="description__id" name="description" max="50"></textarea>
           <br></br>
-          <button type="submit">Add </button>
+          <button type="submit">Add</button>
         </fieldset>
       </form>
     </>

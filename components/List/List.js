@@ -1,14 +1,14 @@
-import { initialTransactions } from "@/ressources/data";
+// import { transactions } from "@/ressources/data";
 
-export default function List() {
+export default function List({ transactions }) {
   return (
     <>
       <ul>
-        {initialTransactions.map((initialTransaction) => (
-          <li key={initialTransactions.id}>
-            {initialTransaction.date} - {initialTransaction.amount} EUR -{" "}
-            {initialTransaction.category} -{initialTransaction.type} -{" "}
-            {initialTransaction.description}
+        {transactions.map((transaction) => (
+          <li key={transaction.id}>
+            {transaction.date} - {transaction.amount} EUR -{" "}
+            {transaction.category} - {transaction.type} -{" "}
+            {transaction.description}
           </li>
         ))}
       </ul>
