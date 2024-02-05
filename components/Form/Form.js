@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function Form({ handleSubmit }) 
-
+export default function Form({ handleSubmit }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
