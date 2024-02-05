@@ -17,7 +17,7 @@ export default function Form({ onAddTransaction }) {
         <FormItems>
           <legend> Add a new Transcation</legend>
           <label htmlFor="date__id">*Date: </label>
-          <input id="date__id" name="date" type="date" />
+          <input id="date__id" name="date" type="date" required />
           <br></br>
           <fieldset>
             <legend> *Type of Transactions</legend>
@@ -27,6 +27,7 @@ export default function Form({ onAddTransaction }) {
               id="expense__id"
               type="radio"
               value="Expense"
+              required
             ></input>
             <label htmlFor="expense__id">Expense </label>
 
@@ -35,6 +36,7 @@ export default function Form({ onAddTransaction }) {
               id="income__id"
               type="radio"
               value="Income"
+              required
             ></input>
             <label htmlFor="income__id">Income</label>
           </fieldset>
@@ -48,11 +50,15 @@ export default function Form({ onAddTransaction }) {
             max="10000000"
             step="1"
             pattern="[0-9]+"
+            required
           ></input>
           <br></br>
 
           <label htmlFor="category__id">*Category: </label>
-          <select id="category__id" name="category">
+          <select id="category__id" name="category" required>
+            <option value="" disabled selected hidden>
+              --Choose Category--
+            </option>
             <option value="Salary">Salary</option>
             <option value="Rent">Rent</option>
             <option value="Food">Food</option>

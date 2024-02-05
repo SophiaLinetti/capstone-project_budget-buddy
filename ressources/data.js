@@ -1,7 +1,7 @@
 export const initialTransactions = [
   {
     id: "1",
-    type: "income",
+    type: "Income",
     amount: 2500,
     date: "2024-01-15",
     description: "Beispielbeschreibung",
@@ -9,7 +9,7 @@ export const initialTransactions = [
   },
   {
     id: "2",
-    type: "expense",
+    type: "Expense",
     amount: 50,
     date: "2024-01-16",
     description: "Yoga Session",
@@ -17,7 +17,7 @@ export const initialTransactions = [
   },
   {
     id: "3",
-    type: "income",
+    type: "Income",
     amount: 1000,
     date: "2024-01-17",
     description: "Freelance work",
@@ -25,7 +25,7 @@ export const initialTransactions = [
   },
   {
     id: "4",
-    type: "expense",
+    type: "Expense",
     amount: 200,
     date: "2024-01-18",
     description: "Groceries",
@@ -33,7 +33,7 @@ export const initialTransactions = [
   },
   {
     id: "5",
-    type: "expense",
+    type: "Expense",
     amount: 150,
     date: "2024-01-19",
     description: "Gas",
@@ -41,7 +41,7 @@ export const initialTransactions = [
   },
   {
     id: "6",
-    type: "income",
+    type: "Income",
     amount: 500,
     date: "2024-01-20",
     description: "Birthday gift",
@@ -49,7 +49,7 @@ export const initialTransactions = [
   },
   {
     id: "7",
-    type: "expense",
+    type: "Expense",
     amount: 100,
     date: "2024-01-21",
     description: "Coffee",
@@ -57,7 +57,7 @@ export const initialTransactions = [
   },
   {
     id: "8",
-    type: "expense",
+    type: "Expense",
     amount: 250,
     date: "2024-01-22",
     description: "Rent",
@@ -65,7 +65,7 @@ export const initialTransactions = [
   },
   {
     id: "9",
-    type: "income",
+    type: "Income",
     amount: 1000,
     date: "2024-01-23",
     description: "Bonus",
@@ -73,7 +73,7 @@ export const initialTransactions = [
   },
   {
     id: "10",
-    type: "expense",
+    type: "Expense",
     amount: 50,
     date: "2024-01-24",
     description: "Gym membership",
