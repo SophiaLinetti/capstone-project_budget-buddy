@@ -56,7 +56,7 @@ export default function Form({ onAddTransaction }) {
 
           <label htmlFor="category__id">*Category: </label>
           <select id="category__id" name="category" required>
-            <option value="" disabled selected hidden>
+            <option value="" defaultValue={"--Choose Category--"}>
               --Choose Category--
             </option>
             <option value="Salary">Salary</option>
