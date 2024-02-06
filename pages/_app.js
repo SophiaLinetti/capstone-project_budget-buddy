@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from "uuid";
 export default function App({ Component, pageProps }) {
   const [transactions, setTransactions] = useState(initialTransactions);
 
+  const [filter, setFilter] = useState(initialTransactions);
+
   function addTransaction(newTransaction) {
     const newTransactionWithId = { ...newTransaction, id: uuidv4() };
     setTransactions([newTransactionWithId, ...transactions]);
@@ -19,6 +21,8 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         transactions={transactions}
         onAddTransaction={addTransaction}
+        filter={filter}
+        onFilterChange={setFilter}
       />
     </>
   );

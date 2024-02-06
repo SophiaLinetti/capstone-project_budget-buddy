@@ -1,6 +1,9 @@
 import { StyledList, StyledItem } from "@/styles";
 
 export default function List({ transactions }) {
+  //  function updatedFilteredTransactions() {
+  //    transactions.filter((transaction) => transaction.type === filter);
+  //  }
   return (
     <>
       <StyledList>
