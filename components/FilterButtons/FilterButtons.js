@@ -1,8 +1,8 @@
-export default function FilterButtons({ onFilterChange }) {
+export default function FilterButtons({ onHandleSetFilter }) {
   return (
     <div>
-      <button onClick={() => onFilterChange("Income")}>Income</button>
-      <button onClick={() => onFilterChange("Expense")}>Expense</button>
+      <button onClick={() => onHandleSetFilter("Income")}>Income</button>
+      <button onClick={() => onHandleSetFilter("Expense")}>Expense</button>
     </div>
   );
 }

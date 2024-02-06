@@ -1,17 +1,11 @@
 import { StyledList, StyledItem } from "@/styles";
 
-function filteredTransactions(transactions, transactionFilter) {
-  if (transactionFilter === "all") {
-    return transactions;
-  } else {
-    return transactions.filter(
-      (transaction) => transaction.type === transactionFilter
-    );
-  }
-}
-
-export default function List({ transactions, transactionFilter }) {
-  const filteredList = filteredTransactions(transactions, transactionFilter);
+export default function List({
+  transactions,
+  transactionFilter,
+  onfilteredTransactions,
+}) {
+  const filteredList = onfilteredTransactions(transactions, transactionFilter);
 
   console.log(transactions);
   console.log(filteredList);
