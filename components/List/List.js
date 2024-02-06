@@ -7,10 +7,6 @@ export default function List({
 }) {
   const filteredList = onfilteredTransactions(transactions, transactionFilter);
 
-  console.log(transactions);
-  console.log(filteredList);
-  console.log(filteredList.length);
-
   return (
     <>
       <StyledList>

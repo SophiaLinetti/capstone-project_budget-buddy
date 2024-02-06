@@ -6,8 +6,6 @@ import { useState } from "react";
 export default function HomePage({ transactions, onAddTransaction }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
 
-  //  console.log(transactionFilter);
-  // console.log(setTransactionFilter);
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
