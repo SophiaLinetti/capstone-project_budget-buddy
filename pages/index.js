@@ -12,11 +12,7 @@ export default function HomePage({
     <div>
       <h1>Budget Buddy</h1>
       <Form onAddTransaction={onAddTransaction} />
-      <FilterButtons
-        transactionFilter={transactionFilter}
-        onFilterChange={onFilterChange}
-        transactions={transactions}
-      />
+      <FilterButtons onFilterChange={onFilterChange} />
       <List transactions={transactions} transactionFilter={transactionFilter} />
     </div>
   );
