@@ -12,19 +12,17 @@ export default function List({ transactions, setTransactions }) {
     <>
       <StyledList>
         <>
-          {transactions.map((transaction) => (
-            <StyledItem key={transaction.id}>
-              {transaction.date} - {transaction.amount} EUR -{" "}
-              {transaction.category} - {transaction.type} -{" "}
-              {transaction.description}{" "}
-              <StyledDeleteButton
-                onClick={() => deleteTransaction(transaction.id)}
-              >
-                ❌
-              </StyledDeleteButton>
-            </StyledItem>
-          ))}
-        </>{" "}
+          {transactions.map(
+            ({ id, date, amount, category, type, description }) => (
+              <StyledItem key={id}>
+                {date} - {amount} EUR - {category} - {type} - {description}
+                <StyledDeleteButton onClick={() => deleteTransaction(id)}>
+                  ❌
+                </StyledDeleteButton>
+              </StyledItem>
+            )
+          )}
+        </>
       </StyledList>
     </>
   );

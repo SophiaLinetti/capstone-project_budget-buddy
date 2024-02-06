@@ -38,7 +38,7 @@ export const StyledList = styled.ul`
 
 export const StyledItem = styled.li`
   border: 1px solid;
-  margin: 10px 5px 10px 5px; //im uhrzeigersinn beginnend top
+  margin: 10px 5px 10px 5px;
   position: relative;
   padding: 7px;
 `;
