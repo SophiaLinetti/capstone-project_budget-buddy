@@ -1,8 +1,4 @@
-export default function FilterButtons({
-  filter,
-
-  onFilterChange,
-}) {
+export default function FilterButtons({ onFilterChange }) {
   return (
     <div>
       <button onClick={() => onFilterChange("Income")}>Income</button>

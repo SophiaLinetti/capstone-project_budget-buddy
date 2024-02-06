@@ -1,11 +1,14 @@
 import { StyledList, StyledItem } from "@/styles";
 
-export default function List({ transactions, filter }) {
+export default function List({ transactions, transactionFilter }) {
   const filteredTransactions =
-    filter === "all"
+    transactionFilter === "all"
       ? transactions
-      : transactions.filter((t) => t.type === filter);
+      : transactions.filter(
+          (transaction) => transaction.type === transactionFilter
+        );
 
+  console.log(transactions);
   console.log(filteredTransactions);
 
   return (

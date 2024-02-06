@@ -5,7 +5,7 @@ import FilterButtons from "@/components/FilterButtons/FilterButtons";
 export default function HomePage({
   transactions,
   onAddTransaction,
-  filter,
+  transactionFilter,
   onFilterChange,
 }) {
   return (
@@ -13,11 +13,11 @@ export default function HomePage({
       <h1>Budget Buddy</h1>
       <Form onAddTransaction={onAddTransaction} />
       <FilterButtons
-        filter={filter}
+        transactionFilter={transactionFilter}
         onFilterChange={onFilterChange}
         transactions={transactions}
       />
-      <List transactions={transactions} filter={filter} />
+      <List transactions={transactions} transactionFilter={transactionFilter} />
     </div>
   );
 }
