@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         transactions={transactions}
         onAddTransaction={addTransaction}
+        setTransactions={setTransactions}
       />
     </>
   );
