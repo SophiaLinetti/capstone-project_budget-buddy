@@ -1,12 +1,12 @@
 import { StyledList, StyledItem, StyledDeleteButton } from "@/styles";
 
-export default function List({ transactions, setTransactions }) {
-  function deleteTransaction(id) {
-    const updatedTransactions = transactions.filter(
-      (transaction) => transaction.id !== id
-    );
-    setTransactions(updatedTransactions);
-  }
+export default function List({ transactions, onDeleteTransaction }) {
+  // function deleteTransaction(id) {
+  //   const updatedTransactions = transactions.filter(
+  //     (transaction) => transaction.id !== id
+  //   );
+  //   setTransactions(updatedTransactions);
+  // }
 
   return (
     <>
@@ -16,7 +16,7 @@ export default function List({ transactions, setTransactions }) {
             ({ id, date, amount, category, type, description }) => (
               <StyledItem key={id}>
                 {date} - {amount} EUR - {category} - {type} - {description}
-                <StyledDeleteButton onClick={() => deleteTransaction(id)}>
+                <StyledDeleteButton onClick={() => onDeleteTransaction(id)}>
                   ❌
                 </StyledDeleteButton>
               </StyledItem>

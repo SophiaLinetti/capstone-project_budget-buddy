@@ -4,13 +4,16 @@ import List from "@/components/List/List";
 export default function HomePage({
   transactions,
   onAddTransaction,
-  setTransactions,
+  onDeleteTransaction,
 }) {
   return (
     <div>
       <h1>Budget Buddy</h1>
       <Form onAddTransaction={onAddTransaction} />
-      <List transactions={transactions} setTransactions={setTransactions} />
+      <List
+        transactions={transactions}
+        onDeleteTransaction={onDeleteTransaction}
+      />
     </div>
   );
 }
