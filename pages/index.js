@@ -17,7 +17,7 @@ export default function HomePage({
         onFilterChange={onFilterChange}
         transactions={transactions}
       />
-      <List transactions={transactions} onFilterChange={onFilterChange} />
+      <List transactions={transactions} filter={filter} />
     </div>
   );
 }

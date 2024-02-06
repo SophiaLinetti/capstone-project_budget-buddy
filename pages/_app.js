@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function App({ Component, pageProps }) {
   const [transactions, setTransactions] = useState(initialTransactions);
 
-  const [filter, setFilter] = useState(initialTransactions);
+  const [filter, setFilter] = useState("all");
 
   function addTransaction(newTransaction) {
     const newTransactionWithId = { ...newTransaction, id: uuidv4() };
