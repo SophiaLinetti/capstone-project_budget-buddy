@@ -14,6 +14,9 @@ export default function HomePage({
     setTransactionFilter(filter);
   }
 
+  console.log("SetTransactioNfilter", setTransactionFilter);
+  console.log("transactionfilter", transactionFilter);
+
   function filteredTransactions(transactions) {
     if (transactionFilter === "all") {
       return transactions;
