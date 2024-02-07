@@ -31,14 +31,21 @@ export default function HomePage({
     );
   }
 
-  const totalSum = calculateSum(filteredTransactions(transactions));
+  function displayTotalSum(filter) {
+    if (filter === "all") {
+      return null;
+    }
+
+    const sum = calculateSum(filteredTransactions(transactions));
+    return <div>Total Amount: {sum} EUR</div>;
+  }
 
   return (
     <div>
       <h1>Budget Buddy</h1>
       <Form onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
-      {transactionFilter !== "all" && <div>Total Amount: {totalSum} EUR</div>}
+      {displayTotalSum(transactionFilter)}
       <List
         transactions={transactions}
         transactionFilter={transactionFilter}
