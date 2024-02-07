@@ -3,14 +3,11 @@ import List from "@/components/List/List";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import { useState } from "react";
 
-
 export default function HomePage({
   transactions,
   onAddTransaction,
   onDeleteTransaction,
 }) {
-
-export default function HomePage({ transactions, onAddTransaction }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
 
   function handleSetFilter(filter) {
@@ -27,7 +24,6 @@ export default function HomePage({ transactions, onAddTransaction }) {
     }
   }
 
-
   return (
     <div>
       <h1>Budget Buddy</h1>
@@ -38,8 +34,7 @@ export default function HomePage({ transactions, onAddTransaction }) {
         transactions={transactions}
         transactionFilter={transactionFilter}
         onfilteredTransactions={filteredTransactions}
-onDeleteTransaction={onDeleteTransaction}
-
+        onDeleteTransaction={onDeleteTransaction}
       />
     </div>
   );
