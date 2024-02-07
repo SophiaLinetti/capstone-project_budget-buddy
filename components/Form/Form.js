@@ -61,9 +61,11 @@ export default function Form({ onAddTransaction }) {
             </option>
             <option value="Salary">Salary</option>
             <option value="Rent">Rent</option>
+            <option value="Household">Household</option>
             <option value="Food">Food</option>
-            <option value="Fun">Fun</option>
-            <option value="Unexpected Income">Unexpected Income</option>
+            <option value="Health">Health</option>
+            <option value="Hobby">Hobby</option>
+            <option value="Other">Other</option>
           </select>
           <br></br>
           <label htmlFor="description__id">Description: </label>
