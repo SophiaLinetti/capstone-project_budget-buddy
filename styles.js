@@ -38,10 +38,18 @@ export const StyledList = styled.ul`
 
 export const StyledItem = styled.li`
   border: 1px solid;
-  margin: 10px 5px 10px 5px; //im uhrzeigersinn beginnend top
+  margin: 10px 5px 10px 5px;
+  position: relative;
+  padding: 7px;
 `;
 
 export const StyledHint = styled.p`
   font-size: 9px;
   text-align: center;
+`;
+
+export const StyledDeleteButton = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
