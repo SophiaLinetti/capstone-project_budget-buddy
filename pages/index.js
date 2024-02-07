@@ -10,7 +10,7 @@ export default function HomePage({ transactions, onAddTransaction }) {
     setTransactionFilter(filter);
   }
 
-  function filteredTransactions(transactions, transactionFilter) {
+  function filteredTransactions(transactions) {
     if (transactionFilter === "all") {
       return transactions;
     } else {
