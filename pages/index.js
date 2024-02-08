@@ -24,12 +24,28 @@ export default function HomePage({
     }
   }
 
+  function calculateSum(transactions) {
+    return transactions.reduce(
+      (sum, transaction) => sum + transaction.amount,
+      0
+    );
+  }
+
+  function displayTotalSum(filter) {
+    if (filter === "all") {
+      return null;
+    }
+
+    const sum = calculateSum(filteredTransactions(transactions));
+    return <div>Total Amount: {sum} EUR</div>;
+  }
+
   return (
     <div>
       <h1>Budget Buddy</h1>
       <Form onAddTransaction={onAddTransaction} />
-
       <FilterButtons onHandleSetFilter={handleSetFilter} />
+      {displayTotalSum(transactionFilter)}
       <List
         transactions={transactions}
         transactionFilter={transactionFilter}
