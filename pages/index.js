@@ -14,7 +14,7 @@ export default function HomePage({
     setTransactionFilter(filter);
   }
 
-  function filteredTransactions(transactions) {
+  function filterTransactions(transactions) {
     if (transactionFilter === "all") {
       return transactions;
     } else {
@@ -23,6 +23,8 @@ export default function HomePage({
       );
     }
   }
+
+  const filteredTransactions = filterTransactions(transactions);
 
   function calculateSum(transactions) {
     return transactions.reduce(
@@ -36,7 +38,7 @@ export default function HomePage({
       return null;
     }
 
-    const sum = calculateSum(filteredTransactions(transactions));
+    const sum = calculateSum(filterTransactions(transactions));
     return <div>Total Amount: {sum} EUR</div>;
   }
 
@@ -47,9 +49,9 @@ export default function HomePage({
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
       <List
-        transactions={transactions}
-        transactionFilter={transactionFilter}
-        onfilteredTransactions={filteredTransactions}
+        transactions={
+          transactionFilter !== "all" ? filteredTransactions : transactions
+        }
         onDeleteTransaction={onDeleteTransaction}
       />
     </div>
