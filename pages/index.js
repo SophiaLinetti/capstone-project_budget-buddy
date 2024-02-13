@@ -37,22 +37,23 @@ export default function HomePage({
     }
 
     const sum = calculateSum(filteredTransactions(transactions));
-    return <div>Total Amount: {sum} EUR</div>;
+    return <div>Amount of Type: {sum} EUR</div>;
   }
 
   function calculateBalance() {
     let balance = 0;
 
-    filteredTransactions.forEach((transaction) => {
+    transactions.forEach((transaction) => {
       if (transaction.type === "Income") {
         balance += transaction.amount;
-      } else if (transaction.type === "Expense") {
+      } else {
         balance -= transaction.amount;
       }
     });
 
     return balance;
   }
+
   return (
     <div>
       <h1>Budget Buddy</h1>
