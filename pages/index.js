@@ -37,7 +37,20 @@ export default function HomePage({
     }
 
     const sum = calculateSum(filteredTransactions(transactions));
-    return <div>Amount of Type: {sum} EUR</div>;
+    let text = "";
+
+    if (filter === "Income") {
+      text = "Amount of Income: ";
+    } else if (filter === "Expense") {
+      text = "Amount of Expense: ";
+    }
+
+    return (
+      <div>
+        {text}
+        {sum} EUR
+      </div>
+    );
   }
 
   function calculateBalance() {
