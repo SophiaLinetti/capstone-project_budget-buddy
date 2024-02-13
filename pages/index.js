@@ -40,12 +40,26 @@ export default function HomePage({
     return <div>Total Amount: {sum} EUR</div>;
   }
 
+  function calculateBalance() {
+    let balance = 0;
+
+    filteredTransactions.forEach((transaction) => {
+      if (transaction.type === "Income") {
+        balance += transaction.amount;
+      } else if (transaction.type === "Expense") {
+        balance -= transaction.amount;
+      }
+    });
+
+    return balance;
+  }
   return (
     <div>
       <h1>Budget Buddy</h1>
       <Form onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
+      <div>Balance: {calculateBalance()} EUR</div>
       <List
         transactions={transactions}
         transactionFilter={transactionFilter}
