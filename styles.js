@@ -7,13 +7,13 @@ export default createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
-    font-family: 'Roboto Condensed', sans-serif;
+   font-family: 'Montserrat', sans-serif;
     
   };
 
   body {
     margin: 0;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #424769;
   }
 
@@ -26,12 +26,14 @@ export default createGlobalStyle`
 export const TransactionForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1 rem;
 `;
 
 export const FormItems = styled.fieldset`
   display: flex;
   flex-direction: column;
+  padding: 20px;
+  margin: 80px 20px 0 20px;
   gap: 0.5rem;
   background-color: #2d3250;
   color: #ffffff;
@@ -51,33 +53,62 @@ export const StyledItem = styled.li`
   color: #ffffff;
   border: 1px solid;
   margin: 10px 5px 10px 5px;
-  position: relative;
+  display: flex;
   padding: 7px;
+  position: relative;
 `;
 
 export const StyledHint = styled.p`
   font-size: 13px;
   text-align: center;
-  color: red;
+  color: #ffb228;
+`;
+
+export const StyledDeleteDiv = styled.div`
+  margin: 5%;
 `;
 
 export const StyledDeleteButton = styled.button`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
 `;
 
 export const StyledHeading = styled.h1`
   text-align: center;
+  width: 100%;
   color: #ffb228;
+  background-color: #2d3250;
+  margin-top: 0;
+  padding: 10px;
+  border-bottom: 1px solid #ffffff;
+  border-radius: 0 0 10px 10px;
+  position: fixed;
 `;
 
 export const StyledFilterButtons = styled.button`
-  margin: 10%;
-  padding: 5px;
+  padding: 8px;
+  width: 20%;
 `;
 
 export const StyledAmoutDisplay = styled.div`
   text-align: center;
-  width: 100%;
+  border: 1px solid #ffffff;
+  border-radius: 7px;
+  color: #ffb228;
+  background-color: #2d3250;
+  margin: 5% 20% 0 20%;
+  padding: 8px;
 `;
+
+export const StyledFilterContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+`;
+
+//  display: flex;
+// justify-content: space-between;
+// align-items: center;

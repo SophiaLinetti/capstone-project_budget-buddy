@@ -1,4 +1,9 @@
-import { StyledList, StyledItem, StyledDeleteButton } from "@/styles";
+import {
+  StyledList,
+  StyledItem,
+  StyledDeleteButton,
+  StyledDeleteDiv,
+} from "@/styles";
 
 export default function List({ transactions, onDeleteTransaction }) {
   return (
@@ -7,10 +12,15 @@ export default function List({ transactions, onDeleteTransaction }) {
         {transactions.map(
           ({ id, date, amount, category, type, description }) => (
             <StyledItem key={id}>
-              {date} - {amount} EUR - {category} - {type} - {description}
-              <StyledDeleteButton onClick={() => onDeleteTransaction(id)}>
-                ❌
-              </StyledDeleteButton>
+              <div>
+                {" "}
+                {date} - {amount} EUR - {category} - {type} - {description}
+              </div>
+              <StyledDeleteDiv>
+                <StyledDeleteButton onClick={() => onDeleteTransaction(id)}>
+                  ❌
+                </StyledDeleteButton>
+              </StyledDeleteDiv>
             </StyledItem>
           )
         )}

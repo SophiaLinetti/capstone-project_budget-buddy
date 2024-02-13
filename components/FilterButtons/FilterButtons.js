@@ -1,8 +1,8 @@
-import { StyledFilterButtons } from "@/styles";
+import { StyledFilterButtons, StyledFilterContainer } from "@/styles";
 
 export default function FilterButtons({ onHandleSetFilter }) {
   return (
-    <div>
+    <StyledFilterContainer>
       <StyledFilterButtons onClick={() => onHandleSetFilter("Income")}>
         Income
       </StyledFilterButtons>
@@ -12,6 +12,6 @@ export default function FilterButtons({ onHandleSetFilter }) {
       <StyledFilterButtons onClick={() => onHandleSetFilter("all")}>
         All
       </StyledFilterButtons>
-    </div>
+    </StyledFilterContainer>
   );
 }
