@@ -40,9 +40,9 @@ export default function HomePage({
     let text = "";
 
     if (filter === "Income") {
-      text = "Amount of Income: ";
+      text = "Sum of all Incomes: ";
     } else if (filter === "Expense") {
-      text = "Amount of Expense: ";
+      text = "Sum of all Expenses: -";
     }
 
     return (
@@ -73,7 +73,9 @@ export default function HomePage({
       <Form onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
-      <div>Balance: {calculateBalance()} EUR</div>
+      {transactionFilter === "all" && (
+        <div>Balance: {calculateBalance()} EUR</div>
+      )}
       <List
         transactions={transactions}
         transactionFilter={transactionFilter}
