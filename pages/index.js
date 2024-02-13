@@ -2,7 +2,7 @@ import Form from "@/components/Form/Form";
 import List from "@/components/List/List";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import { useState } from "react";
-import { StyledHeading } from "@/styles";
+import { StyledHeading, StyledAmoutDisplay } from "@/styles";
 
 export default function HomePage({
   transactions,
@@ -40,7 +40,7 @@ export default function HomePage({
     }
 
     const sum = calculateSum(filterTransactions(transactions));
-    return <div>Total Amount: {sum} EUR</div>;
+    return <StyledAmoutDisplay>Total Amount: {sum} EUR</StyledAmoutDisplay>;
   }
 
   return (
