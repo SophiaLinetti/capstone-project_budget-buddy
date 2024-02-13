@@ -8,7 +8,7 @@ export default function Form({ onAddTransaction }) {
     const data = Object.fromEntries(formData);
     console.log(data);
     console.log("Formdata: ", formData);
-    onAddTransaction(data);
+    onAddTransaction({ ...data, amount: parseInt(data.amount) });
   }
 
   return (
