@@ -2,6 +2,7 @@ import Form from "@/components/Form/Form";
 import List from "@/components/List/List";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import { useState } from "react";
+import { StyledHeading, StyledAmoutDisplay } from "@/styles";
 
 export default function HomePage({
   transactions,
@@ -14,7 +15,7 @@ export default function HomePage({
     setTransactionFilter(filter);
   }
 
-  function filteredTransactions(transactions) {
+  function filterTransactions(transactions) {
     if (transactionFilter === "all") {
       return transactions;
     } else {
@@ -23,6 +24,8 @@ export default function HomePage({
       );
     }
   }
+
+  const filteredTransactions = filterTransactions(transactions);
 
   function calculateSum(transactions) {
     return transactions.reduce(
@@ -36,6 +39,9 @@ export default function HomePage({
       return null;
     }
 
+
+   
+
     const sum = calculateSum(filteredTransactions(transactions));
     let text = "";
 
@@ -46,10 +52,10 @@ export default function HomePage({
     }
 
     return (
-      <div>
+      <StyledAmoutDisplay>
         {text}
         {sum} EUR
-      </div>
+      </StyledAmoutDisplay>
     );
   }
 
@@ -65,11 +71,12 @@ export default function HomePage({
     });
 
     return balance;
+
   }
 
   return (
     <div>
-      <h1>Budget Buddy</h1>
+      <StyledHeading>Budget Buddy</StyledHeading>
       <Form onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
@@ -77,9 +84,9 @@ export default function HomePage({
         <div>Balance: {calculateBalance()} EUR</div>
       )}
       <List
-        transactions={transactions}
-        transactionFilter={transactionFilter}
-        onfilteredTransactions={filteredTransactions}
+        transactions={
+          transactionFilter !== "all" ? filteredTransactions : transactions
+        }
         onDeleteTransaction={onDeleteTransaction}
       />
     </div>

@@ -6,8 +6,7 @@ export default function Form({ onAddTransaction }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
-    console.log("Formdata: ", formData);
+
     onAddTransaction({ ...data, amount: parseInt(data.amount) });
   }
 

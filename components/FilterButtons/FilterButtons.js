@@ -1,9 +1,17 @@
+import { StyledFilterButtons, StyledFilterContainer } from "@/styles";
+
 export default function FilterButtons({ onHandleSetFilter }) {
   return (
-    <div>
-      <button onClick={() => onHandleSetFilter("Income")}>Income</button>
-      <button onClick={() => onHandleSetFilter("Expense")}>Expense</button>
-      <button onClick={() => onHandleSetFilter("all")}>All</button>
-    </div>
+    <StyledFilterContainer>
+      <StyledFilterButtons onClick={() => onHandleSetFilter("Income")}>
+        Income
+      </StyledFilterButtons>
+      <StyledFilterButtons onClick={() => onHandleSetFilter("Expense")}>
+        Expense
+      </StyledFilterButtons>
+      <StyledFilterButtons onClick={() => onHandleSetFilter("all")}>
+        All
+      </StyledFilterButtons>
+    </StyledFilterContainer>
   );
 }
