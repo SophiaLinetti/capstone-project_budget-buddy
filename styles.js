@@ -115,3 +115,23 @@ export const StyledText = styled.p`
   text-align: center;
   color: #ffb228;
 `;
+
+export const NavbarWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  background-color: #f5f5f5;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+
+export const NavbarLink = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${(props) => (props.$active ? "#ffb228" : "#2d3250")};
+  color: ${(props) => (props.$active ? "#2d3250" : "#ffb228")};
+  font-weight: ${(props) => (props.$active ? "bold" : "normal")};
+`;
