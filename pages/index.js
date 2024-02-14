@@ -39,8 +39,39 @@ export default function HomePage({
       return null;
     }
 
-    const sum = calculateSum(filterTransactions(transactions));
-    return <StyledAmoutDisplay>Total Amount: {sum} EUR</StyledAmoutDisplay>;
+
+   
+
+    const sum = calculateSum(filteredTransactions(transactions));
+    let text = "";
+
+    if (filter === "Income") {
+      text = "Sum of all Incomes: ";
+    } else if (filter === "Expense") {
+      text = "Sum of all Expenses: -";
+    }
+
+    return (
+      <StyledAmoutDisplay>
+        {text}
+        {sum} EUR
+      </StyledAmoutDisplay>
+    );
+  }
+
+  function calculateBalance() {
+    let balance = 0;
+
+    transactions.forEach((transaction) => {
+      if (transaction.type === "Income") {
+        balance += transaction.amount;
+      } else {
+        balance -= transaction.amount;
+      }
+    });
+
+    return balance;
+
   }
 
   return (
@@ -49,6 +80,9 @@ export default function HomePage({
       <Form onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
+      {transactionFilter === "all" && (
+        <div>Balance: {calculateBalance()} EUR</div>
+      )}
       <List
         transactions={
           transactionFilter !== "all" ? filteredTransactions : transactions
