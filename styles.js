@@ -86,6 +86,7 @@ export const StyledHeading = styled.h1`
   border-bottom: 1px solid #ffffff;
   border-radius: 0 0 10px 10px;
   position: fixed;
+  top: 0;
 `;
 
 export const StyledFilterButtons = styled.button`
@@ -107,4 +108,10 @@ export const StyledFilterContainer = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 15px;
+`;
+
+export const StyledText = styled.p`
+  margin-top: 100px;
+  text-align: center;
+  color: #ffb228;
 `;
