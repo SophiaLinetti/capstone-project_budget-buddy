@@ -28,14 +28,15 @@ export default function Navbar() {
 
   const router = useRouter();
 
+  // "/" is our "Homepage" 
   return (
     <NavbarWrapper>
-      <Link href="/" passHref>
-        <NavbarLink active={router.pathname === "/"}>
+      <Link href="/" >
+        <NavbarLink active={router.pathname === "/"}> 
           Transactions
         </NavbarLink>
       </Link>
-      <Link href="/goals" passHref>
+      <Link href="/goals" >
         <NavbarLink active={router.pathname === "/goals"}>
            Saving Goals
         </NavbarLink>
