@@ -19,7 +19,7 @@
 .DS_Store
 *.pem
 .vscode
-.eslintrc.json
+
 
 # debug
 npm-debug.log*
