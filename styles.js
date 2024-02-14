@@ -108,7 +108,3 @@ export const StyledFilterContainer = styled.div`
   justify-content: space-around;
   margin-top: 15px;
 `;
-
-//  display: flex;
-// justify-content: space-between;
-// align-items: center;
