@@ -61,7 +61,7 @@ export const initialTransactions = [
 export const initialGoals = [
   {
     id: "1",
-    name: "New Zealand Trip",
+    goalName: "New Zealand Trip",
     savedAmount: 2000,
     goalAmount: 15000,
   },

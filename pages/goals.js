@@ -20,9 +20,9 @@ export default function Goals() {
   return (
     <>
       <StyledHeading>Saving Goals</StyledHeading>
-      <StyledText>{`You don't have any Goals saved yet!`}</StyledText>
-      <GoalsForm onAddGoal={handleAddGoal} />
+      <StyledText></StyledText>
       <GoalsCard goals={goals}  />
+      <GoalsForm onAddGoal={handleAddGoal} />
       <Navbar />
     </>
   );
