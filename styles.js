@@ -137,6 +137,7 @@ export const NavbarLink = styled.div`
 `;
 
 export const StyledGoalCard = styled.div`
+  display: block;
   text-align: center;
   width: 100%;
 `;
