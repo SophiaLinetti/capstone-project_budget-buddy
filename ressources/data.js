@@ -57,3 +57,12 @@ export const initialTransactions = [
     category: "Health",
   },
 ];
+
+export const initialGoals = [
+  {
+    id: "1",
+    name: "New Zealand Trip",
+    savedAmount: 2000,
+    goalAmount: 15000,
+  },
+];
