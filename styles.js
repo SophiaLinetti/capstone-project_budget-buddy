@@ -144,3 +144,7 @@ export const StyledGoalCard = styled.div`
 export const StyledCardContainer = styled.div`
   margin-top: 80px;
 `;
+
+export const StyledBr = styled.div`
+  display: block;
+`;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import styled from "styled-components";
-import { StyledHint } from "@/styles";
+import { StyledHint, StyledBr } from "@/styles";
 
 const ModalBackround = styled.div`
   position: fixed;
@@ -52,13 +52,8 @@ export default function GoalsForm({ onAddGoal }) {
       goalAmount: parseInt(data.goalAmount),
     });
     setIsModalOpen(false);
-
-    console.log("Modal Open", isModalOpen);
-    console.log("Event", event);
-    console.log("data", data);
-    console.log("Formdata", formData);
   }
-  console.log("Modal Open", isModalOpen);
+
   return (
     <>
       <GoalSubmitButton onClick={() => setIsModalOpen(true)}>
@@ -68,36 +63,41 @@ export default function GoalsForm({ onAddGoal }) {
         <ModalBackround>
           <ModalContainer>
             <form onSubmit={handleSubmit}>
-              <label htmlFor="name__id"> *Goal Name </label>
-              <input id="name__id" name="goalName" max="10" required />
-              <br></br>
-              <label htmlFor="savedAmount__id">
-                *Already Saved Amount in EUR:{" "}
-              </label>
-              <input
-                id="savedAmount__id"
-                type="number"
-                name="savedAmount"
-                min="0"
-                max="10000000"
-                step="1"
-                pattern="[0-9]+"
-                required
-              ></input>
-              <br></br>
-              <label htmlFor="goalAmount__id">*Goal Amount in EUR: </label>
-              <input
-                id="goalAmount__id"
-                type="number"
-                name="goalAmount"
-                min="1"
-                max="10000000"
-                step="1"
-                pattern="[0-9]+"
-                required
-              />
+              <StyledBr>
+                <label htmlFor="name__id"> *Goal Name </label>
+                <input id="name__id" name="goalName" max="10" required />
+              </StyledBr>
 
-              <br></br>
+              <StyledBr>
+                <label htmlFor="savedAmount__id">
+                  *Already Saved Amount in EUR:{" "}
+                </label>
+                <input
+                  id="savedAmount__id"
+                  type="number"
+                  name="savedAmount"
+                  min="0"
+                  max="10000000"
+                  step="1"
+                  pattern="[0-9]+"
+                  required
+                ></input>
+              </StyledBr>
+
+              <StyledBr>
+                <label htmlFor="goalAmount__id">*Goal Amount in EUR: </label>
+                <input
+                  id="goalAmount__id"
+                  type="number"
+                  name="goalAmount"
+                  min="1"
+                  max="10000000"
+                  step="1"
+                  pattern="[0-9]+"
+                  required
+                />
+              </StyledBr>
+
               <StyledHint>All fields with * are required!</StyledHint>
               <button type="submit">Save Goal</button>
               <button onClick={() => setIsModalOpen(false)}>Cancel</button>
