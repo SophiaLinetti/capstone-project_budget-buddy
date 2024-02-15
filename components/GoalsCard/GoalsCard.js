@@ -2,7 +2,7 @@ import { StyledItem, StyledList, StyledGoalCard, StyledText } from "@/styles";
 
 export default function GoalsCard({ goals }) {
   return (
-    <>
+
       <StyledList>
         {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
           <StyledItem key={id}>
@@ -15,6 +15,6 @@ export default function GoalsCard({ goals }) {
           </StyledItem>
         ))}
       </StyledList>
-    </>
+
   );
 }
