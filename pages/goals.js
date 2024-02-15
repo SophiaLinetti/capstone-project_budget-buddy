@@ -4,7 +4,6 @@ import GoalsForm from "@/components/GoalsForm/GoalsForm";
 import { useState } from "react";
 import { initialGoals } from "@/ressources/data";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
-import GoalsForm from "@/components/GoalsForm/GoalsForm";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Goals() {
