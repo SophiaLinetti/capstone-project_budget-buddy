@@ -11,6 +11,7 @@ export default function HomePage({
   onDeleteTransaction,
 }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
+
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
@@ -78,7 +79,7 @@ export default function HomePage({
         }
         onDeleteTransaction={onDeleteTransaction}
       />
-      < Nav/>
+      <Nav />
     </div>
   );
 }

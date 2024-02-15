@@ -135,3 +135,17 @@ export const NavbarLink = styled.div`
   color: ${(props) => (props.$active ? "#2d3250" : "#ffb228")};
   font-weight: ${(props) => (props.$active ? "bold" : "normal")};
 `;
+
+export const StyledGoalCard = styled.div`
+  display: block;
+  text-align: center;
+  width: 100%;
+`;
+
+export const StyledCardContainer = styled.div`
+  margin-top: 80px;
+`;
+
+export const StyledBr = styled.div`
+  display: block;
+`;
