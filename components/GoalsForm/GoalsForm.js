@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { StyledHint } from "@/styles";
 
 const ModalBackround = styled.div`
   position: fixed;
@@ -44,8 +45,12 @@ export default function GoalsForm({ onAddGoal }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onAddGoal({ ...data, savedAmount: parseInt(data.savedAmount), goalAmount: parseInt(data.goalAmount) });
-    setIsModalOpen(false); 
+    onAddGoal({
+      ...data,
+      savedAmount: parseInt(data.savedAmount),
+      goalAmount: parseInt(data.goalAmount),
+    });
+    setIsModalOpen(false);
 
     console.log("Modal Open", isModalOpen);
     console.log("Event", event);
@@ -55,15 +60,19 @@ export default function GoalsForm({ onAddGoal }) {
   console.log("Modal Open", isModalOpen);
   return (
     <>
-      <GoalSubmitButton onClick={() => setIsModalOpen(true)}>+</GoalSubmitButton>
+      <GoalSubmitButton onClick={() => setIsModalOpen(true)}>
+        +
+      </GoalSubmitButton>
       {isModalOpen && (
         <ModalBackround>
           <ModalContainer>
             <form onSubmit={handleSubmit}>
               <label htmlFor="name__id"> *Goal Name </label>
-              <input id="name__id" name="goalName" max="50" required />
+              <input id="name__id" name="goalName" max="10" required />
               <br></br>
-              <label htmlFor="savedAmount__id">*Already Saved Amount in EUR: </label>
+              <label htmlFor="savedAmount__id">
+                *Already Saved Amount in EUR:{" "}
+              </label>
               <input
                 id="savedAmount__id"
                 type="number"
@@ -87,6 +96,7 @@ export default function GoalsForm({ onAddGoal }) {
                 required
               ></input>
               <br></br>
+              <StyledHint>All fields with * are required!</StyledHint>
               <button type="submit">Save Goal</button>
               <button onClick={() => setIsModalOpen(false)}>Cancel</button>
             </form>

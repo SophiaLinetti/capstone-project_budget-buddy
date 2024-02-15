@@ -140,3 +140,7 @@ export const StyledGoalCard = styled.div`
   text-align: center;
   width: 100%;
 `;
+
+export const StyledCardContainer = styled.div`
+  margin-top: 80px;
+`;

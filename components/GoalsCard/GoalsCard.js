@@ -1,10 +1,6 @@
-import { StyledItem, StyledList, StyledGoalCard } from "@/styles";
+import { StyledItem, StyledList, StyledGoalCard, StyledText } from "@/styles";
 
 export default function GoalsCard({ goals }) {
-  if (goals.length === 0) {
-    return <p>You don't have any Goals added yet. Please submit a Goal by Pressing the + Button on the bottom right of the Screen</p>;
-  }
-
   return (
     <>
       <StyledList>
