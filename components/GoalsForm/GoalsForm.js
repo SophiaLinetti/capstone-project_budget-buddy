@@ -94,7 +94,8 @@ export default function GoalsForm({ onAddGoal }) {
                 step="1"
                 pattern="[0-9]+"
                 required
-              ></input>
+              />
+
               <br></br>
               <StyledHint>All fields with * are required!</StyledHint>
               <button type="submit">Save Goal</button>
