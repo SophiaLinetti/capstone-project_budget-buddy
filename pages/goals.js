@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Goals() {
   const [goals, setGoals] = useState([]);
+  // const [editingGoalId, setEditingGoalId] = useState(null);
 
   function handleAddGoal(newGoal) {
     setGoals((goals) => [{ ...newGoal, id: uuidv4() }, ...goals]);
@@ -16,6 +17,10 @@ export default function Goals() {
     setGoals((goals) => goals.filter((goal) => goal.id !== id));
   }
 
+  // function handleEditGoal(id) {
+  //   setEditingGoalId(id);
+  // }
+
   return (
     <>
       <StyledHeading>Saving Goals</StyledHeading>
@@ -24,9 +29,17 @@ export default function Goals() {
           <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
         the + Button on the bottom right of the Screen`}</StyledText>
         )}
-        <GoalsCard goals={goals} onHandleDeleteGoal={handleDeleteGoal} />
+        <GoalsCard
+          goals={goals}
+          onHandleDeleteGoal={handleDeleteGoal}
+          // onHandleEditGoal={handleEditGoal}
+        />
       </StyledCardContainer>
-      <GoalsForm onAddGoal={handleAddGoal} />
+      <GoalsForm
+        onAddGoal={handleAddGoal}
+        // editingGoal={goals.find((goal) => goal.id === editingGoalId)}
+        // onCancelEdit={() => setEditingGoalId(null)}
+      />
       <Navbar />
     </>
   );

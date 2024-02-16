@@ -5,7 +5,11 @@ import {
   StyledDeleteButton,
 } from "@/styles";
 
-export default function GoalsCard({ goals, onHandleDeleteGoal }) {
+export default function GoalsCard({
+  goals,
+  onHandleDeleteGoal,
+  onHandleEditGoal,
+}) {
   return (
     <StyledList>
       {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
@@ -19,6 +23,7 @@ export default function GoalsCard({ goals, onHandleDeleteGoal }) {
           <StyledDeleteButton onClick={() => onHandleDeleteGoal(id)}>
             ❌
           </StyledDeleteButton>
+          <button onClick={() => onHandleEditGoal(id)}>Edit</button>
         </StyledItem>
       ))}
     </StyledList>
