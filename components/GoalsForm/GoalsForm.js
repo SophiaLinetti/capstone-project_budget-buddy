@@ -45,7 +45,7 @@ export default function GoalsForm({ onAddGoal }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
+    // console.log(data);
     onAddGoal({
       ...data,
       savedAmount: parseInt(data.savedAmount),

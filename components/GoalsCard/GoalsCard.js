@@ -1,6 +1,11 @@
-import { StyledItem, StyledList, StyledGoalCard, StyledText } from "@/styles";
+import {
+  StyledItem,
+  StyledList,
+  StyledGoalCard,
+  StyledDeleteButton,
+} from "@/styles";
 
-export default function GoalsCard({ goals }) {
+export default function GoalsCard({ goals, onHandleDeleteGoal }) {
   return (
     <StyledList>
       {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
@@ -11,6 +16,9 @@ export default function GoalsCard({ goals }) {
               saved {savedAmount} EUR of {goalAmount} EUR
             </StyledGoalCard>
           </div>
+          <StyledDeleteButton onClick={() => onHandleDeleteGoal(id)}>
+            ❌
+          </StyledDeleteButton>
         </StyledItem>
       ))}
     </StyledList>
