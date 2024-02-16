@@ -4,9 +4,10 @@ import GoalsForm from "@/components/GoalsForm/GoalsForm";
 import { useState } from "react";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import { v4 as uuidv4 } from "uuid";
+import { initialGoals } from "@/ressources/data";
 
 export default function Goals() {
-  const [goals, setGoals] = useState([]);
+  const [goals, setGoals] = useState(initialGoals);
   const [editingGoalId, setEditingGoalId] = useState(null);
 
   function handleAddGoal(newGoal) {

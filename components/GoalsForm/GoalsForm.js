@@ -38,11 +38,28 @@ const GoalSubmitButton = styled.button`
   align-items: center;
 `;
 
-export default function GoalsForm({ onAddGoal }) {
+export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState({
+    goalName: "",
+    savedAmount: "",
+    goalAmount: "",
+  });
+
+  useEffect(() => {
+    if (editingGoal) {
+      setIsModalOpen(true);
+      setFormValues({
+        goalName: editingGoal.goalName,
+        savedAmount: editingGoal.savedAmount,
+        goalAmount: editingGoal.goalAmount,
+      });
+    }
+  }, [editingGoal]);
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
@@ -52,6 +69,21 @@ export default function GoalsForm({ onAddGoal }) {
       goalAmount: parseInt(data.goalAmount),
     });
     setIsModalOpen(false);
+    onCancelEdit();
+
+    console.log(data);
+    console.log(formData);
+    console.log(data);
+    console.log(editingGoal);
+    console.log(formValues);
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormValues((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
   }
 
   return (
@@ -65,7 +97,14 @@ export default function GoalsForm({ onAddGoal }) {
             <form onSubmit={handleSubmit}>
               <StyledBr>
                 <label htmlFor="name__id"> *Goal Name </label>
-                <input id="name__id" name="goalName" max="10" required />
+                <input
+                  id="name__id"
+                  name="goalName"
+                  max="10"
+                  required
+                  value={formValues.goalName}
+                  onChange={handleChange}
+                />
               </StyledBr>
 
               <StyledBr>
@@ -81,6 +120,8 @@ export default function GoalsForm({ onAddGoal }) {
                   step="1"
                   pattern="[0-9]+"
                   required
+                  value={formValues.savedAmount}
+                  onChange={handleChange}
                 ></input>
               </StyledBr>
 
@@ -95,6 +136,8 @@ export default function GoalsForm({ onAddGoal }) {
                   step="1"
                   pattern="[0-9]+"
                   required
+                  value={formValues.goalAmount}
+                  onChange={handleChange}
                 />
               </StyledBr>
 
