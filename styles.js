@@ -149,3 +149,13 @@ export const StyledCardContainer = styled.div`
 export const StyledBr = styled.div`
   display: block;
 `;
+
+export const StyledSavingContainer = styled.div`
+  border: 1px solid;
+  border-radius: 7px;
+  margin-right: 5%;
+  margin-left: 5%;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  color: #ffb228;
+`;

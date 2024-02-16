@@ -1,4 +1,9 @@
-import { StyledHeading, StyledText, StyledCardContainer } from "@/styles";
+import {
+  StyledHeading,
+  StyledText,
+  StyledCardContainer,
+  StyledSavingContainer,
+} from "@/styles";
 import Navbar from "@/components/Nav/Nav";
 import GoalsForm from "@/components/GoalsForm/GoalsForm";
 import { useState, useEffect } from "react";
@@ -27,7 +32,9 @@ export default function Goals() {
       <StyledHeading>Saving Goals</StyledHeading>
 
       <StyledCardContainer>
-        <div>Distributed Amount: {savingBalance[0].savingAccount}</div>
+        <StyledSavingContainer>
+          Savings Account Balance: {savingBalance[0].savingAccount}
+        </StyledSavingContainer>
 
         {goals.length === 0 && (
           <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
@@ -35,8 +42,13 @@ export default function Goals() {
         )}
         <GoalsCard goals={goals} />
       </StyledCardContainer>
-      <GoalsForm onAddGoal={handleAddGoal} />
-      <div>Distributed Amount: {totalSavings}</div>
+      <GoalsForm
+        onAddGoal={handleAddGoal}
+        savingBalance={savingBalance[0].savingAccount}
+      />
+      <StyledSavingContainer>
+        Total Saving Amount: {totalSavings}
+      </StyledSavingContainer>
       <Navbar />
     </>
   );

@@ -38,7 +38,7 @@ const GoalSubmitButton = styled.button`
   align-items: center;
 `;
 
-export default function GoalsForm({ onAddGoal }) {
+export default function GoalsForm({ onAddGoal, savingBalance }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleSubmit(event) {
@@ -52,6 +52,14 @@ export default function GoalsForm({ onAddGoal }) {
       goalAmount: parseInt(data.goalAmount),
     });
     setIsModalOpen(false);
+  }
+
+  function handleValidation(event, message) {
+    if (event.type === "invalid") {
+      event.target.setCustomValidity(message);
+    } else {
+      event.target.setCustomValidity("");
+    }
   }
 
   return (
@@ -70,17 +78,24 @@ export default function GoalsForm({ onAddGoal }) {
 
               <StyledBr>
                 <label htmlFor="savedAmount__id">
-                  *Already Saved Amount in EUR:{" "}
+                  *Already Saved Amount in EUR:
                 </label>
                 <input
                   id="savedAmount__id"
                   type="number"
                   name="savedAmount"
                   min="0"
-                  max="10000000"
+                  max={savingBalance}
                   step="1"
                   pattern="[0-9]+"
                   required
+                  onInvalid={(event) =>
+                    handleValidation(
+                      event,
+                      "The amount you entered cannot be greater than your savings balance!"
+                    )
+                  }
+                  onInput={(event) => handleValidation(event, "")}
                 ></input>
               </StyledBr>
 
