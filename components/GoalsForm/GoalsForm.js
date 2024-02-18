@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import styled from "styled-components";
 import { StyledHint, StyledBr } from "@/styles";
 
@@ -42,8 +41,8 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formValues, setFormValues] = useState({
     goalName: "",
-    savedAmount: "",
-    goalAmount: "",
+    savedAmount: 0,
+    goalAmount: 0
   });
 
   useEffect(() => {
@@ -51,11 +50,19 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
       setIsModalOpen(true);
       setFormValues({
         goalName: editingGoal.goalName,
-        savedAmount: editingGoal.savedAmount,
-        goalAmount: editingGoal.goalAmount,
+        savedAmount: parseInt(editingGoal.savedAmount),
+        goalAmount: parseInt(editingGoal.goalAmount),
       });
     }
   }, [editingGoal]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value
+    }));
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -78,14 +85,6 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
     console.log(formValues);
   }
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setFormValues((previous) => ({
-      ...previous,
-      [name]: value,
-    }));
-  }
-
   return (
     <>
       <GoalSubmitButton onClick={() => setIsModalOpen(true)}>
@@ -103,6 +102,7 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
                   max="10"
                   required
                   value={formValues.goalName}
+                  defaultValue=""
                   onChange={handleChange}
                 />
               </StyledBr>
