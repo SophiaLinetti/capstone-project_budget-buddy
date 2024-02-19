@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { StyledHint, StyledBr } from "@/styles";
 
@@ -38,11 +37,41 @@ const GoalSubmitButton = styled.button`
   align-items: center;
 `;
 
-export default function GoalsForm({ onAddGoal, savingBalance }) {
+export default function GoalsForm({
+  onAddGoal,
+  editingGoal,
+  onCancelEdit,
+  savingBalance,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formValues, setFormValues] = useState({
+    goalName: "",
+    savedAmount: 0,
+    goalAmount: 0,
+  });
+
+  useEffect(() => {
+    if (editingGoal) {
+      setIsModalOpen(true);
+      setFormValues({
+        goalName: editingGoal.goalName,
+        savedAmount: parseInt(editingGoal.savedAmount),
+        goalAmount: parseInt(editingGoal.goalAmount),
+      });
+    }
+  }, [editingGoal]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
@@ -52,6 +81,28 @@ export default function GoalsForm({ onAddGoal, savingBalance }) {
       goalAmount: parseInt(data.goalAmount),
     });
     setIsModalOpen(false);
+    onCancelEdit();
+    setFormValues({
+      goalName: "",
+      savedAmount: 0,
+      goalAmount: 0,
+    });
+
+    console.log(data);
+    console.log(formData);
+    console.log(data);
+    console.log(editingGoal);
+    console.log(formValues);
+  }
+
+  function handleCancel() {
+    setIsModalOpen(false);
+    onCancelEdit();
+    setFormValues({
+      goalName: "",
+      savedAmount: 0,
+      goalAmount: 0,
+    });
   }
 
   function handleValidation(event, message) {
@@ -73,7 +124,15 @@ export default function GoalsForm({ onAddGoal, savingBalance }) {
             <form onSubmit={handleSubmit}>
               <StyledBr>
                 <label htmlFor="name__id"> *Goal Name </label>
-                <input id="name__id" name="goalName" max="10" required />
+                <input
+                  id="name__id"
+                  name="goalName"
+                  max="10"
+                  required
+                  value={formValues.goalName}
+                  defaultValue=""
+                  onChange={handleChange}
+                />
               </StyledBr>
 
               <StyledBr>
@@ -89,6 +148,8 @@ export default function GoalsForm({ onAddGoal, savingBalance }) {
                   step="1"
                   pattern="[0-9]+"
                   required
+                  value={formValues.savedAmount}
+                  onChange={handleChange}
                   onInvalid={(event) =>
                     handleValidation(
                       event,
@@ -110,12 +171,16 @@ export default function GoalsForm({ onAddGoal, savingBalance }) {
                   step="1"
                   pattern="[0-9]+"
                   required
+                  value={formValues.goalAmount}
+                  onChange={handleChange}
                 />
               </StyledBr>
 
               <StyledHint>All fields with * are required!</StyledHint>
               <button type="submit">Save Goal</button>
-              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+              <button type="button" onClick={handleCancel}>
+                Cancel
+              </button>
             </form>
           </ModalContainer>
         </ModalBackround>
