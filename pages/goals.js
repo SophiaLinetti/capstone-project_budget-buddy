@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 import { initialGoals, initialSavingBalance } from "@/ressources/data";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import { v4 as uuidv4 } from "uuid";
-import { initialGoals } from "@/ressources/data";
 
 export default function Goals() {
   const [goals, setGoals] = useState(initialGoals);
