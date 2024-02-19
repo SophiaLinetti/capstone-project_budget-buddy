@@ -70,6 +70,8 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
+
+
     onAddGoal({
       ...data,
       savedAmount: parseInt(data.savedAmount),
@@ -84,6 +86,17 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
     console.log(editingGoal);
     console.log(formValues);
   }
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    onCancelEdit();
+    setFormValues({
+      goalName: "",
+      savedAmount: 0,
+      goalAmount: 0
+    });
+  };
+
 
   return (
     <>
@@ -143,7 +156,7 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
 
               <StyledHint>All fields with * are required!</StyledHint>
               <button type="submit">Save Goal</button>
-              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+              <button type="button" onClick={handleCancel}>Cancel</button>
             </form>
           </ModalContainer>
         </ModalBackround>

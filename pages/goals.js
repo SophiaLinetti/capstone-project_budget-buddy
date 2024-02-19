@@ -31,6 +31,8 @@ export default function Goals() {
     setEditingGoalId(id);
   }
 
+  
+
   return (
     <>
       <StyledHeading>Saving Goals</StyledHeading>
@@ -54,3 +56,5 @@ export default function Goals() {
     </>
   );
 }
+
+
