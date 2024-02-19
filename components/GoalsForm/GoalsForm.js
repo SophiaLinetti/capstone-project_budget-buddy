@@ -61,13 +61,16 @@ export default function GoalsForm({
     }
   }, [editingGoal]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormValues((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
-  };
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    setFormValues(function (prevValues) {
+      return {
+        ...prevValues,
+        [name]: value,
+      };
+    });
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -87,12 +90,6 @@ export default function GoalsForm({
       savedAmount: 0,
       goalAmount: 0,
     });
-
-    console.log(data);
-    console.log(formData);
-    console.log(data);
-    console.log(editingGoal);
-    console.log(formValues);
   }
 
   function handleCancel() {

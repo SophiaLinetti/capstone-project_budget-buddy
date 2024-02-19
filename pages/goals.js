@@ -50,9 +50,9 @@ export default function Goals() {
       <StyledHeading>Saving Goals</StyledHeading>
 
       <StyledCardContainer>
-        {/*         <StyledSavingContainer>
+        <StyledSavingContainer>
           Savings Account Balance: {savingBalance[0].savingAccount}
-        </StyledSavingContainer> */}
+        </StyledSavingContainer>
 
         {goals.length === 0 && (
           <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
@@ -70,9 +70,9 @@ export default function Goals() {
         onCancelEdit={() => setEditingGoalId(null)}
         savingBalance={savingBalance[0].savingAccount}
       />
-      {/*       <StyledSavingContainer>
+      <StyledSavingContainer>
         Total Saving Amount: {totalSavings}
-      </StyledSavingContainer> */}
+      </StyledSavingContainer>
       <Navbar />
     </>
   );
