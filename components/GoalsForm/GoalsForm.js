@@ -79,6 +79,11 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
     });
     setIsModalOpen(false);
     onCancelEdit();
+    setFormValues({
+      goalName: "",
+      savedAmount: 0,
+      goalAmount: 0
+    });
 
     console.log(data);
     console.log(formData);
@@ -87,7 +92,7 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
     console.log(formValues);
   }
 
-  const handleCancel = () => {
+  function handleCancel() {
     setIsModalOpen(false);
     onCancelEdit();
     setFormValues({
@@ -95,7 +100,7 @@ export default function GoalsForm({ onAddGoal, editingGoal, onCancelEdit }) {
       savedAmount: 0,
       goalAmount: 0
     });
-  };
+  }
 
 
   return (
