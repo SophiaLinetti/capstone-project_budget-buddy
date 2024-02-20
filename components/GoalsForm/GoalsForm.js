@@ -93,13 +93,15 @@ export default function GoalsForm({
   }
 
   function handleCancel() {
-    setIsModalOpen(false);
-    onCancelEdit();
-    setFormValues({
-      goalName: "",
-      savedAmount: 0,
-      goalAmount: 0,
-    });
+    if (window.confirm('Are you sure you want to cancel editing this goal?')) {
+      setIsModalOpen(false);
+      onCancelEdit();
+      setFormValues({
+        goalName: "",
+        savedAmount: 0,
+        goalAmount: 0,
+      });
+    }
   }
 
   function handleValidation(event, message) {
