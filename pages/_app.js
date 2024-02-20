@@ -2,9 +2,12 @@ import GlobalStyle from "../styles";
 import { initialTransactions } from "@/ressources/data";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
-  const [transactions, setTransactions] = useState(initialTransactions);
+  const [transactions, setTransactions] = useLocalStorageState("transactions", {
+    defaultValue: initialTransactions,
+  });
 
   function handleAddTransaction(newTransaction) {
     setTransactions((transactions) => [

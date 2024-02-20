@@ -10,9 +10,12 @@ import { useState, useEffect } from "react";
 import { initialGoals, initialSavingBalance } from "@/ressources/data";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import { v4 as uuidv4 } from "uuid";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Goals() {
-  const [goals, setGoals] = useState(initialGoals);
+  const [goals, setGoals] = useLocalStorageState("goals", {
+    defaultValue: initialGoals,
+  });
   const [editingGoalId, setEditingGoalId] = useState(null);
   const [savingBalance, setSavingBalance] = useState(initialSavingBalance);
   const [totalSavings, setTotalSavings] = useState(0);
