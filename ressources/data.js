@@ -66,3 +66,10 @@ export const initialGoals = [
     goalAmount: 15000,
   },
 ];
+
+export const initialSavingBalance = [
+  {
+    savingAccount: 99999999999999,
+    totalSavings: 2,
+  },
+];
