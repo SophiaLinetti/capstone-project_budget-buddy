@@ -46,8 +46,8 @@ export default function GoalsForm({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formValues, setFormValues] = useState({
     goalName: "",
-    savedAmount: 0,
-    goalAmount: 0,
+    savedAmount: "",
+    goalAmount: "",
   });
 
   useEffect(() => {
@@ -87,19 +87,19 @@ export default function GoalsForm({
     onCancelEdit();
     setFormValues({
       goalName: "",
-      savedAmount: 0,
-      goalAmount: 0,
+      savedAmount: "",
+      goalAmount: "",
     });
   }
 
   function handleCancel() {
-    if (window.confirm('Are you sure you want to cancel editing this goal?')) {
+    if (window.confirm("Are you sure you want to cancel editing this goal?")) {
       setIsModalOpen(false);
       onCancelEdit();
       setFormValues({
         goalName: "",
-        savedAmount: 0,
-        goalAmount: 0,
+        savedAmount: "",
+        goalAmount: "",
       });
     }
   }
