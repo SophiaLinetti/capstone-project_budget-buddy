@@ -11,6 +11,7 @@ import { initialGoals, initialSavingBalance } from "@/ressources/data";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
+import Pupsi from "@/components/GoalsForm/EditForm";
 
 export default function Goals({ transactions, onAddTransaction }) {
   const [goals, setGoals] = useLocalStorageState("goals", {
@@ -87,15 +88,21 @@ export default function Goals({ transactions, onAddTransaction }) {
       </StyledCardContainer>
       <GoalsForm
         onAddGoal={handleAddGoal}
-        editingGoal={goals.find((goal) => goal.id === editingGoalId)}
         onCancelEdit={() => setEditingGoalId(null)}
         savingBalance={savingBalance[0].savingAccount}
         onAddTransaction={onAddTransaction}
         transactions={transactions}
       />
+      <Pupsi
+        onAddGoal={handleAddGoal}
+        editingGoal={goals.find((goal) => goal.id === editingGoalId)}
+        onCancelEdit={() => setEditingGoalId(null)}
+        onAddTransaction={onAddTransaction}
+      />
       <StyledSavingContainer>
         Total Saving Amount: {totalSavings}
       </StyledSavingContainer>
+
       <Navbar />
     </>
   );
