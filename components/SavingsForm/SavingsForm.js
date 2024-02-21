@@ -25,8 +25,6 @@ export default function SavingsForm({ onAddTransaction }) {
       <TransactionForm onSubmit={handleSubmit}>
         <FormItems>
           <legend> Add a new Saving</legend>
-          {/* <label htmlFor="date__id">*Date: </label>
-          <input id="date__id" name="date" type="date" required /> */}
 
           <label htmlFor="s_amount__id">*Amount in EUR: </label>
           <input
