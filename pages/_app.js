@@ -1,6 +1,5 @@
 import GlobalStyle from "../styles";
 import { initialTransactions } from "@/ressources/data";
-import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
 

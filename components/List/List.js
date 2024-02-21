@@ -6,10 +6,15 @@ import {
 } from "@/styles";
 
 export default function List({ transactions, onDeleteTransaction }) {
+  // filter hidden
+  const filteredTransactions = transactions.filter(
+    (transaction) => transaction.additional !== "hidden"
+  );
+
   return (
     <>
       <StyledList>
-        {transactions.map(
+        {filteredTransactions.map(
           ({ id, date, amount, category, type, description }) => (
             <StyledItem key={id}>
               <div>

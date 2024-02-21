@@ -1,5 +1,6 @@
 import Form from "@/components/Form/Form";
 import List from "@/components/List/List";
+import SavingsForm from "@/components/SavingsForm/SavingsForm";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
 import { useState } from "react";
@@ -66,6 +67,7 @@ export default function HomePage({
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
       <Form onAddTransaction={onAddTransaction} />
+      <SavingsForm onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (

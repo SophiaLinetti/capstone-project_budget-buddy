@@ -12,7 +12,7 @@ import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function Goals() {
+export default function Goals({ transactions, onAddTransaction }) {
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
   });
@@ -34,6 +34,18 @@ export default function Goals() {
   }
 
   function handleDeleteGoal(id) {
+    // find goal
+    const goalData = goals.find((goal) => goal.id === id);
+
+    //add postive trx
+    onAddTransaction({
+      ...transactions,
+      amount: parseInt(goalData.savedAmount),
+      category: "Savings transfer",
+      additional: "hidden",
+    });
+
+    // del goal
     setGoals((goals) => goals.filter((goal) => goal.id !== id));
   }
 
@@ -48,6 +60,14 @@ export default function Goals() {
     );
     setTotalSavings(totalSavedAmount);
   }, [goals]);
+
+  function calculateSavingsTransfers(transactions) {
+    return transactions
+      .filter((transaction) => transaction.category === "Savings transfer")
+      .reduce((sum, transaction) => sum + transaction.amount, 0);
+  }
+  const savingsTransferSum = calculateSavingsTransfers(transactions);
+
   return (
     <>
       <StyledHeading>Saving Goals</StyledHeading>
@@ -56,6 +76,9 @@ export default function Goals() {
           <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
         the + Button on the bottom right of the Screen`}</StyledText>
         )}
+        <StyledSavingContainer>
+          Savings Account Balance: {savingsTransferSum}
+        </StyledSavingContainer>
         <GoalsCard
           goals={goals}
           onHandleDeleteGoal={handleDeleteGoal}
@@ -67,8 +90,12 @@ export default function Goals() {
         editingGoal={goals.find((goal) => goal.id === editingGoalId)}
         onCancelEdit={() => setEditingGoalId(null)}
         savingBalance={savingBalance[0].savingAccount}
+        onAddTransaction={onAddTransaction}
+        transactions={transactions}
       />
-
+      <StyledSavingContainer>
+        Total Saving Amount: {totalSavings}
+      </StyledSavingContainer>
       <Navbar />
     </>
   );

@@ -42,6 +42,7 @@ export default function GoalsForm({
   editingGoal,
   onCancelEdit,
   savingBalance,
+  onAddTransaction,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -89,6 +90,13 @@ export default function GoalsForm({
       goalName: "",
       savedAmount: "",
       goalAmount: "",
+    });
+    onAddTransaction({
+      ...data,
+      amount: parseInt(data.savedAmount) * -1,
+      savings_amount: parseInt(data.savings_amount),
+      category: "Savings transfer",
+      additional: "hidden",
     });
   }
 
