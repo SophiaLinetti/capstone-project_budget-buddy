@@ -1,4 +1,3 @@
-import React from "react";
 import { TransactionForm, FormItems, StyledHint } from "@/styles";
 
 export default function SavingsForm({ onAddTransaction }) {
