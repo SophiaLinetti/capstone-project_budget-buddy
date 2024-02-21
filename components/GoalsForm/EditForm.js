@@ -42,29 +42,16 @@ export default function EditForm({
     setFormValues(prevValues => ({ ...prevValues, [name]: value }));
   }
 
-  function handleSubmit(event) {
+ function handleSubmit(event) {
     event.preventDefault();
+    //  💡  Directly using formValues state to pass data to onAddGoal, no need for FormData
+    onAddGoal(formValues);
 
-    //save form data
-    const formData = new FormData(event.target);
-    const newData = Object.fromEntries(formData);
-
-    // save goal
-    onAddGoal(newData);
-
-    // transaction logic
-    const prevAmount = parseInt(editingGoal.savedAmount) ?? 0;
-    const amountDiff = parseInt(newData.savedAmount) - parseInt(prevAmount);
-
-    if (amountDiff > 0) {
+    //  💡  Simplifying transaction logic by calculating the difference and adding transaction if needed
+    const amountDiff = parseInt(formValues.savedAmount) - parseInt(editingGoal?.savedAmount || 0);
+    if (amountDiff !== 0) {
       onAddTransaction({
-        amount: parseInt(amountDiff) * -1,
-        category: "Savings transfer",
-        additional: "hidden",
-      });
-    } else if (amountDiff < 0) {
-      onAddTransaction({
-        amount: parseInt(amountDiff) * -1,
+        amount: Math.abs(amountDiff), //  💡 Always using positive value for amount
         category: "Savings transfer",
         additional: "hidden",
       });
@@ -72,11 +59,7 @@ export default function EditForm({
 
     setIsModalOpen(false);
     onCancelEdit();
-    setFormValues({
-      goalName: "",
-      savedAmount: "",
-      goalAmount: "",
-    });
+    setFormValues({ goalName: "", savedAmount: "", goalAmount: "" });
   }
 
   function handleCancel() {
