@@ -56,7 +56,7 @@ export default function Goals({ transactions, onAddTransaction }) {
 
   useEffect(() => {
     const totalSavedAmount = goals.reduce(
-      (sum, goal) => sum + goal.savedAmount,
+      (sum, goal) => sum + parseInt(goal.savedAmount),
       0
     );
     setTotalSavings(totalSavedAmount);
@@ -102,7 +102,6 @@ export default function Goals({ transactions, onAddTransaction }) {
       <StyledSavingContainer>
         Total Saving Amount: {totalSavings}
       </StyledSavingContainer>
-
       <Navbar />
     </>
   );

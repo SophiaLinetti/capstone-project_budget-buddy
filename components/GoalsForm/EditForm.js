@@ -21,22 +21,6 @@ const ModalContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-const GoalSubmitButton = styled.button`
-  position: fixed;
-  bottom: 5rem;
-  right: 2rem;
-  background-color: purple;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 export default function Pupsi({
   onAddGoal,
   editingGoal,
@@ -79,36 +63,28 @@ export default function Pupsi({
     // Save form data
     const formData = new FormData(event.target);
     const newData = Object.fromEntries(formData);
-    // const formData = new FormData(event.target);
-    // const data = Object.fromEntries(formData);
+
     // Save goal
     onAddGoal(newData);
 
     // Transaction logic
     const prevAmount = parseInt(editingGoal.savedAmount) ?? 0;
-    const amountDiff = prevAmount - newData.savedAmount;
+    const amountDiff = parseInt(prevAmount) - parseInt(newData.savedAmount);
 
     if (amountDiff > 0) {
       onAddTransaction({
-        amount: -amountDiff,
+        amount: parseInt(amountDiff),
         category: "Savings transfer",
         additional: "hidden",
       });
     } else if (amountDiff < 0) {
       onAddTransaction({
-        amount: amountDiff,
+        amount: parseInt(amountDiff) * -1,
         category: "Savings transfer",
         additional: "hidden",
       });
     }
 
-    // Rest of handleSubmit
-
-    // onAddGoal({
-    //   ...data,
-    //   savedAmount: parseInt(data.savedAmount),
-    //   goalAmount: parseInt(data.goalAmount),
-    // });
     setIsModalOpen(false);
     onCancelEdit();
     setFormValues({
@@ -116,13 +92,6 @@ export default function Pupsi({
       savedAmount: "",
       goalAmount: "",
     });
-    // onAddTransaction({
-    //   ...data,
-    //   amount: parseInt(data.savedAmount) * -1,
-    //   savings_amount: parseInt(data.savings_amount),
-    //   category: "Savings transfer",
-    //   additional: "hidden",
-    // });
   }
 
   function handleCancel() {
