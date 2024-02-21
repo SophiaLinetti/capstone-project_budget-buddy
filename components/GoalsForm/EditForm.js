@@ -37,15 +37,9 @@ export default function EditForm({
   });
 
 
-  function handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    setFormValues(function (prevValues) {
-      return {
-        ...prevValues,
-        [name]: value,
-      };
-    });
+ function handleChange(event) {
+    const { name, value } = event.target;
+    setFormValues(prevValues => ({ ...prevValues, [name]: value }));
   }
 
   function handleSubmit(event) {
