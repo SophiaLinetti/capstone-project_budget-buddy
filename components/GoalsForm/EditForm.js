@@ -36,16 +36,6 @@ export default function EditForm({
     goalAmount: editingGoal?.goalAmount || "",
   });
 
-  useEffect(() => {
-    if (editingGoal) {
-      setIsModalOpen(true);
-      setFormValues({
-        goalName: editingGoal.goalName,
-        savedAmount: parseInt(editingGoal.savedAmount),
-        goalAmount: parseInt(editingGoal.goalAmount),
-      });
-    }
-  }, [editingGoal]);
 
   function handleChange(event) {
     const name = event.target.name;
