@@ -7,18 +7,18 @@ import {
 import Navbar from "@/components/Nav/Nav";
 import GoalsForm from "@/components/GoalsForm/GoalsForm";
 import { useState, useEffect } from "react";
-import { initialGoals, initialSavingBalance } from "@/ressources/data";
+import { initialGoals } from "@/ressources/data";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
-import Pupsi from "@/components/GoalsForm/EditForm";
+import EditForm from "@/components/GoalsForm/EditForm";
 
 export default function Goals({ transactions, onAddTransaction }) {
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
   });
   const [editingGoalId, setEditingGoalId] = useState(null);
-  const [savingBalance, setSavingBalance] = useState(initialSavingBalance);
+
   const [totalSavings, setTotalSavings] = useState(0);
 
   function handleAddGoal(newGoal) {
@@ -89,12 +89,13 @@ export default function Goals({ transactions, onAddTransaction }) {
       <GoalsForm
         onAddGoal={handleAddGoal}
         onCancelEdit={() => setEditingGoalId(null)}
-        savingBalance={savingBalance[0].savingAccount}
+        savingBalance={savingsTransferSum}
         onAddTransaction={onAddTransaction}
         transactions={transactions}
       />
-      <Pupsi
+      <EditForm
         onAddGoal={handleAddGoal}
+        savingBalance={totalSavings || savingsTransferSum}
         editingGoal={goals.find((goal) => goal.id === editingGoalId)}
         onCancelEdit={() => setEditingGoalId(null)}
         onAddTransaction={onAddTransaction}

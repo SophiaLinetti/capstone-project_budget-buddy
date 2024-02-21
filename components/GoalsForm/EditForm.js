@@ -21,7 +21,7 @@ const ModalContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-export default function Pupsi({
+export default function EditForm({
   onAddGoal,
   editingGoal,
   onCancelEdit,
@@ -60,20 +60,20 @@ export default function Pupsi({
   function handleSubmit(event) {
     event.preventDefault();
 
-    // Save form data
+    //save form data
     const formData = new FormData(event.target);
     const newData = Object.fromEntries(formData);
 
-    // Save goal
+    // save goal
     onAddGoal(newData);
 
-    // Transaction logic
+    // transaction logic
     const prevAmount = parseInt(editingGoal.savedAmount) ?? 0;
-    const amountDiff = parseInt(prevAmount) - parseInt(newData.savedAmount);
+    const amountDiff = parseInt(newData.savedAmount) - parseInt(prevAmount);
 
     if (amountDiff > 0) {
       onAddTransaction({
-        amount: parseInt(amountDiff),
+        amount: parseInt(amountDiff) * -1,
         category: "Savings transfer",
         additional: "hidden",
       });
