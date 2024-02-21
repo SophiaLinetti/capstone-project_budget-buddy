@@ -28,11 +28,12 @@ export default function EditForm({
   savingBalance,
   onAddTransaction,
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(Boolean(editingGoal));
+  // Setting initial form values directly from editingGoal if available, otherwise setting to empty
   const [formValues, setFormValues] = useState({
-    goalName: "",
-    savedAmount: "",
-    goalAmount: "",
+    goalName: editingGoal?.goalName || "",
+    savedAmount: editingGoal?.savedAmount || "",
+    goalAmount: editingGoal?.goalAmount || "",
   });
 
   useEffect(() => {
