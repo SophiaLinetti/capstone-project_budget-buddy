@@ -11,6 +11,8 @@ export default function HomePage({
   transactions,
   onAddTransaction,
   onDeleteTransaction,
+  onIsModalOpen,
+  isModalOpen,
 }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -89,7 +91,11 @@ export default function HomePage({
   return (
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
-      <Form onAddTransaction={onAddTransaction} />
+      <Form
+        onAddTransaction={onAddTransaction}
+        onIsModalOpen={onIsModalOpen}
+        isModalOpen={isModalOpen}
+      />
       <SavingsForm onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
@@ -99,12 +105,6 @@ export default function HomePage({
         </StyledAmoutDisplay>
       )}
       <FilterCategory onSetSelectedCategory={setSelectedCategory} />
-      {/* <List
-        transactions={
-          transactionFilter !== "all" ? filteredTransactions : transactions
-        }
-        onDeleteTransaction={onDeleteTransaction}
-      /> */}
       <List
         transactions={filterTransactions(transactions)}
         onDeleteTransaction={onDeleteTransaction}
