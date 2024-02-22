@@ -20,15 +20,6 @@ export default function HomePage({
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
-  // function filterTransactions(transactions) {
-  //   if (transactionFilter === "all") {
-  //     return transactions;
-  //   } else {
-  //     return transactions.filter(
-  //       (transaction) => transaction.type === transactionFilter
-  //     );
-  //   }
-  // }
 
   function filterTransactions(transactions) {
     if (transactionFilter === "all") {
@@ -96,7 +87,11 @@ export default function HomePage({
         onIsModalOpen={onIsModalOpen}
         isModalOpen={isModalOpen}
       />
-      <SavingsForm onAddTransaction={onAddTransaction} />
+      <SavingsForm
+        onAddTransaction={onAddTransaction}
+        onIsModalOpen={onIsModalOpen}
+        isModalOpen={isModalOpen}
+      />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (
