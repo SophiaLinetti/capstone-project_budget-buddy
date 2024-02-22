@@ -35,24 +35,19 @@ const ModalContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-export default function Form({
-  onAddTransaction,
-  onIsModalOpen,
-  isModalOpen,
-  onCancelEdit,
-}) {
+export default function Form({ onAddTransaction, onIsModalOpen, isModalOpen }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
     onAddTransaction({ ...data, amount: parseInt(data.amount) });
+    onIsModalOpen(false);
   }
 
   function handleCancel() {
     if (window.confirm("Are you sure you want to cancel editing this goal?")) {
       onIsModalOpen(false);
-      onCancelEdit();
     }
   }
 
