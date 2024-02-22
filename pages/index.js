@@ -4,7 +4,12 @@ import SavingsForm from "@/components/SavingsForm/SavingsForm";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
 import { useState } from "react";
-import { StyledHeading, StyledAmoutDisplay } from "@/styles";
+import {
+  StyledHeading,
+  StyledAmoutDisplay,
+  StyledDropdownContainer,
+  StyledAllFormButtonsContainer,
+} from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 
 export default function HomePage({
@@ -82,24 +87,28 @@ export default function HomePage({
   return (
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
-      <Form
-        onAddTransaction={onAddTransaction}
-        onIsModalOpen={onIsModalOpen}
-        isModalOpen={isModalOpen}
-      />
-      <SavingsForm
-        onAddTransaction={onAddTransaction}
-        onIsModalOpen={onIsModalOpen}
-        isModalOpen={isModalOpen}
-      />
-      <FilterButtons onHandleSetFilter={handleSetFilter} />
+      <StyledAllFormButtonsContainer>
+        <Form
+          onAddTransaction={onAddTransaction}
+          onIsModalOpen={onIsModalOpen}
+          isModalOpen={isModalOpen}
+        />
+        <SavingsForm
+          onAddTransaction={onAddTransaction}
+          onIsModalOpen={onIsModalOpen}
+          isModalOpen={isModalOpen}
+        />
+      </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (
         <StyledAmoutDisplay>
           Balance: {calculateBalance()} EUR
         </StyledAmoutDisplay>
       )}
-      <FilterCategory onSetSelectedCategory={setSelectedCategory} />
+      <StyledDropdownContainer>
+        <FilterCategory onSetSelectedCategory={setSelectedCategory} />
+        <FilterButtons onHandleSetFilter={handleSetFilter} />
+      </StyledDropdownContainer>
       <List
         transactions={filterTransactions(transactions)}
         onDeleteTransaction={onDeleteTransaction}

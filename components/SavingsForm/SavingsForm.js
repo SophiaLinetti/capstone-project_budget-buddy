@@ -2,21 +2,29 @@ import { TransactionForm, FormItems, StyledHint } from "@/styles";
 import styled from "styled-components";
 import { useState } from "react";
 
-const SavingsTransactionButton = styled.button`
-  position: absolute;
-  right: 50px;
-  top: 50px;
-  background-color: yellow;
+const StyledSavingFormButton = styled.button`
+  height: 30px;
+  width: 45%;
+  margin-top: 70px;
   color: black;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: outset;
 `;
+
+// const SavingsTransactionButton = styled.button`
+//   position: absolute;
+//   right: 50px;
+//   top: 50px;
+//   background-color: yellow;
+//   color: black;
+//   border: none;
+//   border-radius: 50%;
+//   width: 3rem;
+//   height: 3rem;
+//   font-size: 24px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
 const ModalBackround = styled.div`
   position: fixed;
@@ -71,12 +79,9 @@ export default function SavingsForm({ onAddTransaction }) {
 
     return (
       <>
-        <br></br>
-        <br></br>
-        <br></br>
-        <SavingsTransactionButton onClick={() => setisSavingModalOpen(true)}>
+        <StyledSavingFormButton onClick={() => setisSavingModalOpen(true)}>
           Add Saving
-        </SavingsTransactionButton>
+        </StyledSavingFormButton>
         {isSavingModalOpen && (
           <ModalBackround>
             <ModalContainer>

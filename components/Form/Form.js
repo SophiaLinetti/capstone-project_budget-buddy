@@ -1,18 +1,18 @@
 import React from "react";
-import { TransactionForm, FormItems, StyledHint } from "@/styles";
+import {
+  TransactionForm,
+  FormItems,
+  StyledHint,
+  StyledFilterButtons,
+} from "@/styles";
 import styled from "styled-components";
 
-const TransactionButton = styled.button`
-  background-color: purple;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const StyledTransactionFormButton = styled.button`
+  height: 30px;
+  width: 45%;
+  margin-top: 70px;
+  color: black;
+  border: outset;
 `;
 
 const ModalBackround = styled.div`
@@ -53,12 +53,9 @@ export default function Form({ onAddTransaction, onIsModalOpen, isModalOpen }) {
 
   return (
     <>
-      <br></br>
-      <br></br>
-      <br></br>
-      <TransactionButton onClick={() => onIsModalOpen(true)}>
-        +
-      </TransactionButton>
+      <StyledTransactionFormButton onClick={() => onIsModalOpen(true)}>
+        Add Transcation
+      </StyledTransactionFormButton>
       {isModalOpen && (
         <ModalBackround>
           <ModalContainer>

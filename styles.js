@@ -41,19 +41,17 @@ export const FormItems = styled.fieldset`
 
 export const StyledList = styled.ul`
   padding: 0;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 0 0.5rem 0 0.5rem;
   justify-content: space-between;
   list-style: none;
   gap: 1rem;
-  padding-bottom: 40px;
 `;
 
 export const StyledItem = styled.li`
   background-color: #2d3250;
   color: #ffffff;
   border: 1px solid;
-  margin: 10px 5px 10px 5px;
+  margin: 10px 0px 10px 0px;
   display: flex;
   padding: 7px;
   position: relative;
@@ -91,8 +89,17 @@ export const StyledHeading = styled.h1`
 `;
 
 export const StyledFilterButtons = styled.button`
-  padding: 8px;
-  width: 20%;
+  width: 17%;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 8px 0 8px 0;
+  font-weight: 500;
+  background-color: white;
+`;
+
+export const StyledFilterContainer = styled.div`
+  margin: 0 0 0 5px;
+  display: inline;
 `;
 
 export const StyledAmoutDisplay = styled.div`
@@ -101,14 +108,8 @@ export const StyledAmoutDisplay = styled.div`
   border-radius: 7px;
   color: #ffb228;
   background-color: #2d3250;
-  margin: 5% 20% 0 20%;
+  margin: 3% 20% 3% 20%;
   padding: 8px;
-`;
-
-export const StyledFilterContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-top: 15px;
 `;
 
 export const StyledText = styled.p`
@@ -121,11 +122,12 @@ export const NavbarWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   background-color: #f5f5f5;
-  padding: 10px;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 50px;
+  border-top: solid white 1.5px;
 `;
 
 export const NavbarLink = styled.div`
@@ -135,6 +137,8 @@ export const NavbarLink = styled.div`
   background-color: ${(props) => (props.$active ? "#ffb228" : "#2d3250")};
   color: ${(props) => (props.$active ? "#2d3250" : "#ffb228")};
   font-weight: ${(props) => (props.$active ? "bold" : "normal")};
+  height: 100%;
+  width: 100%;
 `;
 
 export const StyledGoalCard = styled.div`
@@ -154,9 +158,45 @@ export const StyledBr = styled.div`
 export const StyledSavingContainer = styled.div`
   border: 1px solid;
   border-radius: 7px;
-  margin-right: 5%;
-  margin-left: 5%;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
   color: #ffb228;
+`;
+
+export const StyledDivNotBehindNavBar = styled.div`
+  margin-bottom: 50px;
+`;
+
+export const StyledDropdownContainer = styled.div`
+  background-color: #2d3250;
+  color: white;
+  border: white solid 1px;
+  border-radius: 5px;
+  display: inline;
+  padding: 8px;
+  margin: 0 0.5rem 0 0.5rem;
+  font-size: 0.9rem;
+  display: block;
+  height: 50px;
+`;
+
+export const StyledAllFormButtonsContainer = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+`;
+
+export const StyledEditSavingButton = styled.button`
+  padding: 1px 6px 1px 6px;
+  height: 25px;
+  margin-left: 20px;
+  position: absolute;
+  bottom: 3px;
+  right: 35px;
+`;
+export const StyledGoalCardContent = styled.div`
+  padding: 0 0 0 20px;
 `;
