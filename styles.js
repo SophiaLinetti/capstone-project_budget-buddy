@@ -46,6 +46,7 @@ export const StyledList = styled.ul`
   justify-content: space-between;
   list-style: none;
   gap: 1rem;
+  padding-bottom: 40px;
 `;
 
 export const StyledItem = styled.li`
