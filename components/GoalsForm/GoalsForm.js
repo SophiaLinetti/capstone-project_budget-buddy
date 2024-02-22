@@ -43,8 +43,9 @@ export default function GoalsForm({
   onCancelEdit,
   savingBalance,
   onAddTransaction,
+  onIsModalOpen,
+  isModalOpen,
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formValues, setFormValues] = useState({
     goalName: "",
     savedAmount: "",
@@ -53,7 +54,7 @@ export default function GoalsForm({
 
   useEffect(() => {
     if (editingGoal) {
-      setIsModalOpen(true);
+      onIsModalOpen(true);
       setFormValues({
         goalName: editingGoal.goalName,
         savedAmount: parseInt(editingGoal.savedAmount),
@@ -84,7 +85,7 @@ export default function GoalsForm({
       savedAmount: parseInt(data.savedAmount),
       goalAmount: parseInt(data.goalAmount),
     });
-    setIsModalOpen(false);
+    onIsModalOpen(false);
     onCancelEdit();
     setFormValues({
       goalName: "",
@@ -102,7 +103,7 @@ export default function GoalsForm({
 
   function handleCancel() {
     if (window.confirm("Are you sure you want to cancel editing this goal?")) {
-      setIsModalOpen(false);
+      onIsModalOpen(false);
       onCancelEdit();
       setFormValues({
         goalName: "",
@@ -122,9 +123,7 @@ export default function GoalsForm({
 
   return (
     <>
-      <GoalSubmitButton onClick={() => setIsModalOpen(true)}>
-        +
-      </GoalSubmitButton>
+      <GoalSubmitButton onClick={() => onIsModalOpen(true)}>+</GoalSubmitButton>
       {isModalOpen && (
         <ModalBackround>
           <ModalContainer>

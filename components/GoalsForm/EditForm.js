@@ -27,46 +27,55 @@ export default function EditForm({
   onCancelEdit,
   savingBalance,
   onAddTransaction,
+  onIsModalOpen,
+  isModalOpen,
+  formValues,
+  onSetFormValues,
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(Boolean(editingGoal));
+  /* const [isModalOpen, onIsModalOpen] = useState(Boolean(editingGoal)); */
   // Setting initial form values directly from editingGoal if available, otherwise setting to empty
-  const [formValues, setFormValues] = useState({
+  /*   const [formValues, onSetFormValues] = useState({
     goalName: editingGoal?.goalName || "",
     savedAmount: editingGoal?.savedAmount || "",
     goalAmount: editingGoal?.goalAmount || "",
-  });
+  }); */
 
-
- function handleChange(event) {
+  function handleChange(event) {
     const { name, value } = event.target;
-    setFormValues(prevValues => ({ ...prevValues, [name]: value }));
+    onSetFormValues((prevValues) => ({ ...prevValues, [name]: value }));
   }
 
- function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     //  💡  Directly using formValues state to pass data to onAddGoal, no need for FormData
     onAddGoal(formValues);
-
     //  💡  Simplifying transaction logic by calculating the difference and adding transaction if needed
-    const amountDiff = parseInt(formValues.savedAmount) - parseInt(editingGoal?.savedAmount || 0);
-    if (amountDiff !== 0) {
+    const amountDiff =
+      parseInt(formValues.savedAmount) -
+      parseInt(editingGoal?.savedAmount || 0);
+    if (amountDiff > 0) {
       onAddTransaction({
-        amount: Math.abs(amountDiff), //  💡 Always using positive value for amount
+        amount: parseInt(amountDiff) * -1,
+        category: "Savings transfer",
+        additional: "hidden",
+      });
+    } else if (amountDiff < 0) {
+      onAddTransaction({
+        amount: parseInt(amountDiff) * -1,
         category: "Savings transfer",
         additional: "hidden",
       });
     }
-
-    setIsModalOpen(false);
+    onIsModalOpen(false);
     onCancelEdit();
-    setFormValues({ goalName: "", savedAmount: "", goalAmount: "" });
+    onSetFormValues({ goalName: "", savedAmount: "", goalAmount: "" });
   }
 
   function handleCancel() {
     if (window.confirm("Are you sure you want to cancel editing this goal?")) {
-      setIsModalOpen(false);
+      onIsModalOpen(false);
       onCancelEdit();
-      setFormValues({
+      onSetFormValues({
         goalName: "",
         savedAmount: "",
         goalAmount: "",
@@ -81,6 +90,17 @@ export default function EditForm({
       event.target.setCustomValidity("");
     }
   }
+
+  /*   useEffect(() => {
+    if (editingGoal) {
+      onIsModalOpen(true);
+      onSetFormValues({
+        goalName: editingGoal.goalName,
+        savedAmount: parseInt(editingGoal.savedAmount),
+        goalAmount: parseInt(editingGoal.goalAmount),
+      });
+    }
+  }, [editingGoal]); */
 
   return (
     <>

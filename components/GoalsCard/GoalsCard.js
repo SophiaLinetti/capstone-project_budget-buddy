@@ -9,6 +9,7 @@ export default function GoalsCard({
   goals,
   onHandleDeleteGoal,
   onHandleEditGoal,
+  onIsModalOpen,
 }) {
   return (
     <StyledList>

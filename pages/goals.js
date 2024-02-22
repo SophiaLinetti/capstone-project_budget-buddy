@@ -13,13 +13,31 @@ import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
 import EditForm from "@/components/GoalsForm/EditForm";
 
-export default function Goals({ transactions, onAddTransaction }) {
+export default function Goals({
+  transactions,
+  onAddTransaction,
+  onIsModalOpen,
+  isModalOpen,
+}) {
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
   });
   const [editingGoalId, setEditingGoalId] = useState(null);
-
   const [totalSavings, setTotalSavings] = useState(0);
+
+  function editingGoal(editingGoalId) {
+    return goals.find((goal) => goal.id === editingGoalId);
+  }
+
+  const [formValues, setFormValues] = useState({
+    goalName: editingGoal?.goalName || "",
+    savedAmount: editingGoal?.savedAmount || "",
+    goalAmount: editingGoal?.goalAmount || "",
+  });
+
+  function handleSetFormValues(pupsi) {
+    setFormValues(pupsi);
+  }
 
   function handleAddGoal(newGoal) {
     if (editingGoalId) {
@@ -52,6 +70,17 @@ export default function Goals({ transactions, onAddTransaction }) {
 
   function handleEditGoal(id) {
     setEditingGoalId(id);
+    /* onIsModalOpen(true); */
+    if (editingGoal) {
+      onIsModalOpen(true);
+      setFormValues({
+        goalName: editingGoal.goalName,
+        savedAmount: parseInt(editingGoal.savedAmount),
+        goalAmount: parseInt(editingGoal.goalAmount),
+      });
+      console.log(editingGoal);
+      console.log(editingGoal.goalName);
+    }
   }
 
   useEffect(() => {
@@ -92,13 +121,19 @@ export default function Goals({ transactions, onAddTransaction }) {
         savingBalance={savingsTransferSum}
         onAddTransaction={onAddTransaction}
         transactions={transactions}
+        onIsModalOpen={onIsModalOpen}
+        isModalOpen={isModalOpen}
       />
       <EditForm
         onAddGoal={handleAddGoal}
-        savingBalance={totalSavings || savingsTransferSum}
+        savingBalance={totalSavings + savingsTransferSum}
         editingGoal={goals.find((goal) => goal.id === editingGoalId)}
         onCancelEdit={() => setEditingGoalId(null)}
         onAddTransaction={onAddTransaction}
+        onIsModalOpen={onIsModalOpen}
+        isModalOpen={isModalOpen}
+        formValues={formValues}
+        onSetFormValues={handleSetFormValues}
       />
       <StyledSavingContainer>
         Total Saving Amount: {totalSavings}
