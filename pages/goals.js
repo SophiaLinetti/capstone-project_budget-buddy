@@ -69,18 +69,17 @@ export default function Goals({
   }
 
   function handleEditGoal(id) {
+    //find goal byid
+    const goalToBeEdited = goals.find((goal) => goal.id === id);
+
+    //prefill data
+    setFormValues({
+      goalName: goalToBeEdited.goalName,
+      savedAmount: goalToBeEdited.savedAmount,
+      goalAmount: goalToBeEdited.goalAmount,
+    });
+    onIsModalOpen(true);
     setEditingGoalId(id);
-    /* onIsModalOpen(true); */
-    if (editingGoal) {
-      onIsModalOpen(true);
-      setFormValues({
-        goalName: editingGoal.goalName,
-        savedAmount: parseInt(editingGoal.savedAmount),
-        goalAmount: parseInt(editingGoal.goalAmount),
-      });
-      console.log(editingGoal);
-      console.log(editingGoal.goalName);
-    }
   }
 
   useEffect(() => {
@@ -126,7 +125,7 @@ export default function Goals({
       />
       <EditForm
         onAddGoal={handleAddGoal}
-        savingBalance={totalSavings + savingsTransferSum}
+        savingBalance={savingsTransferSum + totalSavings}
         editingGoal={goals.find((goal) => goal.id === editingGoalId)}
         onCancelEdit={() => setEditingGoalId(null)}
         onAddTransaction={onAddTransaction}

@@ -32,17 +32,12 @@ export default function EditForm({
   formValues,
   onSetFormValues,
 }) {
-  /* const [isModalOpen, onIsModalOpen] = useState(Boolean(editingGoal)); */
-  // Setting initial form values directly from editingGoal if available, otherwise setting to empty
-  /*   const [formValues, onSetFormValues] = useState({
-    goalName: editingGoal?.goalName || "",
-    savedAmount: editingGoal?.savedAmount || "",
-    goalAmount: editingGoal?.goalAmount || "",
-  }); */
-
   function handleChange(event) {
     const { name, value } = event.target;
-    onSetFormValues((prevValues) => ({ ...prevValues, [name]: value }));
+    onSetFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   }
 
   function handleSubmit(event) {
@@ -90,17 +85,6 @@ export default function EditForm({
       event.target.setCustomValidity("");
     }
   }
-
-  /*   useEffect(() => {
-    if (editingGoal) {
-      onIsModalOpen(true);
-      onSetFormValues({
-        goalName: editingGoal.goalName,
-        savedAmount: parseInt(editingGoal.savedAmount),
-        goalAmount: parseInt(editingGoal.goalAmount),
-      });
-    }
-  }, [editingGoal]); */
 
   return (
     <>

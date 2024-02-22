@@ -52,9 +52,14 @@ export default function HomePage({
       </StyledAmoutDisplay>
     );
   }
+
+  const filterHiddenTransactions = transactions.filter(
+    (transaction) => transaction.additional !== "hidden"
+  );
+
   function calculateBalance() {
     let balance = 0;
-    transactions.forEach((transaction) => {
+    filterHiddenTransactions.forEach((transaction) => {
       if (transaction.type === "Income") {
         balance += transaction.amount;
       } else {
