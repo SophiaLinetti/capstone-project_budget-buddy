@@ -1,5 +1,6 @@
 import Form from "@/components/Form/Form";
 import List from "@/components/List/List";
+import SavingsForm from "@/components/SavingsForm/SavingsForm";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
 import { useState } from "react";
@@ -51,9 +52,14 @@ export default function HomePage({
       </StyledAmoutDisplay>
     );
   }
+
+  const filterHiddenTransactions = transactions.filter(
+    (transaction) => transaction.additional !== "hidden"
+  );
+
   function calculateBalance() {
     let balance = 0;
-    transactions.forEach((transaction) => {
+    filterHiddenTransactions.forEach((transaction) => {
       if (transaction.type === "Income") {
         balance += transaction.amount;
       } else {
@@ -66,6 +72,7 @@ export default function HomePage({
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
       <Form onAddTransaction={onAddTransaction} />
+      <SavingsForm onAddTransaction={onAddTransaction} />
       <FilterButtons onHandleSetFilter={handleSetFilter} />
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (

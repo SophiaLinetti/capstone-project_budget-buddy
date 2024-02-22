@@ -1,13 +1,18 @@
 import GlobalStyle from "../styles";
 import { initialTransactions } from "@/ressources/data";
-import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [transactions, setTransactions] = useLocalStorageState("transactions", {
     defaultValue: initialTransactions,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleSetIsModalOpen(bool) {
+    setIsModalOpen(bool);
+  }
 
   function handleAddTransaction(newTransaction) {
     setTransactions((transactions) => [
@@ -30,6 +35,8 @@ export default function App({ Component, pageProps }) {
         transactions={transactions}
         onAddTransaction={handleAddTransaction}
         onDeleteTransaction={handleDeleteTransaction}
+        onIsModalOpen={handleSetIsModalOpen}
+        isModalOpen={isModalOpen}
       />
     </>
   );
