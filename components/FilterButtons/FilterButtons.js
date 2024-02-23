@@ -10,7 +10,7 @@ export default function FilterButtons({ onHandleSetFilter }) {
         Expense
       </StyledFilterButtons>
       <StyledFilterButtons onClick={() => onHandleSetFilter("all")}>
-        All
+        Balance
       </StyledFilterButtons>
     </StyledFilterContainer>
   );

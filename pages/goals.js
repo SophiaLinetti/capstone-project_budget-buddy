@@ -13,17 +13,17 @@ import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
 import EditForm from "@/components/GoalsForm/EditForm";
 
-export default function Goals({
-  transactions,
-  onAddTransaction,
-  onIsModalOpen,
-  isModalOpen,
-}) {
+export default function Goals({ transactions, onAddTransaction }) {
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
   });
   const [editingGoalId, setEditingGoalId] = useState(null);
   const [totalSavings, setTotalSavings] = useState(0);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+  function handleSetEditModalOpen(bool) {
+    setEditModalOpen(bool);
+  }
 
   function editingGoal(editingGoalId) {
     return goals.find((goal) => goal.id === editingGoalId);
@@ -78,7 +78,7 @@ export default function Goals({
       savedAmount: goalToBeEdited.savedAmount,
       goalAmount: goalToBeEdited.goalAmount,
     });
-    onIsModalOpen(true);
+    setEditModalOpen(true);
     setEditingGoalId(id);
   }
 
@@ -120,8 +120,8 @@ export default function Goals({
         savingBalance={savingsTransferSum}
         onAddTransaction={onAddTransaction}
         transactions={transactions}
-        onIsModalOpen={onIsModalOpen}
-        isModalOpen={isModalOpen}
+        handleSetEditModalOpen={handleSetEditModalOpen}
+        isEditModalOpen={isEditModalOpen}
       />
       <EditForm
         onAddGoal={handleAddGoal}
@@ -129,8 +129,8 @@ export default function Goals({
         editingGoal={goals.find((goal) => goal.id === editingGoalId)}
         onCancelEdit={() => setEditingGoalId(null)}
         onAddTransaction={onAddTransaction}
-        onIsModalOpen={onIsModalOpen}
-        isModalOpen={isModalOpen}
+        handleSetEditModalOpen={handleSetEditModalOpen}
+        isEditModalOpen={isEditModalOpen}
         formValues={formValues}
         onSetFormValues={handleSetFormValues}
       />

@@ -66,3 +66,18 @@ export const initialGoals = [
     goalAmount: 15000,
   },
 ];
+
+/* 
+{
+  id: "7",                                        Mandatory
+  type: "Expense",                                Mandatory / goals type
+  amount: 50,                                     Mandatory
+  date: "2024-01-24",                             Mandatory
+  description: "Gym membership",                  Mandatory
+  category: "Health",
+  additional: [
+    extras: "hidden"                              Optional
+     
+
+  ]
+}, */

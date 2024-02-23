@@ -4,7 +4,12 @@ import SavingsForm from "@/components/SavingsForm/SavingsForm";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
 import { useState } from "react";
-import { StyledHeading, StyledAmoutDisplay } from "@/styles";
+import {
+  StyledHeading,
+  StyledAmoutDisplay,
+  StyledDropdownContainer,
+  StyledAllFormButtonsContainer,
+} from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 
 export default function HomePage({
@@ -18,15 +23,6 @@ export default function HomePage({
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
-  // function filterTransactions(transactions) {
-  //   if (transactionFilter === "all") {
-  //     return transactions;
-  //   } else {
-  //     return transactions.filter(
-  //       (transaction) => transaction.type === transactionFilter
-  //     );
-  //   }
-  // }
 
   function filterTransactions(transactions) {
     if (transactionFilter === "all") {
@@ -43,13 +39,13 @@ export default function HomePage({
     }
   }
 
-  const filteredTransactions = filterTransactions(transactions);
   function calculateSum(transactions) {
     return transactions.reduce(
       (sum, transaction) => sum + transaction.amount,
       0
     );
   }
+
   function displayTotalSum(filter) {
     if (filter === "all") {
       return null;
@@ -89,22 +85,20 @@ export default function HomePage({
   return (
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
-      <Form onAddTransaction={onAddTransaction} />
-      <SavingsForm onAddTransaction={onAddTransaction} />
-      <FilterButtons onHandleSetFilter={handleSetFilter} />
+      <StyledAllFormButtonsContainer>
+        <Form onAddTransaction={onAddTransaction} />
+        <SavingsForm onAddTransaction={onAddTransaction} />
+      </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (
         <StyledAmoutDisplay>
           Balance: {calculateBalance()} EUR
         </StyledAmoutDisplay>
       )}
-      <FilterCategory onSetSelectedCategory={setSelectedCategory} />
-      {/* <List
-        transactions={
-          transactionFilter !== "all" ? filteredTransactions : transactions
-        }
-        onDeleteTransaction={onDeleteTransaction}
-      /> */}
+      <StyledDropdownContainer>
+        <FilterCategory onSetSelectedCategory={setSelectedCategory} />
+        <FilterButtons onHandleSetFilter={handleSetFilter} />
+      </StyledDropdownContainer>
       <List
         transactions={filterTransactions(transactions)}
         onDeleteTransaction={onDeleteTransaction}
