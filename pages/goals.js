@@ -4,6 +4,7 @@ import {
   StyledCardContainer,
   StyledSavingContainer,
 } from "@/styles";
+import styled from "styled-components";
 import Navbar from "@/components/Nav/Nav";
 import GoalsForm from "@/components/GoalsForm/GoalsForm";
 import { useState, useEffect } from "react";
@@ -13,7 +14,32 @@ import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
 import EditForm from "@/components/GoalsForm/EditForm";
 
+<<<<<<< HEAD
 export default function Goals({ transactions, onAddTransaction }) {
+=======
+const GoalSubmitButton = styled.button`
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export default function Goals({
+  transactions,
+  onAddTransaction,
+  onIsModalOpen,
+  isModalOpen,
+}) {
+>>>>>>> 8fe9db3 (refactor forms and remove one)
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
   });
@@ -23,6 +49,12 @@ export default function Goals({ transactions, onAddTransaction }) {
 
   function handleSetEditModalOpen(bool) {
     setEditModalOpen(bool);
+  }
+
+  const [modal, setModal] = useState({ open: false });
+
+  function toggleModal(modalState) {
+    setModal(modalState);
   }
 
   function editingGoal(editingGoalId) {
@@ -39,17 +71,16 @@ export default function Goals({ transactions, onAddTransaction }) {
     setFormValues(pupsi);
   }
 
+  function handleEditGoal() {
+    setGoals((goals) =>
+      goals.map((goal) =>
+        goal.id === editingGoalId ? { ...goal, ...newGoal } : goal
+      )
+    );
+  }
+
   function handleAddGoal(newGoal) {
-    if (editingGoalId) {
-      setGoals((goals) =>
-        goals.map((goal) =>
-          goal.id === editingGoalId ? { ...goal, ...newGoal } : goal
-        )
-      );
-      setEditingGoalId(null);
-    } else {
-      setGoals((goals) => [{ ...newGoal, id: uuidv4() }, ...goals]);
-    }
+    setGoals((goals) => [{ ...newGoal, id: uuidv4() }, ...goals]);
   }
 
   function handleDeleteGoal(id) {
@@ -112,8 +143,10 @@ export default function Goals({ transactions, onAddTransaction }) {
           goals={goals}
           onHandleDeleteGoal={handleDeleteGoal}
           onHandleEditGoal={handleEditGoal}
+          onToggleModal={toggleModal}
         />
       </StyledCardContainer>
+<<<<<<< HEAD
       <GoalsForm
         onAddGoal={handleAddGoal}
         onCancelEdit={() => setEditingGoalId(null)}
@@ -134,9 +167,40 @@ export default function Goals({ transactions, onAddTransaction }) {
         formValues={formValues}
         onSetFormValues={handleSetFormValues}
       />
+=======
+      {modal.type === "add" && modal.open && (
+        <GoalsForm
+          onAddGoal={handleAddGoal}
+          onCancelEdit={() => setEditingGoalId(null)}
+          savingBalance={savingsTransferSum}
+          onAddTransaction={onAddTransaction}
+          transactions={transactions}
+          onToggleModal={toggleModal}
+        />
+      )}
+      {modal.type === "edit" && modal.open && (
+        <EditForm
+          onAddGoal={handleAddGoal}
+          savingBalance={savingsTransferSum + totalSavings}
+          editingGoal={goals.find((goal) => goal.id === editingGoalId)}
+          onCancelEdit={() => setEditingGoalId(null)}
+          onAddTransaction={onAddTransaction}
+          onIsModalOpen={onIsModalOpen}
+          isModalOpen={isModalOpen}
+          formValues={formValues}
+          onSetFormValues={handleSetFormValues}
+          onToggleModal={toggleModal}
+        />
+      )}
+>>>>>>> 8fe9db3 (refactor forms and remove one)
       <StyledSavingContainer>
         Total Saving Amount: {totalSavings}
       </StyledSavingContainer>
+      <GoalSubmitButton
+        onClick={() => toggleModal({ type: "add", open: true })}
+      >
+        +
+      </GoalSubmitButton>
       <Navbar />
     </>
   );

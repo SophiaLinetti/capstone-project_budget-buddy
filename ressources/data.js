@@ -56,6 +56,14 @@ export const initialTransactions = [
     description: "Gym membership",
     category: "Health",
   },
+  {
+    id: "8",
+    type: "Expense",
+    amount: 50,
+    date: "2024-01-24",
+    description: "this is a saving transaction",
+    category: "Saving",
+  },
 ];
 
 export const initialGoals = [

@@ -10,7 +10,7 @@ import {
 export default function GoalsCard({
   goals,
   onHandleDeleteGoal,
-  onHandleEditGoal,
+  onToggleModal,
 }) {
   return (
     <StyledList>
@@ -26,7 +26,9 @@ export default function GoalsCard({
             <StyledDeleteButton onClick={() => onHandleDeleteGoal(id)}>
               ❌
             </StyledDeleteButton>
-            <StyledEditSavingButton onClick={() => onHandleEditGoal(id)}>
+            <StyledEditSavingButton
+              onClick={() => onToggleModal({ type: "edit", open: true })}
+            >
               Edit
             </StyledEditSavingButton>
           </div>
