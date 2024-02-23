@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledHint } from "@/styles";
 import styled from "styled-components";
+import { useState } from "react";
 
 const StyledTransactionFormButton = styled.button`
   height: 30px;
@@ -30,30 +31,34 @@ const ModalContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-export default function Form({ onAddTransaction, onIsModalOpen, isModalOpen }) {
+export default function Form({ onAddTransaction }) {
+  const [isTransactionModalOpen, setTransactionModalOpen] = useState(false);
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
     onAddTransaction({ ...data, amount: parseInt(data.amount) });
-    onIsModalOpen(false);
+    setTransactionModalOpen(false);
   }
 
   function handleCancel() {
     if (
       window.confirm("Are you sure you want to cancel adding this Transaction?")
     ) {
-      onIsModalOpen(false);
+      setTransactionModalOpen(false);
     }
   }
 
   return (
     <>
-      <StyledTransactionFormButton onClick={() => onIsModalOpen(true)}>
+      <StyledTransactionFormButton
+        onClick={() => setTransactionModalOpen(true)}
+      >
         Add Transcation
       </StyledTransactionFormButton>
-      {isModalOpen && (
+      {isTransactionModalOpen && (
         <ModalBackround>
           <ModalContainer>
             <form onSubmit={handleSubmit}>

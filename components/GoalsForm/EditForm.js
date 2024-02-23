@@ -27,10 +27,10 @@ export default function EditForm({
   onCancelEdit,
   savingBalance,
   onAddTransaction,
-  onIsModalOpen,
-  isModalOpen,
   formValues,
   onSetFormValues,
+  handleSetEditModalOpen,
+  isEditModalOpen,
 }) {
   function handleChange(event) {
     const { name, value } = event.target;
@@ -61,14 +61,14 @@ export default function EditForm({
         additional: "hidden",
       });
     }
-    onIsModalOpen(false);
+    handleSetEditModalOpen(false);
     onCancelEdit();
     onSetFormValues({ goalName: "", savedAmount: "", goalAmount: "" });
   }
 
   function handleCancel() {
     if (window.confirm("Are you sure you want to cancel editing this goal?")) {
-      onIsModalOpen(false);
+      handleSetEditModalOpen(false);
       onCancelEdit();
       onSetFormValues({
         goalName: "",
@@ -88,7 +88,7 @@ export default function EditForm({
 
   return (
     <>
-      {isModalOpen && (
+      {isEditModalOpen && (
         <ModalBackround>
           <ModalContainer>
             <form onSubmit={handleSubmit}>
