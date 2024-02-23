@@ -63,7 +63,7 @@ export default function Form({ onAddTransaction }) {
           <ModalContainer>
             <form onSubmit={handleSubmit}>
               <li>
-                <legend> Add a new Transcation</legend>
+                <legend> Add a new Transaction</legend>
                 <label htmlFor="date__id">*Date: </label>
                 <input id="date__id" name="date" type="date" required />
                 <br></br>
