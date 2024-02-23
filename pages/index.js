@@ -1,4 +1,4 @@
-import Form from "@/components/Form";
+import Form from "@/components/Form/Form";
 import List from "@/components/List/List";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
@@ -85,13 +85,8 @@ export default function HomePage({
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
       <StyledAllFormButtonsContainer>
-<<<<<<< HEAD
-        <Form onAddTransaction={onAddTransaction} />
-        <SavingsForm onAddTransaction={onAddTransaction} />
-=======
         <Form onAddTransaction={onAddTransaction} formType="transaction" />
         <Form onAddTransaction={onAddTransaction} formType="savingGoals" />
->>>>>>> 8fe9db3 (refactor forms and remove one)
       </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (
