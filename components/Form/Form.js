@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  TransactionForm,
-  FormItems,
-  StyledHint,
-  StyledFilterButtons,
-} from "@/styles";
+import { StyledHint } from "@/styles";
 import styled from "styled-components";
 
 const StyledTransactionFormButton = styled.button`
@@ -46,7 +41,9 @@ export default function Form({ onAddTransaction, onIsModalOpen, isModalOpen }) {
   }
 
   function handleCancel() {
-    if (window.confirm("Are you sure you want to cancel editing this goal?")) {
+    if (
+      window.confirm("Are you sure you want to cancel adding this Transaction?")
+    ) {
       onIsModalOpen(false);
     }
   }

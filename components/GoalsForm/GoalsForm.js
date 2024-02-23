@@ -43,9 +43,9 @@ export default function GoalsForm({
   onCancelEdit,
   savingBalance,
   onAddTransaction,
-  onIsModalOpen,
-  isModalOpen,
 }) {
+  const [isAddGoalModalOpen, setIsAddGoalModalOpen] = useState(false);
+
   const [formValues, setFormValues] = useState({
     goalName: "",
     savedAmount: "",
@@ -54,7 +54,7 @@ export default function GoalsForm({
 
   useEffect(() => {
     if (editingGoal) {
-      onIsModalOpen(true);
+      setIsAddGoalModalOpen(true);
       setFormValues({
         goalName: editingGoal.goalName,
         savedAmount: parseInt(editingGoal.savedAmount),
@@ -85,7 +85,7 @@ export default function GoalsForm({
       savedAmount: parseInt(data.savedAmount),
       goalAmount: parseInt(data.goalAmount),
     });
-    onIsModalOpen(false);
+    setIsAddGoalModalOpen(false);
     onCancelEdit();
     setFormValues({
       goalName: "",
@@ -102,8 +102,8 @@ export default function GoalsForm({
   }
 
   function handleCancel() {
-    if (window.confirm("Are you sure you want to cancel editing this goal?")) {
-      onIsModalOpen(false);
+    if (window.confirm("Are you sure you want to cancel adding this goal?")) {
+      setIsAddGoalModalOpen(false);
       onCancelEdit();
       setFormValues({
         goalName: "",
@@ -123,8 +123,10 @@ export default function GoalsForm({
 
   return (
     <>
-      <GoalSubmitButton onClick={() => onIsModalOpen(true)}>+</GoalSubmitButton>
-      {isModalOpen && (
+      <GoalSubmitButton onClick={() => setIsAddGoalModalOpen(true)}>
+        +
+      </GoalSubmitButton>
+      {isAddGoalModalOpen && (
         <ModalBackround>
           <ModalContainer>
             <form onSubmit={handleSubmit}>
@@ -136,7 +138,6 @@ export default function GoalsForm({
                   max="10"
                   required
                   value={formValues.goalName}
-                  defaultValue=""
                   onChange={handleChange}
                 />
               </StyledBr>

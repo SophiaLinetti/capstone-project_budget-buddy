@@ -100,7 +100,6 @@ export default function EditForm({
                   max="10"
                   required
                   value={formValues.goalName}
-                  defaultValue=""
                   onChange={handleChange}
                 />
               </StyledBr>

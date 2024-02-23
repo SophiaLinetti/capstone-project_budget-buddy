@@ -1,4 +1,4 @@
-import { TransactionForm, FormItems, StyledHint } from "@/styles";
+import { StyledHint } from "@/styles";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -9,22 +9,6 @@ const StyledSavingFormButton = styled.button`
   color: black;
   border: outset;
 `;
-
-// const SavingsTransactionButton = styled.button`
-//   position: absolute;
-//   right: 50px;
-//   top: 50px;
-//   background-color: yellow;
-//   color: black;
-//   border: none;
-//   border-radius: 50%;
-//   width: 3rem;
-//   height: 3rem;
-//   font-size: 24px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
 
 const ModalBackround = styled.div`
   position: fixed;
@@ -71,7 +55,7 @@ export default function SavingsForm({ onAddTransaction }) {
 
     function handleCancel() {
       if (
-        window.confirm("Are you sure you want to cancel editing this goal?")
+        window.confirm("Are you sure you want to cancel the Saving Transfer?")
       ) {
         setisSavingModalOpen(false);
       }

@@ -41,7 +41,6 @@ export default function HomePage({
     }
   }
 
-  const filteredTransactions = filterTransactions(transactions);
   function calculateSum(transactions) {
     return transactions.reduce(
       (sum, transaction) => sum + transaction.amount,
@@ -109,10 +108,12 @@ export default function HomePage({
         <FilterCategory onSetSelectedCategory={setSelectedCategory} />
         <FilterButtons onHandleSetFilter={handleSetFilter} />
       </StyledDropdownContainer>
+
       <List
         transactions={filterTransactions(transactions)}
         onDeleteTransaction={onDeleteTransaction}
       />
+
       <Nav />
     </div>
   );
