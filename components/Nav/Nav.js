@@ -48,6 +48,13 @@ export default function Navbar() {
         </Link>
       </StyledLink>
       <StyledLink>
+        <Link href="/dashboard">
+          <NavbarLink $active={router.pathname === "/dashboard"}>
+            Home
+          </NavbarLink>
+        </Link>
+      </StyledLink>
+      <StyledLink>
         <Link href="/goals">
           <NavbarLink $active={router.pathname === "/goals"}>
             Saving Goals
