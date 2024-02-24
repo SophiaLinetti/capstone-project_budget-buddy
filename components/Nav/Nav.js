@@ -50,7 +50,7 @@ export default function Navbar() {
       <StyledLink>
         <Link href="/dashboard">
           <NavbarLink $active={router.pathname === "/dashboard"}>
-            Sophia
+            Dashboard
           </NavbarLink>
         </Link>
       </StyledLink>

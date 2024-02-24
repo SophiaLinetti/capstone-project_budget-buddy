@@ -68,7 +68,7 @@ export default function HomePage({
   }
 
   const filterHiddenTransactions = transactions.filter(
-    (transaction) => transaction.additional !== "hidden"
+    (transaction) => transaction.internalGoalAllocation !== "yes"
   );
 
   function calculateBalance() {

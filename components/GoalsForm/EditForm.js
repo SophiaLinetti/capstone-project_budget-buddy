@@ -52,13 +52,13 @@ export default function EditForm({
       onAddTransaction({
         amount: parseInt(amountDiff) * -1,
         category: "Savings transfer",
-        additional: "hidden",
+        internalGoalAllocation: "yes",
       });
     } else if (amountDiff < 0) {
       onAddTransaction({
         amount: parseInt(amountDiff) * -1,
         category: "Savings transfer",
-        additional: "hidden",
+        internalGoalAllocation: "yes",
       });
     }
     handleSetEditModalOpen(false);

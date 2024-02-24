@@ -61,7 +61,7 @@ export default function Goals({ transactions, onAddTransaction }) {
       ...transactions,
       amount: parseInt(goalData.savedAmount),
       category: "Savings transfer",
-      additional: "hidden",
+      internalGoalAllocation: "yes",
     });
 
     // del goal

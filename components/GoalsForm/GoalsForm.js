@@ -97,7 +97,7 @@ export default function GoalsForm({
       amount: parseInt(data.savedAmount) * -1,
       savings_amount: parseInt(data.savings_amount),
       category: "Savings transfer",
-      additional: "hidden",
+      internalGoalAllocation: "yes",
     });
   }
 

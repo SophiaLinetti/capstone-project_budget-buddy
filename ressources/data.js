@@ -62,22 +62,20 @@ export const initialGoals = [
   {
     id: "1",
     goalName: "New Zealand Trip",
-    savedAmount: 2000,
-    goalAmount: 15000,
+    savedAmount: 1200,
+    goalAmount: 2000,
   },
+  {
+    id: "2",
+    goalName: "New Car",
+    savedAmount: 12000,
+    goalAmount: 22000,
+  },  {
+    id: "3",
+    goalName: "Dream House",
+    savedAmount: 55000,
+    goalAmount: 1000000,
+  },
+
 ];
 
-/* 
-{
-  id: "7",                                        Mandatory
-  type: "Expense",                                Mandatory / goals type
-  amount: 50,                                     Mandatory
-  date: "2024-01-24",                             Mandatory
-  description: "Gym membership",                  Mandatory
-  category: "Health",
-  additional: [
-    extras: "hidden"                              Optional
-     
-
-  ]
-}, */

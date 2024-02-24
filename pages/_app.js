@@ -11,9 +11,10 @@ export default function App({ Component, pageProps }) {
 
   function handleAddTransaction(newTransaction) {
     setTransactions((transactions) => [
-      { ...newTransaction, id: uuidv4() },
+      { ...newTransaction, id: uuidv4(), internalGoalAllocation: "no" },
       ...transactions,
     ]);
+    console.log(transactions)
   }
 
   function handleDeleteTransaction(id) {
