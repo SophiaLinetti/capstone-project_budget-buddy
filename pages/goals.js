@@ -81,7 +81,7 @@ export default function Goals({ transactions, onAddTransaction }) {
         category: "Savings transfer",
         date: formatDate(new Date()),
         description: "New saving goal",
-        type: "Saving",
+        type: "Saving Goal",
       };
       onAddTransaction(transactionForNewGoal);
 
@@ -99,7 +99,7 @@ export default function Goals({ transactions, onAddTransaction }) {
       ...transactions,
       amount: parseInt(goalData.savedAmount),
       category: "Savings transfer",
-      type: "Saving",
+      type: "Saving Goal",
     });
 
     setGoals((goals) => goals.filter((goal) => goal.id !== id));

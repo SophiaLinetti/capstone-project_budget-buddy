@@ -94,13 +94,13 @@ export default function HomePage({
     );
   }
 
-  const filterHiddenTransactions = transactions.filter(
-    (transaction) => transaction.additional !== "hidden"
+  const filterGoalTransactions = transactions.filter(
+    (transaction) => transaction.type !== "Saving Goal"
   );
 
   function calculateBalance() {
     let balance = 0;
-    filterHiddenTransactions.forEach((transaction) => {
+    filterGoalTransactions.forEach((transaction) => {
       if (transaction.type === "Income") {
         balance += transaction.amount;
       } else {
@@ -115,11 +115,9 @@ export default function HomePage({
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledAllFormButtonsContainer>
         <button onClick={() => setModalType("transaction")}>
-          Add Transaction
+          New Transaction
         </button>
-        <button onClick={() => setModalType("saving")}>
-          Transfer to saving account
-        </button>
+        <button onClick={() => setModalType("saving")}>New Transfer</button>
       </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (
