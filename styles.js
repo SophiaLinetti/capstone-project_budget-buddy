@@ -19,12 +19,6 @@ export default createGlobalStyle`
 
 `;
 
-export const TransactionForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1 rem;
-`;
-
 export const FormItems = styled.fieldset`
   display: flex;
   flex-direction: column;
@@ -136,10 +130,6 @@ export const StyledSavingContainer = styled.div`
   text-align: center;
   padding: 10px 0 10px 0;
   color: #ffb228;
-`;
-
-export const StyledDivNotBehindNavBar = styled.div`
-  margin-bottom: 50px;
 `;
 
 export const StyledDropdownContainer = styled.div`
