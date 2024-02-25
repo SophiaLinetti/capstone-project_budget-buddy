@@ -7,11 +7,7 @@ import {
   StyledGoalCardContent,
 } from "@/styles";
 
-export default function GoalsCard({
-  goals,
-  onHandleDeleteGoal,
-  onToggleModal,
-}) {
+export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
   return (
     <StyledList>
       {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
@@ -27,7 +23,9 @@ export default function GoalsCard({
               ❌
             </StyledDeleteButton>
             <StyledEditSavingButton
-              onClick={() => onToggleModal({ type: "edit", open: true })}
+              onClick={() =>
+                onEditGoal({ id, goalName, savedAmount, goalAmount })
+              }
             >
               Edit
             </StyledEditSavingButton>

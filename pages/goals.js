@@ -1,116 +1,101 @@
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import useLocalStorageState from "use-local-storage-state";
+import styled from "styled-components";
+import { initialGoals } from "@/ressources/data";
+import { formatDate } from "../utils/normalizeUtils.js";
+import Navbar from "@/components/Nav/Nav";
+import GoalsCard from "@/components/GoalsCard/GoalsCard";
+import GoalsForm from "@/components/Forms/GoalForm.js";
+import Modal from "@/components/Modal";
 import {
   StyledHeading,
   StyledText,
   StyledCardContainer,
   StyledSavingContainer,
 } from "@/styles";
-import styled from "styled-components";
-import Navbar from "@/components/Nav/Nav";
-import GoalsForm from "@/components/GoalsForm/GoalsForm";
-import { useState, useEffect } from "react";
-import { initialGoals } from "@/ressources/data";
-import GoalsCard from "@/components/GoalsCard/GoalsCard";
-import { v4 as uuidv4 } from "uuid";
-import useLocalStorageState from "use-local-storage-state";
-import EditForm from "@/components/GoalsForm/EditForm";
 
-<<<<<<< HEAD
 export default function Goals({ transactions, onAddTransaction }) {
-=======
-const GoalSubmitButton = styled.button`
-  position: fixed;
-  bottom: 5rem;
-  right: 2rem;
-  background-color: purple;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export default function Goals({
-  transactions,
-  onAddTransaction,
-  onIsModalOpen,
-  isModalOpen,
-}) {
->>>>>>> 8fe9db3 (refactor forms and remove one)
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
   });
-  const [editingGoalId, setEditingGoalId] = useState(null);
   const [totalSavings, setTotalSavings] = useState(0);
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+  const [editingGoal, setEditingGoal] = useState(null);
 
-  function handleSetEditModalOpen(bool) {
-    setEditModalOpen(bool);
+  function handleCloseModal() {
+    setModalType(null);
   }
 
-  const [modal, setModal] = useState({ open: false });
-
-  function toggleModal(modalState) {
-    setModal(modalState);
+  function renderModalContent() {
+    if (modalType === "add saving goal") {
+      return (
+        <GoalsForm
+          onCloseModal={handleCloseModal}
+          onSaveGoal={handleSaveGoal}
+        />
+      );
+    } else if (modalType === "edit saving goal") {
+      return (
+        <GoalsForm
+          onCloseModal={handleCloseModal}
+          onSaveGoal={handleSaveGoal}
+          goal={editingGoal}
+        />
+      );
+    }
   }
 
-  function editingGoal(editingGoalId) {
-    return goals.find((goal) => goal.id === editingGoalId);
+  function handleEditGoal(goal) {
+    setModalType("edit saving goal");
+    setEditingGoal(goal);
   }
 
-  const [formValues, setFormValues] = useState({
-    goalName: editingGoal?.goalName || "",
-    savedAmount: editingGoal?.savedAmount || "",
-    goalAmount: editingGoal?.goalAmount || "",
-  });
+  function handleSaveGoal(goalToSave) {
+    if (goalToSave.id) {
+      const originalGoal = goals.find((goal) => goal.id === goalToSave.id);
+      if (originalGoal) {
+        const difference =
+          parseInt(goalToSave.savedAmount) - parseInt(originalGoal.savedAmount);
 
-  function handleSetFormValues(pupsi) {
-    setFormValues(pupsi);
-  }
+        const transactionForEdit = {
+          id: uuidv4(),
+          amount: -difference,
+          category: "Savings transfer",
+          date: formatDate(new Date()),
+        };
+        onAddTransaction(transactionForEdit);
+      }
 
-  function handleEditGoal() {
-    setGoals((goals) =>
-      goals.map((goal) =>
-        goal.id === editingGoalId ? { ...goal, ...newGoal } : goal
-      )
-    );
-  }
+      setGoals(
+        goals.map((goal) => (goal.id === goalToSave.id ? goalToSave : goal))
+      );
+    } else {
+      const transactionForNewGoal = {
+        id: uuidv4(),
+        amount: -parseInt(goalToSave.savedAmount),
+        category: "Savings transfer",
+        date: formatDate(new Date()),
+      };
+      onAddTransaction(transactionForNewGoal);
 
-  function handleAddGoal(newGoal) {
-    setGoals((goals) => [{ ...newGoal, id: uuidv4() }, ...goals]);
+      setGoals((currentGoals) => [
+        { ...goalToSave, id: uuidv4() },
+        ...currentGoals,
+      ]);
+    }
   }
 
   function handleDeleteGoal(id) {
-    // find goal
     const goalData = goals.find((goal) => goal.id === id);
 
-    //add postive trx
     onAddTransaction({
       ...transactions,
       amount: parseInt(goalData.savedAmount),
       category: "Savings transfer",
-      additional: "hidden",
     });
 
-    // del goal
     setGoals((goals) => goals.filter((goal) => goal.id !== id));
-  }
-
-  function handleEditGoal(id) {
-    //find goal byid
-    const goalToBeEdited = goals.find((goal) => goal.id === id);
-
-    //prefill data
-    setFormValues({
-      goalName: goalToBeEdited.goalName,
-      savedAmount: goalToBeEdited.savedAmount,
-      goalAmount: goalToBeEdited.goalAmount,
-    });
-    setEditModalOpen(true);
-    setEditingGoalId(id);
   }
 
   useEffect(() => {
@@ -130,6 +115,8 @@ export default function Goals({
 
   return (
     <>
+      {modalType && <Modal>{renderModalContent()}</Modal>}
+
       <StyledHeading>Saving Goals</StyledHeading>
       <StyledCardContainer>
         {goals.length === 0 && (
@@ -142,66 +129,32 @@ export default function Goals({
         <GoalsCard
           goals={goals}
           onHandleDeleteGoal={handleDeleteGoal}
-          onHandleEditGoal={handleEditGoal}
-          onToggleModal={toggleModal}
+          onEditGoal={handleEditGoal}
         />
       </StyledCardContainer>
-<<<<<<< HEAD
-      <GoalsForm
-        onAddGoal={handleAddGoal}
-        onCancelEdit={() => setEditingGoalId(null)}
-        savingBalance={savingsTransferSum}
-        onAddTransaction={onAddTransaction}
-        transactions={transactions}
-        handleSetEditModalOpen={handleSetEditModalOpen}
-        isEditModalOpen={isEditModalOpen}
-      />
-      <EditForm
-        onAddGoal={handleAddGoal}
-        savingBalance={savingsTransferSum + totalSavings}
-        editingGoal={goals.find((goal) => goal.id === editingGoalId)}
-        onCancelEdit={() => setEditingGoalId(null)}
-        onAddTransaction={onAddTransaction}
-        handleSetEditModalOpen={handleSetEditModalOpen}
-        isEditModalOpen={isEditModalOpen}
-        formValues={formValues}
-        onSetFormValues={handleSetFormValues}
-      />
-=======
-      {modal.type === "add" && modal.open && (
-        <GoalsForm
-          onAddGoal={handleAddGoal}
-          onCancelEdit={() => setEditingGoalId(null)}
-          savingBalance={savingsTransferSum}
-          onAddTransaction={onAddTransaction}
-          transactions={transactions}
-          onToggleModal={toggleModal}
-        />
-      )}
-      {modal.type === "edit" && modal.open && (
-        <EditForm
-          onAddGoal={handleAddGoal}
-          savingBalance={savingsTransferSum + totalSavings}
-          editingGoal={goals.find((goal) => goal.id === editingGoalId)}
-          onCancelEdit={() => setEditingGoalId(null)}
-          onAddTransaction={onAddTransaction}
-          onIsModalOpen={onIsModalOpen}
-          isModalOpen={isModalOpen}
-          formValues={formValues}
-          onSetFormValues={handleSetFormValues}
-          onToggleModal={toggleModal}
-        />
-      )}
->>>>>>> 8fe9db3 (refactor forms and remove one)
       <StyledSavingContainer>
         Total Saving Amount: {totalSavings}
       </StyledSavingContainer>
-      <GoalSubmitButton
-        onClick={() => toggleModal({ type: "add", open: true })}
-      >
+      <StyledAddGoalButton onClick={() => setModalType("add saving goal")}>
         +
-      </GoalSubmitButton>
+      </StyledAddGoalButton>
       <Navbar />
     </>
   );
 }
+
+const StyledAddGoalButton = styled.button`
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

@@ -12,15 +12,11 @@ export default createGlobalStyle`
   };
 
   body {
-    margin: 0;
+    margin: 100px 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #424769;
   }
 
-  button, input, select, fieldset, li, ul, textarea {
-  font-family: inherit; 
-  border-radius: 7px;
-}
 `;
 
 export const TransactionForm = styled.form`

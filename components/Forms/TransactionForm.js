@@ -1,55 +1,39 @@
-import React from "react";
-import { StyledHint } from "@/styles";
-import styled from "styled-components";
+import { formatDate } from "../../utils/normalizeUtils.js";
+import { categories } from "../../utils/transactionCategories.js";
+import { StyledForm, StyledHint, StyledButton } from "./Form.Styled.js";
 
-const StyledForm = styled.form`
-  display: grid;
-  gap: 1rem;
-
-  margin-bottom: 100px;
-`;
-
-const categories = [
-  "Salary",
-  "Rent",
-  "Pets",
-  "Household",
-  "Food",
-  "Health",
-  "Hobby",
-  "Other",
-];
-
-export default function Form_({ onAddTransaction, formType }) {
+export default function Form({ onAddTransaction, formType, onCloseModal }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onAddTransaction(
-      formType === "savingGoals"
-        ? {
-            ...data,
-            amount: parseInt(data.amount),
-            category: "Savings transfer",
-            decription: "i am a saving goal transaction",
-          }
-        : { ...data, amount: parseInt(data.amount) }
-    );
+    const transactionData = {
+      ...data,
+      amount: parseInt(data.amount, 10),
+      date: data.date ? formatDate(data.date) : formatDate(new Date()),
+    };
+
+    if (formType === "saving transaction") {
+      transactionData.category = "Savings transfer";
+      transactionData.description = "no description";
+      transactionData.type = "Saving";
+    }
+
+    onAddTransaction(transactionData);
+    onCloseModal();
   }
 
   return (
-    <>
+    <section>
+      <h2>Add a {formType}</h2>
       <StyledForm onSubmit={handleSubmit}>
-        <legend> Add a new {formType}</legend>
-
         {formType === "transaction" && (
           <>
-            {" "}
-            <label htmlFor="date__id">*Date:</label>
+            <label htmlFor="date__id">Date*</label>
             <input id="date__id" name="date" type="date" required />
             <fieldset>
-              <legend> *Type of Transactions</legend>
+              <legend>Type of Transactions*</legend>
               <input
                 name="type"
                 id="expense__id"
@@ -58,7 +42,6 @@ export default function Form_({ onAddTransaction, formType }) {
                 required
               />
               <label htmlFor="expense__id">Expense</label>
-
               <input
                 name="type"
                 id="income__id"
@@ -71,7 +54,7 @@ export default function Form_({ onAddTransaction, formType }) {
           </>
         )}
 
-        <label htmlFor="amount__id">*Amount in EUR: </label>
+        <label htmlFor="amount__id">Amount in EUR* </label>
         <input
           id="amount__id"
           type="number"
@@ -84,11 +67,9 @@ export default function Form_({ onAddTransaction, formType }) {
         />
         {formType === "transaction" && (
           <>
-            <label htmlFor="category__id">*Category: </label>
+            <label htmlFor="category__id">Category* </label>
             <select id="category__id" name="category" required>
-              <option value="" defaultValue={"--Choose Category--"}>
-                --Choose Category--
-              </option>
+              <option value="">--Choose Category--</option>
               {categories.map((category, index_) => (
                 <option key={index_} value={category}>
                   {category}
@@ -104,8 +85,11 @@ export default function Form_({ onAddTransaction, formType }) {
           </>
         )}
         <StyledHint>All fields with * are required!</StyledHint>
-        <button type="submit">Add</button>
+        <StyledButton type="submit">Add {formType}</StyledButton>
+        <StyledButton type="button" onClick={() => onCloseModal(null)}>
+          Cancel {formType}
+        </StyledButton>
       </StyledForm>
-    </>
+    </section>
   );
 }

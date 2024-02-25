@@ -1,7 +1,8 @@
-import Form from "@/components/Form/Form";
+import Form from "@/components/Forms/TransactionForm";
 import List from "@/components/List/List";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
+import Modal from "@/components/Modal";
 import { useState } from "react";
 import {
   StyledHeading,
@@ -18,6 +19,33 @@ export default function HomePage({
 }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [modalType, setModalType] = useState(null);
+
+  function handleCloseModal() {
+    setModalType(null);
+  }
+
+  function renderModalContent() {
+    if (modalType === "transaction") {
+      return (
+        <Form
+          onAddTransaction={onAddTransaction}
+          formType="transaction"
+          onCloseModal={handleCloseModal}
+        />
+      );
+    } else if (modalType === "saving") {
+      return (
+        <Form
+          onAddTransaction={onAddTransaction}
+          formType="saving transaction"
+          onCloseModal={handleCloseModal}
+        />
+      );
+    } else {
+      return null;
+    }
+  }
 
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
@@ -84,9 +112,12 @@ export default function HomePage({
   return (
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
+      {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledAllFormButtonsContainer>
-        <Form onAddTransaction={onAddTransaction} formType="transaction" />
-        <Form onAddTransaction={onAddTransaction} formType="savingGoals" />
+        <button onClick={() => setModalType("transaction")}>
+          Add Transactions
+        </button>
+        <button onClick={() => setModalType("saving")}>Saving Transfer</button>
       </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (
