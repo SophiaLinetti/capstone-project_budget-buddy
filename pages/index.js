@@ -115,9 +115,11 @@ export default function HomePage({
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledAllFormButtonsContainer>
         <button onClick={() => setModalType("transaction")}>
-          Add Transactions
+          Add Transaction
         </button>
-        <button onClick={() => setModalType("saving")}>Saving Transfer</button>
+        <button onClick={() => setModalType("saving")}>
+          Transfer to saving account
+        </button>
       </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (

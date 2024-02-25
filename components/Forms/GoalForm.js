@@ -56,7 +56,7 @@ export default function GoalForm({
           onInvalid={(event) =>
             handleValidation(
               event,
-              "The amount you entered cannot be greater than your savings balance!"
+              "The amount you entered cannot be greater than your current savings balance!"
             )
           }
           onInput={(event) => handleValidation(event, "")}

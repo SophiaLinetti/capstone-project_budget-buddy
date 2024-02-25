@@ -33,6 +33,7 @@ export default function Goals({ transactions, onAddTransaction }) {
         <GoalsForm
           onCloseModal={handleCloseModal}
           onSaveGoal={handleSaveGoal}
+          savingBalance={savingsTransferSum}
         />
       );
     } else if (modalType === "edit saving goal") {
@@ -40,6 +41,7 @@ export default function Goals({ transactions, onAddTransaction }) {
         <GoalsForm
           onCloseModal={handleCloseModal}
           onSaveGoal={handleSaveGoal}
+          savingBalance={savingsTransferSum}
           goal={editingGoal}
         />
       );
@@ -63,6 +65,8 @@ export default function Goals({ transactions, onAddTransaction }) {
           amount: -difference,
           category: "Savings transfer",
           date: formatDate(new Date()),
+          description: "Edited saving goal",
+          type: "Saving",
         };
         onAddTransaction(transactionForEdit);
       }
@@ -76,6 +80,8 @@ export default function Goals({ transactions, onAddTransaction }) {
         amount: -parseInt(goalToSave.savedAmount),
         category: "Savings transfer",
         date: formatDate(new Date()),
+        description: "New saving goal",
+        type: "Saving",
       };
       onAddTransaction(transactionForNewGoal);
 
@@ -93,6 +99,7 @@ export default function Goals({ transactions, onAddTransaction }) {
       ...transactions,
       amount: parseInt(goalData.savedAmount),
       category: "Savings transfer",
+      type: "Saving",
     });
 
     setGoals((goals) => goals.filter((goal) => goal.id !== id));
@@ -124,7 +131,7 @@ export default function Goals({ transactions, onAddTransaction }) {
         the + Button on the bottom right of the Screen`}</StyledText>
         )}
         <StyledSavingContainer>
-          Savings Account Balance: {savingsTransferSum}
+          Current Savings Balance: {savingsTransferSum}
         </StyledSavingContainer>
         <GoalsCard
           goals={goals}
