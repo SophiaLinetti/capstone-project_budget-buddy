@@ -1,6 +1,6 @@
 import { formatDate } from "../../utils/normalizeUtils.js";
 import { categories } from "../../utils/transactionCategories.js";
-import { StyledForm, StyledHint, StyledButton } from "./Form.Styled.js";
+import { StyledForm, StyledHint, StyledButton } from "./Forms.Styled.js";
 
 export default function Form({ onAddTransaction, formType, onCloseModal }) {
   function handleSubmit(event) {
