@@ -1,9 +1,9 @@
-import Form from "@/components/Forms/TransactionForm";
+import { useState } from "react";
+import TransactionForm from "@/components/Forms/TransactionForm";
 import List from "@/components/List/List";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
 import Modal from "@/components/Modal";
-import { useState } from "react";
 import {
   StyledHeading,
   StyledAmoutDisplay,
@@ -28,7 +28,7 @@ export default function HomePage({
   function renderModalContent() {
     if (modalType === "transaction") {
       return (
-        <Form
+        <TransactionForm
           onAddTransaction={onAddTransaction}
           formType="transaction"
           onCloseModal={handleCloseModal}
@@ -36,7 +36,7 @@ export default function HomePage({
       );
     } else if (modalType === "saving") {
       return (
-        <Form
+        <TransactionForm
           onAddTransaction={onAddTransaction}
           formType="saving transaction"
           onCloseModal={handleCloseModal}

@@ -7,6 +7,7 @@ const categories = [
   "Health",
   "Hobby",
   "Other",
+  "Party",
 ];
 
 export { categories };
