@@ -30,7 +30,7 @@ export default function Goals({ transactions, onAddTransaction }) {
         <GoalsForm
           onCloseModal={handleCloseModal}
           onSaveGoal={handleSaveGoal}
-          savingBalance={savingsTransferSum}
+          savingBalance={savingsTransferSum + totalSavings}
         />
       );
     } else if (modalType === "edit saving goal") {
@@ -38,7 +38,7 @@ export default function Goals({ transactions, onAddTransaction }) {
         <GoalsForm
           onCloseModal={handleCloseModal}
           onSaveGoal={handleSaveGoal}
-          savingBalance={savingsTransferSum}
+          savingBalance={savingsTransferSum + totalSavings}
           goal={editingGoal}
         />
       );
