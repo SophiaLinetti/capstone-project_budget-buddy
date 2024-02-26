@@ -9,22 +9,28 @@ export default function DoughnutComponent({ transactions }) {
   const [type, setType] = useState('Expense');
   const categories = ["Salary", "Hobby", "Food", "Household", "Health", "Other"];
   const options = {
+    responsive: "true",
+    cutoutPercentage: 100, 
+    radius: '85%',
+
     animation: {
       animateScale: false,
       animateRotate: true,
       duration: 1500,
       easing: "easeInSine",
-      responsive: "true"
+      
     },
-    
   };
 
-  function handleTypeOnClick() {
+ /*  function handleToggleTypeOnClick() {
     if(type === 'Expense') {
       setType('Income');
     } else {
       setType('Expense');
-    }
+    } */
+
+  function handleTypeOnClick(transactionType) {
+    setType(transactionType);
   }
 
    function sumByCategoryFunction(categories) {
@@ -43,6 +49,19 @@ export default function DoughnutComponent({ transactions }) {
     });
   } 
 
+  function calculateBalance(transactions) {
+    const income = transactions
+      .filter(transaction => transaction.type === "Income" && transaction.internalGoalAllocation !== "yes")
+      .reduce((sum, transaction) => sum + transaction.amount, 0);
+
+    const expense = transactions
+      .filter(transaction => transaction.type === "Expense" && transaction.internalGoalAllocation !== "yes")
+      .reduce((sum, transaction) => sum + transaction.amount, 0);
+
+    return income - expense;
+  }
+  console.log(calculateBalance(transactions))
+
 const sumByCategory = sumByCategoryFunction(categories);
 console.log(sumByCategory)
 console.log(categories)
@@ -51,7 +70,7 @@ console.log(categories)
     labels: categories,
     datasets: [
       {
-        label: "Amount",
+        label: "€",
         data: sumByCategory,
         backgroundColor: [
           "rgb(255,132,46)",
@@ -61,7 +80,7 @@ console.log(categories)
           "rgb(105,255,71)",
           "rgb(255,105,66)",
         ],
-        hoverOffset: 4,
+        hoverOffset: 50,
       },
     ],
   };
@@ -72,8 +91,7 @@ console.log(categories)
   <button onClick={() => handleTypeOnClick("Income")}> Income </button>
   <p>Distribution of {type}</p>
   <Doughnut data={data} options={options} />
+  <p> Your Current Account Balance: {calculateBalance(transactions)} EUR</p>
   </>
   );
 }
-
-
