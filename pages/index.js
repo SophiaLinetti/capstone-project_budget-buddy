@@ -47,18 +47,12 @@ export default function HomePage({
     setTransactionFilter(filter);
   }
   function filterTransactions(transactions) {
-    if (transactionFilter === "all") {
-      return transactions.filter(
-        (transaction) =>
-          !selectedCategory || transaction.category === selectedCategory
-      );
-    } else {
-      return transactions.filter(
-        (transaction) =>
-          transaction.type === transactionFilter &&
-          (!selectedCategory || transaction.category === selectedCategory)
-      );
-    }
+    return transactions.filter(transaction => 
+      transaction.internalGoalAllocation !== "yes" &&
+      (transactionFilter === "all" ? 
+        !selectedCategory || transaction.category === selectedCategory :
+        transaction.type === transactionFilter && (!selectedCategory || transaction.category === selectedCategory))
+    );
   }
   function calculateSum(transactions) {
     return transactions.reduce(
@@ -87,7 +81,8 @@ export default function HomePage({
     );
   }
   const filterGoalTransactions = transactions.filter(
-    (transaction) => transaction.type !== "Saving Goal"
+    (transaction) => transaction.type !== "Saving Goal" &&
+    transaction.internalGoalAllocation !== "yes" 
   );
   function calculateBalance() {
     let balance = 0;

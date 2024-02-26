@@ -61,6 +61,7 @@ export default function Goals({ transactions, onAddTransaction }) {
           date: formatDate(new Date()),
           description: "Edited saving goal",
           type: "Saving",
+          internalGoalAllocation: "yes",
         };
         onAddTransaction(transactionForEdit);
       }

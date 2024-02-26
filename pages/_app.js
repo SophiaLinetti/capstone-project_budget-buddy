@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
       ...transactions,
     ]);
   }
-  console.log(transactions);
+  
 
   function handleDeleteTransaction(id) {
     setTransactions((transactions) =>

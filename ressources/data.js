@@ -71,4 +71,16 @@ export const initialGoals = [
     savedAmount: 2000,
     goalAmount: 15000,
   },
+  {
+    id: "2",
+    goalName: "Car",
+    savedAmount: 8000,
+    goalAmount: 25000,
+  },
+  {
+    id: "3",
+    goalName: "Dream House",
+    savedAmount: 25000,
+    goalAmount: 500000,
+  },
 ];

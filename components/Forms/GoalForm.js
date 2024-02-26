@@ -16,6 +16,7 @@ export default function GoalForm({
       savedAmount: parseInt(data.savedAmount),
       goalAmount: parseInt(data.goalAmount),
       date: formatDate(new Date()),
+      internalGoalAllocation: "yes",
     });
     onCloseModal(null);
   }
