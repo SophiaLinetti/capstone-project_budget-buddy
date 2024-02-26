@@ -18,7 +18,8 @@ export default function TransactionForm({
     if (formType === "saving transaction") {
       transactionData.category = "Savings transfer";
       transactionData.description = "no description";
-      transactionData.type = "Saving";
+      /*   transactionData.type = "Saving"; */
+      transactionData.internalGoalAllocation = "no";
     }
     onAddTransaction(transactionData);
     onCloseModal();

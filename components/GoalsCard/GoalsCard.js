@@ -19,7 +19,7 @@ export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
           </StyledGoalCardContent>
           <div>
             <StyledDeleteButton onClick={() => onHandleDeleteGoal(id)}>
-              :x:
+              ❌
             </StyledDeleteButton>
             <StyledEditSavingButton
               onClick={() =>

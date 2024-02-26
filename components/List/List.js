@@ -20,7 +20,7 @@ export default function List({ transactions, onDeleteTransaction }) {
                   <Description>{description}</Description>
                 </TransactionDetails>
                 <DeleteButton onClick={() => onDeleteTransaction(id)}>
-                  :x:
+                  ❌
                 </DeleteButton>
               </TransactionCard>
             )
