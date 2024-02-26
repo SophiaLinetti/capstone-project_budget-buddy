@@ -1,4 +1,4 @@
-import Form from "@/components/Form/Form";
+import Form from "@/components/Form/TransactionForm";
 import List from "@/components/List/List";
 import SavingsForm from "@/components/SavingsForm/SavingsForm";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
