@@ -6,6 +6,8 @@ import {
   StyledEditSavingButton,
   StyledGoalCardContent,
 } from "@/styles";
+import ProgressBar from "../ProgressBar/ProgressBar";
+
 export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
   return (
     <StyledList>
@@ -16,6 +18,7 @@ export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
             <StyledGoalCard>
               saved {savedAmount} EUR of {goalAmount} EUR
             </StyledGoalCard>
+            <ProgressBar savedAmount={savedAmount} goalAmount={goalAmount} />
           </StyledGoalCardContent>
           <div>
             <StyledDeleteButton onClick={() => onHandleDeleteGoal(id)}>
