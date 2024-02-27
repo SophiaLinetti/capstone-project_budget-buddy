@@ -1,4 +1,4 @@
-import { StyledDeleteButton, StyledDeleteDiv, StyledText } from "@/styles";
+import { StyledText } from "@/styles";
 import styled, { css } from "styled-components";
 export default function List({ transactions, onDeleteTransaction }) {
   return (

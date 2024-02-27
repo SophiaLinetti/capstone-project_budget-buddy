@@ -99,7 +99,6 @@ export default function DoughnutComponent({ transactions }) {
       <p>Distribution of {type}</p>
       <Doughnut data={data} options={options} />
       <StyledAmoutDisplay>
-        {" "}
         Your Current Account Balance: {calculateBalance(transactions)} EUR
       </StyledAmoutDisplay>
     </>
