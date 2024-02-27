@@ -5,26 +5,60 @@ export default function TransactionForm({
   onAddTransaction,
   formType,
   onCloseModal,
+  savingsTransferSum,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    const transactionData = {
-      ...data,
-      amount: parseInt(data.amount, 10),
-      date: data.date ? formatDate(data.date) : formatDate(new Date()),
-    };
+
     if (formType === "saving transaction") {
-      transactionData.category = "Savings transfer";
-      transactionData.description = "Transfer to savings Account";
-      
-      transactionData.internalGoalAllocation = "no";
-      transactionData.type = "Expense"
+      // Saving Transfer to GoalAccount
+      onAddTransaction({
+        category: "Savings transfer",
+        description: "Transfer to savings",
+        type: "Expense",
+        amount: parseInt(data.amount),
+        date: data.date ? formatDate(data.date) : formatDate(new Date()),
+        internalGoalAllocation: "no",
+      });
+    } else if (
+      formType === "savings withdrawal" &&
+      parseInt(data.amount) <= savingsTransferSum
+    ) {
+      // Savings withdrawal
+      onAddTransaction({
+        category: "Savings withdrawal",
+        description: "Transfer from savings",
+        type: "Income",
+        amount: parseInt(data.amount),
+        date: data.date ? formatDate(data.date) : formatDate(new Date()),
+        internalGoalAllocation: "no",
+      });
+
+      // interne Ausgleichzahlung auf GoalKonto
+      onAddTransaction({
+        category: "Savings transfer",
+        description: "Withdrawal from savings",
+        type: "Saving Goal",
+        amount: parseInt(data.amount) * -1,
+        date: data.date ? formatDate(data.date) : formatDate(new Date()),
+        internalGoalAllocation: "yes",
+      });
+    } else if (formType === "transaction") {
+      // Normal transaction
+      onAddTransaction({
+        ...data,
+        amount: parseInt(data.amount),
+        date: data.date ? formatDate(data.date) : formatDate(new Date()),
+        internalGoalAllocation: "no",
+      });
     }
-    onAddTransaction(transactionData);
+
     onCloseModal();
   }
+
   return (
     <section>
       <h2>Add a {formType}</h2>

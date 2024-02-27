@@ -8,6 +8,7 @@ import Navbar from "@/components/Nav/Nav";
 import GoalsCard from "@/components/GoalsCard/GoalsCard";
 import GoalsForm from "@/components/Forms/GoalForm.js";
 import Modal from "@/components/Modal";
+import TransactionForm from "@/components/Forms/TransactionForm.js";
 import {
   StyledHeading,
   StyledText,
@@ -42,8 +43,18 @@ export default function Goals({ transactions, onAddTransaction }) {
           goal={editingGoal}
         />
       );
+    } else if (modalType === "savings withdrawal") {
+      return (
+        <TransactionForm
+          onAddTransaction={onAddTransaction}
+          formType="savings withdrawal"
+          onCloseModal={handleCloseModal}
+          savingsTransferSum={savingsTransferSum}
+        />
+      );
     }
   }
+
   function handleEditGoal(goal) {
     setModalType("edit saving goal");
     setEditingGoal(goal);
@@ -111,6 +122,7 @@ export default function Goals({ transactions, onAddTransaction }) {
     <>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledHeading>Saving Goals</StyledHeading>
+
       <StyledCardContainer>
         {goals.length === 0 && (
           <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
@@ -119,6 +131,9 @@ export default function Goals({ transactions, onAddTransaction }) {
         <StyledSavingContainer>
           Current Savings Balance: {savingsTransferSum}
         </StyledSavingContainer>
+        <button onClick={() => setModalType("savings withdrawal")}>
+          Back to Account{" "}
+        </button>
         <GoalsCard
           goals={goals}
           onHandleDeleteGoal={handleDeleteGoal}
