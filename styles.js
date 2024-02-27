@@ -1,34 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-
 export default createGlobalStyle`
-
   *,
   *::before,
   *::after {
     box-sizing: border-box;
    font-family: 'Montserrat', sans-serif;
-    
   };
-
   body {
-    margin: 0;
+    margin: 100px 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #424769;
   }
-
-  button, input, select, fieldset, li, ul, textarea {
-  font-family: inherit; 
-  border-radius: 7px;
-}
 `;
-
-export const TransactionForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1 rem;
-`;
-
 export const FormItems = styled.fieldset`
   display: flex;
   flex-direction: column;
@@ -38,7 +22,6 @@ export const FormItems = styled.fieldset`
   background-color: #2d3250;
   color: #ffffff;
 `;
-
 export const StyledList = styled.ul`
   padding: 0;
   margin: 0 0.5rem 0 0.5rem;
@@ -46,7 +29,6 @@ export const StyledList = styled.ul`
   list-style: none;
   gap: 1rem;
 `;
-
 export const StyledItem = styled.li`
   background-color: #2d3250;
   color: #ffffff;
@@ -56,17 +38,14 @@ export const StyledItem = styled.li`
   padding: 7px;
   position: relative;
 `;
-
 export const StyledHint = styled.p`
   font-size: 13px;
   text-align: center;
   color: #ffb228;
 `;
-
 export const StyledDeleteDiv = styled.div`
   margin: 5%;
 `;
-
 export const StyledDeleteButton = styled.button`
   display: flex;
   justify-content: flex-end;
@@ -74,7 +53,6 @@ export const StyledDeleteButton = styled.button`
   right: 3px;
   bottom: 3px;
 `;
-
 export const StyledHeading = styled.h1`
   text-align: center;
   width: 100%;
@@ -87,7 +65,6 @@ export const StyledHeading = styled.h1`
   position: fixed;
   top: 0;
 `;
-
 export const StyledFilterButtons = styled.button`
   width: 17%;
   text-align: center;
@@ -96,12 +73,10 @@ export const StyledFilterButtons = styled.button`
   font-weight: 500;
   background-color: white;
 `;
-
 export const StyledFilterContainer = styled.div`
   margin: 0 0 0 5px;
   display: inline;
 `;
-
 export const StyledAmoutDisplay = styled.div`
   text-align: center;
   border: 1px solid #ffffff;
@@ -111,27 +86,22 @@ export const StyledAmoutDisplay = styled.div`
   margin: 3% 20% 3% 20%;
   padding: 8px;
 `;
-
 export const StyledText = styled.p`
   margin-top: 100px;
   text-align: center;
   color: #ffb228;
 `;
-
 export const StyledGoalCard = styled.div`
   display: block;
   text-align: center;
   width: 100%;
 `;
-
 export const StyledCardContainer = styled.div`
   margin-top: 80px;
 `;
-
 export const StyledBr = styled.div`
   display: block;
 `;
-
 export const StyledSavingContainer = styled.div`
   border: 1px solid;
   border-radius: 7px;
@@ -141,11 +111,6 @@ export const StyledSavingContainer = styled.div`
   padding: 10px 0 10px 0;
   color: #ffb228;
 `;
-
-export const StyledDivNotBehindNavBar = styled.div`
-  margin-bottom: 50px;
-`;
-
 export const StyledDropdownContainer = styled.div`
   background-color: #2d3250;
   color: white;
@@ -158,14 +123,12 @@ export const StyledDropdownContainer = styled.div`
   display: block;
   height: 50px;
 `;
-
 export const StyledAllFormButtonsContainer = styled.div`
   text-align: center;
   display: flex;
   justify-content: space-between;
   padding: 0 30px 0 30px;
 `;
-
 export const StyledEditSavingButton = styled.button`
   padding: 1px 6px 1px 6px;
   height: 25px;

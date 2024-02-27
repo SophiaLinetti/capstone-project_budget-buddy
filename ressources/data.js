@@ -47,7 +47,6 @@ export const initialTransactions = [
     description: "Birthday gift",
     category: "Other",
   },
-
   {
     id: "7",
     type: "Expense",
@@ -56,8 +55,15 @@ export const initialTransactions = [
     description: "Gym membership",
     category: "Health",
   },
+  {
+    id: "8",
+    type: "Expense",
+    amount: 50,
+    date: "2024-01-24",
+    description: "this is a saving transaction",
+    category: "Saving",
+  },
 ];
-
 export const initialGoals = [
   {
     id: "1",
@@ -65,19 +71,16 @@ export const initialGoals = [
     savedAmount: 2000,
     goalAmount: 15000,
   },
+  {
+    id: "2",
+    goalName: "Car",
+    savedAmount: 8000,
+    goalAmount: 25000,
+  },
+  {
+    id: "3",
+    goalName: "Dream House",
+    savedAmount: 25000,
+    goalAmount: 500000,
+  },
 ];
-
-/* 
-{
-  id: "7",                                        Mandatory
-  type: "Expense",                                Mandatory / goals type
-  amount: 50,                                     Mandatory
-  date: "2024-01-24",                             Mandatory
-  description: "Gym membership",                  Mandatory
-  category: "Health",
-  additional: [
-    extras: "hidden"                              Optional
-     
-
-  ]
-}, */

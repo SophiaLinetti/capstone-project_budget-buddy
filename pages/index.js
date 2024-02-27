@@ -1,9 +1,9 @@
-import Form from "@/components/Form/Form";
+import { useState } from "react";
+import TransactionForm from "@/components/Forms/TransactionForm";
 import List from "@/components/List/List";
-import SavingsForm from "@/components/SavingsForm/SavingsForm";
 import FilterButtons from "@/components/FilterButtons/FilterButtons";
 import Nav from "@/components/Nav/Nav";
-import { useState } from "react";
+import Modal from "@/components/Modal";
 import {
   StyledHeading,
   StyledAmoutDisplay,
@@ -11,7 +11,6 @@ import {
   StyledAllFormButtonsContainer,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
-
 export default function HomePage({
   transactions,
   onAddTransaction,
@@ -19,33 +18,48 @@ export default function HomePage({
 }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  const [modalType, setModalType] = useState(null);
+  function handleCloseModal() {
+    setModalType(null);
+  }
+  function renderModalContent() {
+    if (modalType === "transaction") {
+      return (
+        <TransactionForm
+          onAddTransaction={onAddTransaction}
+          formType="transaction"
+          onCloseModal={handleCloseModal}
+        />
+      );
+    } else if (modalType === "saving") {
+      return (
+        <TransactionForm
+          onAddTransaction={onAddTransaction}
+          formType="saving transaction"
+          onCloseModal={handleCloseModal}
+        />
+      );
+    } else {
+      return null;
+    }
+  }
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
-
   function filterTransactions(transactions) {
-    if (transactionFilter === "all") {
-      return transactions.filter(
-        (transaction) =>
-          !selectedCategory || transaction.category === selectedCategory
-      );
-    } else {
-      return transactions.filter(
-        (transaction) =>
-          transaction.type === transactionFilter &&
-          (!selectedCategory || transaction.category === selectedCategory)
-      );
-    }
+    return transactions.filter(transaction => 
+      transaction.internalGoalAllocation !== "yes" &&
+      (transactionFilter === "all" ? 
+        !selectedCategory || transaction.category === selectedCategory :
+        transaction.type === transactionFilter && (!selectedCategory || transaction.category === selectedCategory))
+    );
   }
-
   function calculateSum(transactions) {
     return transactions.reduce(
       (sum, transaction) => sum + transaction.amount,
       0
     );
   }
-
   function displayTotalSum(filter) {
     if (filter === "all") {
       return null;
@@ -66,14 +80,13 @@ export default function HomePage({
       </StyledAmoutDisplay>
     );
   }
-
-  const filterHiddenTransactions = transactions.filter(
-    (transaction) => transaction.additional !== "hidden"
+  const filterGoalTransactions = transactions.filter(
+    (transaction) => transaction.type !== "Saving Goal" &&
+    transaction.internalGoalAllocation !== "yes" 
   );
-
   function calculateBalance() {
     let balance = 0;
-    filterHiddenTransactions.forEach((transaction) => {
+    filterGoalTransactions.forEach((transaction) => {
       if (transaction.type === "Income") {
         balance += transaction.amount;
       } else {
@@ -85,9 +98,12 @@ export default function HomePage({
   return (
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
+      {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledAllFormButtonsContainer>
-        <Form onAddTransaction={onAddTransaction} />
-        <SavingsForm onAddTransaction={onAddTransaction} />
+        <button onClick={() => setModalType("transaction")}>
+          New Transaction
+        </button>
+        <button onClick={() => setModalType("saving")}>New Transfer</button>
       </StyledAllFormButtonsContainer>
       {displayTotalSum(transactionFilter)}
       {transactionFilter === "all" && (

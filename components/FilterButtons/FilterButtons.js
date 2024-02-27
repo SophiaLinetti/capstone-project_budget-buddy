@@ -1,5 +1,4 @@
 import { StyledFilterButtons, StyledFilterContainer } from "@/styles";
-
 export default function FilterButtons({ onHandleSetFilter }) {
   return (
     <StyledFilterContainer>
