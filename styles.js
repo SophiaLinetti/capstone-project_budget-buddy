@@ -124,6 +124,7 @@ export const StyledDropdownContainer = styled.div`
   height: 50px;
 `;
 export const StyledAllFormButtonsContainer = styled.div`
+  /* background-color: red; */
   text-align: center;
   display: flex;
   justify-content: space-between;

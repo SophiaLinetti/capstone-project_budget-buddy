@@ -11,6 +11,7 @@ import {
   StyledAllFormButtonsContainer,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
+
 export default function HomePage({
   transactions,
   onAddTransaction,
@@ -43,23 +44,29 @@ export default function HomePage({
       return null;
     }
   }
+
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
+
   function filterTransactions(transactions) {
-    return transactions.filter(transaction => 
-      transaction.internalGoalAllocation !== "yes" &&
-      (transactionFilter === "all" ? 
-        !selectedCategory || transaction.category === selectedCategory :
-        transaction.type === transactionFilter && (!selectedCategory || transaction.category === selectedCategory))
+    return transactions.filter(
+      (transaction) =>
+        transaction.internalGoalAllocation !== "yes" &&
+        (transactionFilter === "all"
+          ? !selectedCategory || transaction.category === selectedCategory
+          : transaction.type === transactionFilter &&
+            (!selectedCategory || transaction.category === selectedCategory))
     );
   }
+
   function calculateSum(transactions) {
     return transactions.reduce(
       (sum, transaction) => sum + transaction.amount,
       0
     );
   }
+
   function displayTotalSum(filter) {
     if (filter === "all") {
       return null;
@@ -80,10 +87,13 @@ export default function HomePage({
       </StyledAmoutDisplay>
     );
   }
+
   const filterGoalTransactions = transactions.filter(
-    (transaction) => transaction.type !== "Saving Goal" &&
-    transaction.internalGoalAllocation !== "yes" 
+    (transaction) =>
+      transaction.type !== "Saving Goal" &&
+      transaction.internalGoalAllocation !== "yes"
   );
+
   function calculateBalance() {
     let balance = 0;
     filterGoalTransactions.forEach((transaction) => {

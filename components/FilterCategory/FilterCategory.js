@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { categories } from "../../utils/transactionCategories.js";
+
 const StyledDropdown = styled.select`
   margin-left: 5px;
   padding: 5px 0 5px 0;
 `;
+
 export default function FilterCategory({ onSetSelectedCategory }) {
   function handleCategoryChange(event) {
     onSetSelectedCategory(event.target.value);

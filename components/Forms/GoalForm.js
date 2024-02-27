@@ -1,5 +1,6 @@
 import { formatDate } from "../../utils/normalizeUtils.js";
 import { StyledForm, StyledHint, StyledButton } from "./Forms.Styled.js";
+
 export default function GoalForm({
   goal = {},
   onSaveGoal,

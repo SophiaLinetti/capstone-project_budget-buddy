@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export default function Modal({ children }) {
   return (
     <ModalBackround>

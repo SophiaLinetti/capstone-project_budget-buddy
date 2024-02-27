@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+
 const NavbarWrapper = styled.div`
   display: flex;
   justify-content: space-around;
@@ -12,6 +13,7 @@ const NavbarWrapper = styled.div`
   height: 50px;
   border-top: solid white 1.5px;
 `;
+
 const NavbarLink = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,12 +26,14 @@ const NavbarLink = styled.div`
   padding: 15px 0 0 0;
   border-radius: 5px;
 `;
+
 const StyledLink = styled.div`
   width: 100%;
   position: relative;
   flex-direction: column;
   align-items: center;
 `;
+
 export default function Navbar() {
   const router = useRouter();
   // "/" is our "Homepage"

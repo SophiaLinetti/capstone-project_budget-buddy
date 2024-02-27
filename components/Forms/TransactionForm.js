@@ -36,7 +36,6 @@ export default function TransactionForm({
         date: data.date ? formatDate(data.date) : formatDate(new Date()),
         internalGoalAllocation: "no",
       });
-
       // interne Ausgleichzahlung auf GoalKonto
       onAddTransaction({
         category: "Savings transfer",
@@ -55,7 +54,6 @@ export default function TransactionForm({
         internalGoalAllocation: "no",
       });
     }
-
     onCloseModal();
   }
 

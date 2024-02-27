@@ -15,6 +15,7 @@ import {
   StyledCardContainer,
   StyledSavingContainer,
 } from "@/styles";
+
 export default function Goals({ transactions, onAddTransaction }) {
   const [goals, setGoals] = useLocalStorageState("goals", {
     defaultValue: initialGoals,
@@ -59,6 +60,7 @@ export default function Goals({ transactions, onAddTransaction }) {
     setModalType("edit saving goal");
     setEditingGoal(goal);
   }
+
   function handleSaveGoal(goalToSave) {
     if (goalToSave.id) {
       const originalGoal = goals.find((goal) => goal.id === goalToSave.id);
@@ -95,6 +97,7 @@ export default function Goals({ transactions, onAddTransaction }) {
       ]);
     }
   }
+
   function handleDeleteGoal(id) {
     const goalData = goals.find((goal) => goal.id === id);
     onAddTransaction({
@@ -105,6 +108,7 @@ export default function Goals({ transactions, onAddTransaction }) {
     });
     setGoals((goals) => goals.filter((goal) => goal.id !== id));
   }
+
   useEffect(() => {
     const totalSavedAmount = goals.reduce(
       (sum, goal) => sum + parseInt(goal.savedAmount),
@@ -112,6 +116,7 @@ export default function Goals({ transactions, onAddTransaction }) {
     );
     setTotalSavings(totalSavedAmount);
   }, [goals]);
+
   function calculateSavingsTransfers(transactions) {
     return transactions
       .filter((transaction) => transaction.category === "Savings transfer")
@@ -122,7 +127,6 @@ export default function Goals({ transactions, onAddTransaction }) {
     <>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledHeading>Saving Goals</StyledHeading>
-
       <StyledCardContainer>
         {goals.length === 0 && (
           <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
@@ -150,6 +154,7 @@ export default function Goals({ transactions, onAddTransaction }) {
     </>
   );
 }
+
 const StyledAddGoalButton = styled.button`
   position: fixed;
   bottom: 5rem;
