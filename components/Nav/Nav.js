@@ -1,5 +1,12 @@
 import { useRouter } from "next/router";
-import { NavbarWrapper, NavbarLink, StyledNav, LinkStyles } from "./Nav.Styled";
+import {
+  NavbarWrapper,
+  NavbarLink,
+  TransactionIcon,
+  DashboardIcon,
+  SavingsIcon,
+  LinkStyles,
+} from "./Nav.Styled";
 
 export default function Navbar() {
   const router = useRouter();
@@ -7,18 +14,20 @@ export default function Navbar() {
   return (
     <NavbarWrapper>
       <LinkStyles href="/">
-        <NavbarLink $active={router.pathname === "/"}>Transactions</NavbarLink>
+        <NavbarLink $active={router.pathname === "/"}>
+          <TransactionIcon />
+        </NavbarLink>
       </LinkStyles>
 
       <LinkStyles href="/dashboard">
         <NavbarLink $active={router.pathname === "/dashboard"}>
-          Dashboard
+          <DashboardIcon />
         </NavbarLink>
       </LinkStyles>
 
       <LinkStyles href="/goals">
         <NavbarLink $active={router.pathname === "/goals"}>
-          Saving Goals
+          <SavingsIcon />
         </NavbarLink>
       </LinkStyles>
     </NavbarWrapper>

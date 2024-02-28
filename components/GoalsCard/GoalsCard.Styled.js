@@ -16,7 +16,6 @@ export const StyledItem = styled.li`
   padding: 7px;
   position: relative;
 `;
-// padding-right: 15%;
 
 export const StyledDeleteButton = styled.button`
   display: flex;
@@ -26,11 +25,18 @@ export const StyledDeleteButton = styled.button`
   bottom: 3px;
 `;
 
-export const StyledGoalCard = styled.div`
+export const GoalCardName = styled.div`
   display: block;
-  text-align: center;
   width: 100%;
   margin: 5px 0;
+  font-style: italic;
+`;
+
+export const GoalCardAmount = styled.div`
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  gap: 1rem;
 `;
 
 export const StyledEditSavingButton = styled.button`
@@ -44,8 +50,7 @@ export const StyledEditSavingButton = styled.button`
 `;
 
 export const StyledGoalCardContent = styled.div`
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3rem;
 `;
 
 export const EditIcon = styled.span`

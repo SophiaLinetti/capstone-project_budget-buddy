@@ -1,7 +1,8 @@
 import {
   StyledItem,
   StyledList,
-  StyledGoalCard,
+  GoalCardName,
+  GoalCardAmount,
   StyledEditSavingButton,
   StyledGoalCardContent,
   EditIcon,
@@ -16,10 +17,10 @@ export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
       {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
         <StyledItem key={id}>
           <StyledGoalCardContent>
-            <StyledGoalCard>{goalName}</StyledGoalCard>
-            <StyledGoalCard>
+            <GoalCardName>{goalName}</GoalCardName>
+            <GoalCardAmount>
               saved {savedAmount} EUR of {goalAmount} EUR
-            </StyledGoalCard>
+            </GoalCardAmount>
             <ProgressBar savedAmount={savedAmount} goalAmount={goalAmount} />
           </StyledGoalCardContent>
           <div>

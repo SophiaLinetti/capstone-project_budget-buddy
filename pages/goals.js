@@ -144,7 +144,7 @@ export default function Goals({ transactions, onAddTransaction }) {
               Back to Account
             </ActionButton>
             <ActionButton onClick={() => setModalType("add saving goal")}>
-              +
+              Add Goal
             </ActionButton>
           </StyledAllButtonsContainer>
           <GoalsCard

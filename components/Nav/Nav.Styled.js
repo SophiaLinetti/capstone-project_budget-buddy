@@ -28,3 +28,45 @@ export const NavbarLink = styled.div`
   width: 100%;
   padding: 15px 0 0 0;
 `;
+
+export const TransactionIcon = styled.span`
+  &:before {
+    content: "account_balance";
+    font-family: "Material Symbols Outlined";
+    font-weight: 200px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    cursor: pointer;
+  }
+`;
+
+export const DashboardIcon = styled.span`
+  &:before {
+    content: "finance_mode";
+    font-family: "Material Symbols Outlined";
+    font-weight: 200px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    cursor: pointer;
+  }
+`;
+
+export const SavingsIcon = styled.span`
+  &:before {
+    content: "savings";
+    font-family: "Material Symbols Outlined";
+    font-weight: 200px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    cursor: pointer;
+  }
+`;
