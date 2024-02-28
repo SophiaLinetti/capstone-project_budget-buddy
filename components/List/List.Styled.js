@@ -51,10 +51,9 @@ export const Description = styled.p`
 export const DeleteButton = styled.button`
   position: absolute;
   top: 5px;
-  right: -15px;
+  right: 5px;
   background: transparent;
   border: none;
-  width: 20%;
   padding: 0;
   cursor: pointer;
 `;
