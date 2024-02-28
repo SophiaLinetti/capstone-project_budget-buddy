@@ -5,7 +5,8 @@ import {
   StyledDeleteButton,
   StyledEditSavingButton,
   StyledGoalCardContent,
-} from "@/styles";
+} from "./GoalsCard.Styled";
+
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {

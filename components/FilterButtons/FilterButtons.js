@@ -1,4 +1,7 @@
-import { StyledFilterButtons, StyledFilterContainer } from "@/styles";
+import {
+  StyledFilterButtons,
+  StyledFilterContainer,
+} from "./FilterButtons.Styled";
 
 export default function FilterButtons({ onHandleSetFilter }) {
   return (
