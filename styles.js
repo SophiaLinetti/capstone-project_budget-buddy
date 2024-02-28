@@ -9,8 +9,10 @@ export default createGlobalStyle`
   };
 
 :root {
-  --primary-color: ;
-  --secondary-color:
+  --primary-color: #fffcf4;
+  --secondary-color: #5532C8;
+  --lightgreen-color: #00cf74;
+  --red-color: #D32F2F;
 }
   
   body {
@@ -32,7 +34,6 @@ export const StyledHeading = styled.h1`
   padding: 10px;
   position: fixed;
   top: 0;
-  background-color: white;
   z-index: 1000;
 `;
 
@@ -79,12 +80,13 @@ export const StyledAllButtonsContainer = styled.div`
   text-align: center;
   display: flex;
   justify-content: space-around;
-  margin: 5% 6%;
 `;
 
 export const ActionButton = styled.button`
   font-size: 1rem;
-  border-radius: 7px;
-  padding: 8px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 20px;
+  padding: 0.75rem 1.5rem;
   border: 0.5px solid;
 `;

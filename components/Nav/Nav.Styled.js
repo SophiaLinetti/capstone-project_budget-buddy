@@ -8,8 +8,9 @@ export const LinkStyles = styled(Link)`
 
 export const NavbarWrapper = styled.div`
   display: flex;
-
-  background-color: white;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--primary-color);
   position: fixed;
   bottom: 0;
   left: 0;
