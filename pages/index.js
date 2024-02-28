@@ -109,7 +109,7 @@ export default function HomePage({
   }
   return (
     <div>
-      <StyledHeading>Budget Buddy</StyledHeading>
+      <StyledHeading>Transactions</StyledHeading>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <Main>
         <StyledAllButtonsContainer>

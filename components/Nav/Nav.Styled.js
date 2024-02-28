@@ -8,7 +8,7 @@ export const LinkStyles = styled(Link)`
 
 export const NavbarWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+
   background-color: white;
   position: fixed;
   bottom: 0;
@@ -19,54 +19,41 @@ export const NavbarWrapper = styled.div`
 
 export const NavbarLink = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: ${(props) => (props.$active ? "" : "")};
-  color: ${(props) => (props.$active ? "" : "")};
+  justify-content: center;
+  flex-grow: 1;
   font-weight: ${(props) => (props.$active ? "bold" : "normal")};
-  height: 100%;
-  width: 100%;
-  padding: 15px 0 0 0;
+  font-size: ${(props) => (props.$active ? "40px" : "30")};
+  transition: font-size 0.3s;
 `;
 
-export const TransactionIcon = styled.span`
+export const IconeBase = styled.span`
+  &:before {
+    font-family: "Material Symbols Outlined";
+    font-size: ${(props) =>
+      props.$active ? "40px" : "30px"}; // Größere Icons für aktiven Link
+    display: inline-block;
+    vertical-align: middle;
+    color: black;
+    cursor: pointer;
+    transition: font-size 0.5s;
+  }
+`;
+
+export const TransactionIcon = styled(IconeBase)`
   &:before {
     content: "account_balance";
-    font-family: "Material Symbols Outlined";
-    font-weight: 200px;
-    font-size: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-font-smoothing: antialiased;
-    color: black;
-    cursor: pointer;
   }
 `;
 
-export const DashboardIcon = styled.span`
+export const DashboardIcon = styled(IconeBase)`
   &:before {
-    content: "finance_mode";
-    font-family: "Material Symbols Outlined";
-    font-weight: 200px;
-    font-size: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-font-smoothing: antialiased;
-    color: black;
-    cursor: pointer;
+    content: "query_stats";
   }
 `;
 
-export const SavingsIcon = styled.span`
+export const SavingsIcon = styled(IconeBase)`
   &:before {
     content: "savings";
-    font-family: "Material Symbols Outlined";
-    font-weight: 200px;
-    font-size: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-font-smoothing: antialiased;
-    color: black;
-    cursor: pointer;
   }
 `;
