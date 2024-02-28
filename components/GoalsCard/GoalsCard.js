@@ -11,8 +11,8 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
   return (
     <StyledList>
-      {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
-        <StyledItem key={id}>
+      {goals?.map(({ _id, goalName, savedAmount, goalAmount }) => (
+        <StyledItem key={_id}>
           <StyledGoalCardContent>
             <StyledGoalCard>{goalName}</StyledGoalCard>
             <StyledGoalCard>
@@ -21,12 +21,12 @@ export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
             <ProgressBar savedAmount={savedAmount} goalAmount={goalAmount} />
           </StyledGoalCardContent>
           <div>
-            <StyledDeleteButton onClick={() => onHandleDeleteGoal(id)}>
+            <StyledDeleteButton onClick={() => onHandleDeleteGoal(_id)}>
               ❌
             </StyledDeleteButton>
             <StyledEditSavingButton
               onClick={() =>
-                onEditGoal({ id, goalName, savedAmount, goalAmount })
+                onEditGoal({ _id, goalName, savedAmount, goalAmount })
               }
             >
               Edit

@@ -6,6 +6,7 @@ export default function TransactionForm({
   formType,
   onCloseModal,
   savingsTransferSum,
+  accountBalance,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -14,40 +15,50 @@ export default function TransactionForm({
     const data = Object.fromEntries(formData);
 
     if (formType === "saving transaction") {
-      // Saving Transfer to GoalAccount
-      onAddTransaction({
-        category: "Savings transfer",
-        description: "Transfer to savings",
-        type: "Expense",
-        amount: parseInt(data.amount),
-        date: data.date ? formatDate(data.date) : formatDate(new Date()),
-        internalGoalAllocation: "no",
-      });
-    } else if (
-      formType === "savings withdrawal" &&
-      parseInt(data.amount) <= savingsTransferSum
-    ) {
-      // Savings withdrawal
-      onAddTransaction({
-        category: "Savings withdrawal",
-        description: "Transfer from savings",
-        type: "Income",
-        amount: parseInt(data.amount),
-        date: data.date ? formatDate(data.date) : formatDate(new Date()),
-        internalGoalAllocation: "no",
-      });
-
-      // interne Ausgleichzahlung auf GoalKonto
-      onAddTransaction({
-        category: "Savings transfer",
-        description: "Withdrawal from savings",
-        type: "Saving Goal",
-        amount: parseInt(data.amount) * -1,
-        date: data.date ? formatDate(data.date) : formatDate(new Date()),
-        internalGoalAllocation: "yes",
-      });
+      const transactionAmount = parseInt(data.amount);
+      if (transactionAmount <= accountBalance) { 
+        
+        onAddTransaction({
+          category: "Savings transfer",
+          description: "Transfer to savings",
+          type: "Expense",
+          amount: transactionAmount,
+          date: data.date ? formatDate(data.date) : formatDate(new Date()),
+          internalGoalAllocation: "no",
+        });
+      } else {
+        
+        alert("Transfer amount exceeds account balance.");
+        return;
+      }
+    
+    } else if (formType === "savings withdrawal") {
+      const withdrawalAmount = parseInt(data.amount);
+      if (withdrawalAmount <= savingsTransferSum) {
+          onAddTransaction({
+          category: "Savings withdrawal",
+          description: "Transfer from savings",
+          type: "Income",
+          amount: withdrawalAmount,
+          date: data.date ? formatDate(data.date) : formatDate(new Date()),
+          internalGoalAllocation: "no",
+        });
+        // Interne Goals verrechnung
+        onAddTransaction({
+          category: "Savings transfer",
+          description: "Withdrawal from savings",
+          type: "Saving Goal",
+          amount: -withdrawalAmount,
+          date: data.date ? formatDate(data.date) : formatDate(new Date()),
+          internalGoalAllocation: "yes",
+        });
+      } else {
+        
+        alert("Withdrawal amount exceeds the savings transfer sum.");
+        return;
+      }
     } else if (formType === "transaction") {
-      // Normal transaction
+      // Normal trx
       onAddTransaction({
         ...data,
         amount: parseInt(data.amount),
@@ -55,7 +66,6 @@ export default function TransactionForm({
         internalGoalAllocation: "no",
       });
     }
-
     onCloseModal();
   }
 
