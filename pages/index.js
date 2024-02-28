@@ -7,9 +7,10 @@ import Modal from "@/components/Modal";
 import {
   StyledHeading,
   StyledAmoutDisplay,
-  StyledDropdownContainer,
-  StyledAllFormButtonsContainer,
+  FilterFlexBox,
+  StyledAllButtonsContainer,
   Main,
+  ActionButton,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 
@@ -111,22 +112,24 @@ export default function HomePage({
       <StyledHeading>Budget Buddy</StyledHeading>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <Main>
-        <StyledAllFormButtonsContainer>
-          <button onClick={() => setModalType("transaction")}>
+        <StyledAllButtonsContainer>
+          <ActionButton onClick={() => setModalType("transaction")}>
             New Transaction
-          </button>
-          <button onClick={() => setModalType("saving")}>New Transfer</button>
-        </StyledAllFormButtonsContainer>
+          </ActionButton>
+          <ActionButton onClick={() => setModalType("saving")}>
+            New Transfer
+          </ActionButton>
+        </StyledAllButtonsContainer>
         {displayTotalSum(transactionFilter)}
         {transactionFilter === "all" && (
           <StyledAmoutDisplay>
-            Balance: {calculateBalance()} EUR
+            Account Balance: {calculateBalance()} EUR
           </StyledAmoutDisplay>
         )}
-        <StyledDropdownContainer>
+        <FilterFlexBox>
           <FilterCategory onSetSelectedCategory={setSelectedCategory} />
           <FilterButtons onHandleSetFilter={handleSetFilter} />
-        </StyledDropdownContainer>
+        </FilterFlexBox>
         <List
           transactions={filterTransactions(transactions)}
           onDeleteTransaction={onDeleteTransaction}

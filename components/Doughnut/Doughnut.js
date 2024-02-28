@@ -2,7 +2,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { useState } from "react";
 import { categories } from "@/utils/transactionCategories";
-import { StyledAmoutDisplay } from "@/styles";
+import {
+  StyledAmoutDisplay,
+  ActionButton,
+  StyledAllButtonsContainer,
+} from "@/styles";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -91,12 +95,17 @@ export default function DoughnutComponent({ transactions }) {
 
   return (
     <>
-      <button onClick={() => handleTypeOnClick("Expense")}> Expenses </button>
-      <button onClick={() => handleTypeOnClick("Income")}> Income </button>
-      <p>Distribution of {type}</p>
+      <StyledAllButtonsContainer>
+        <ActionButton onClick={() => handleTypeOnClick("Expense")}>
+          Expenses
+        </ActionButton>
+        <ActionButton onClick={() => handleTypeOnClick("Income")}>
+          Income
+        </ActionButton>
+      </StyledAllButtonsContainer>
       <Doughnut data={data} options={options} />
       <StyledAmoutDisplay>
-        Your Current Account Balance: {calculateBalance(transactions)} EUR
+        Account Balance: {calculateBalance(transactions)} EUR
       </StyledAmoutDisplay>
     </>
   );

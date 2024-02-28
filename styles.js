@@ -32,16 +32,17 @@ export const StyledHeading = styled.h1`
   padding: 10px;
   position: fixed;
   top: 0;
+  background-color: white;
   z-index: 1000;
 `;
 
 // hier bleiben
 export const StyledAmoutDisplay = styled.div`
   text-align: center;
-  border: 1px solid;
+
   border-radius: 7px;
   background-color: ;
-  margin: 3% 20% 3% 20%;
+  margin: 5% 10%;
   padding: 8px;
 `;
 
@@ -63,20 +64,27 @@ export const StyledSavingContainer = styled.div`
   padding: 10px 0 10px 0;
 `;
 
-export const StyledDropdownContainer = styled.div`
-  border: white solid 1px;
+export const FilterFlexBox = styled.div`
   border-radius: 5px;
-  display: inline;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 8px;
-  margin: 0 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
   font-size: 0.9rem;
-  display: block;
   height: 50px;
 `;
 
-export const StyledAllFormButtonsContainer = styled.div`
+export const StyledAllButtonsContainer = styled.div`
   text-align: center;
   display: flex;
-  justify-content: space-between;
-  padding: 0 30px 0 30px;
+  justify-content: space-around;
+  margin: 5% 6%;
+`;
+
+export const ActionButton = styled.button`
+  font-size: 1rem;
+  border-radius: 7px;
+  padding: 8px;
+  border: 0.5px solid;
 `;

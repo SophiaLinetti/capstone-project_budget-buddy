@@ -7,8 +7,10 @@ export default function FilterCategory({ onSetSelectedCategory }) {
   }
   return (
     <>
-      Filter by:
       <StyledDropdown onChange={handleCategoryChange}>
+        <option value="Filter" selected disabled>
+          Filter by...
+        </option>
         <option value="">All</option>
         {categories.map((category, index_) => (
           <option key={index_} value={category}>

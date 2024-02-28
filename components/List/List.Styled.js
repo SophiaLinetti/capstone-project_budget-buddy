@@ -66,7 +66,6 @@ export const DeleteIcon = styled.span`
     display: inline-block;
     vertical-align: middle;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     color: black;
     cursor: pointer;
   }

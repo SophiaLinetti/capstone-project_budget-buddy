@@ -15,6 +15,8 @@ import {
   StyledCardContainer,
   StyledSavingContainer,
   Main,
+  ActionButton,
+  StyledAllButtonsContainer,
 } from "@/styles";
 
 export default function Goals({ transactions, onAddTransaction }) {
@@ -137,9 +139,14 @@ export default function Goals({ transactions, onAddTransaction }) {
           <StyledSavingContainer>
             Current Savings Balance: {savingsTransferSum}
           </StyledSavingContainer>
-          <button onClick={() => setModalType("savings withdrawal")}>
-            Back to Account{" "}
-          </button>
+          <StyledAllButtonsContainer>
+            <ActionButton onClick={() => setModalType("savings withdrawal")}>
+              Back to Account
+            </ActionButton>
+            <ActionButton onClick={() => setModalType("add saving goal")}>
+              +
+            </ActionButton>
+          </StyledAllButtonsContainer>
           <GoalsCard
             goals={goals}
             onHandleDeleteGoal={handleDeleteGoal}
@@ -147,29 +154,10 @@ export default function Goals({ transactions, onAddTransaction }) {
           />
         </StyledCardContainer>
         <StyledSavingContainer>
-          Total Saving Amount: {totalSavings}
+          Total Saved Amount: {totalSavings}
         </StyledSavingContainer>
-        <StyledAddGoalButton onClick={() => setModalType("add saving goal")}>
-          +
-        </StyledAddGoalButton>
       </Main>
       <Navbar />
     </>
   );
 }
-
-const StyledAddGoalButton = styled.button`
-  position: fixed;
-  bottom: 5rem;
-  right: 2rem;
-  background-color: purple;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

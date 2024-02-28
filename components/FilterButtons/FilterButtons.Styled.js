@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const StyledFilterButtons = styled.button`
-  width: 17%;
   text-align: center;
-  font-size: 0.7rem;
-  padding: 8px 0 8px 0;
-  font-weight: 500;
-  background-color: ;
+  font-size: 0.75rem;
+  padding: 8px;
+  font-weight: 400;
+  border-radius: 7px;
+  border: 0.5px solid;
+  margin: 0 4px;
 `;
 
 export const StyledFilterContainer = styled.div`

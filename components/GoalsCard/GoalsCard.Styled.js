@@ -9,14 +9,14 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledItem = styled.li`
-  background-color: ;
-  color: ;
-  border: 1px solid;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
   margin: 10px 0px 10px 0px;
   display: flex;
   padding: 7px;
   position: relative;
 `;
+// padding-right: 15%;
 
 export const StyledDeleteButton = styled.button`
   display: flex;
@@ -30,17 +30,34 @@ export const StyledGoalCard = styled.div`
   display: block;
   text-align: center;
   width: 100%;
+  margin: 5px 0;
 `;
 
 export const StyledEditSavingButton = styled.button`
-  padding: 1px 6px 1px 6px;
-  height: 25px;
-  margin-left: 20px;
   position: absolute;
-  bottom: 3px;
-  right: 35px;
+  bottom: 5px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 `;
 
 export const StyledGoalCardContent = styled.div`
-  padding: 0 0 0 20px;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+export const EditIcon = styled.span`
+  &:before {
+    content: "edit_square";
+    font-family: "Material Symbols Outlined";
+    font-weight: 200px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    cursor: pointer;
+  }
 `;
