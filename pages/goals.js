@@ -14,6 +14,7 @@ import {
   StyledText,
   StyledCardContainer,
   StyledSavingContainer,
+  Main,
 } from "@/styles";
 
 export default function Goals({ transactions, onAddTransaction }) {
@@ -127,29 +128,31 @@ export default function Goals({ transactions, onAddTransaction }) {
     <>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <StyledHeading>Saving Goals</StyledHeading>
-      <StyledCardContainer>
-        {goals.length === 0 && (
-          <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
+      <Main>
+        <StyledCardContainer>
+          {goals.length === 0 && (
+            <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
         the + Button on the bottom right of the Screen`}</StyledText>
-        )}
+          )}
+          <StyledSavingContainer>
+            Current Savings Balance: {savingsTransferSum}
+          </StyledSavingContainer>
+          <button onClick={() => setModalType("savings withdrawal")}>
+            Back to Account{" "}
+          </button>
+          <GoalsCard
+            goals={goals}
+            onHandleDeleteGoal={handleDeleteGoal}
+            onEditGoal={handleEditGoal}
+          />
+        </StyledCardContainer>
         <StyledSavingContainer>
-          Current Savings Balance: {savingsTransferSum}
+          Total Saving Amount: {totalSavings}
         </StyledSavingContainer>
-        <button onClick={() => setModalType("savings withdrawal")}>
-          Back to Account{" "}
-        </button>
-        <GoalsCard
-          goals={goals}
-          onHandleDeleteGoal={handleDeleteGoal}
-          onEditGoal={handleEditGoal}
-        />
-      </StyledCardContainer>
-      <StyledSavingContainer>
-        Total Saving Amount: {totalSavings}
-      </StyledSavingContainer>
-      <StyledAddGoalButton onClick={() => setModalType("add saving goal")}>
-        +
-      </StyledAddGoalButton>
+        <StyledAddGoalButton onClick={() => setModalType("add saving goal")}>
+          +
+        </StyledAddGoalButton>
+      </Main>
       <Navbar />
     </>
   );

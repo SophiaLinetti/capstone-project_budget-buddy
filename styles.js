@@ -22,9 +22,6 @@ export default createGlobalStyle`
 
 export const Main = styled.div`
   max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: auto;
 `;
 
