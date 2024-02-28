@@ -10,9 +10,9 @@ export const TransactionCard = styled.li`
   display: flex;
   justify-content: space-between;
   gap: 0.8rem;
-  background-color: #2d3250;
+  background-color: ;
   border-radius: 5px;
-  color: #ffffff;
+  color: ;
   margin: 10px 0px;
   padding: 7px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
@@ -39,8 +39,7 @@ export const Flexbox = styled.div`
     `}
 `;
 export const Chip = styled.span`
-  background-color: ${(props) =>
-    props.$variant === "type" ? "#8D6E63" : "#5D4037"};
+  background-color: ${(props) => (props.$variant === "type" ? "" : "")};
   padding: 0.2rem 0.5rem;
   border-radius: 50px;
   font-size: 0.8rem;

@@ -9,8 +9,8 @@ export const StyledList = styled.ul`
 `;
 
 export const StyledItem = styled.li`
-  background-color: #2d3250;
-  color: #ffffff;
+  background-color: ;
+  color: ;
   border: 1px solid;
   margin: 10px 0px 10px 0px;
   display: flex;

@@ -6,7 +6,7 @@ const StyledForm = styled.form`
 const StyledHint = styled.p`
   font-size: 13px;
   text-align: center;
-  color: #ffb228;
+  color: ;
 `;
 const StyledButton = styled.button`
   border: none;

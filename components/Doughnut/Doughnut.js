@@ -21,13 +21,6 @@ export default function DoughnutComponent({ transactions }) {
     },
   };
 
-  /*  function handleToggleTypeOnClick() {
-    if(type === 'Expense') {
-      setType('Income');
-    } else {
-      setType('Expense');
-    } */
-
   function handleTypeOnClick(transactionType) {
     setType(transactionType);
   }

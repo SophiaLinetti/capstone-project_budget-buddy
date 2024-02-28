@@ -21,8 +21,8 @@ export const NavbarLink = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => (props.$active ? "#FFB228" : "#2D3250")};
-  color: ${(props) => (props.$active ? "#2D3250" : "#FFB228")};
+  background-color: ${(props) => (props.$active ? "" : "")};
+  color: ${(props) => (props.$active ? "" : "")};
   font-weight: ${(props) => (props.$active ? "bold" : "normal")};
   height: 100%;
   width: 100%;
