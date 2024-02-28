@@ -1,33 +1,26 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { NavbarWrapper, NavbarLink, StyledLink } from "./Nav.Styled";
+import { NavbarWrapper, NavbarLink, StyledNav, LinkStyles } from "./Nav.Styled";
 
 export default function Navbar() {
   const router = useRouter();
   // "/" is our "Homepage"
   return (
     <NavbarWrapper>
-      <StyledLink>
-        <Link href="/">
-          <NavbarLink $active={router.pathname === "/"}>
-            Transactions
-          </NavbarLink>
-        </Link>
-      </StyledLink>
-      <StyledLink>
-        <Link href="/dashboard">
-          <NavbarLink $active={router.pathname === "/dashboard"}>
-            Dashboard
-          </NavbarLink>
-        </Link>
-      </StyledLink>
-      <StyledLink>
-        <Link href="/goals">
-          <NavbarLink $active={router.pathname === "/goals"}>
-            Saving Goals
-          </NavbarLink>
-        </Link>
-      </StyledLink>
+      <LinkStyles href="/">
+        <NavbarLink $active={router.pathname === "/"}>Transactions</NavbarLink>
+      </LinkStyles>
+
+      <LinkStyles href="/dashboard">
+        <NavbarLink $active={router.pathname === "/dashboard"}>
+          Dashboard
+        </NavbarLink>
+      </LinkStyles>
+
+      <LinkStyles href="/goals">
+        <NavbarLink $active={router.pathname === "/goals"}>
+          Saving Goals
+        </NavbarLink>
+      </LinkStyles>
     </NavbarWrapper>
   );
 }

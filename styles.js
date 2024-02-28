@@ -23,7 +23,6 @@ export const StyledHeading = styled.h1`
   margin-top: 0;
   padding: 10px;
   border-bottom: 1px solid #ffffff;
-  border-radius: 0 0 10px 10px;
   position: fixed;
   top: 0;
 `;
