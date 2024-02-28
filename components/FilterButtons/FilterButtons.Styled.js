@@ -6,7 +6,7 @@ export const StyledFilterButtons = styled.button`
   font-size: 0.7rem;
   padding: 8px 0 8px 0;
   font-weight: 500;
-  background-color: white;
+  background-color: ;
 `;
 
 export const StyledFilterContainer = styled.div`

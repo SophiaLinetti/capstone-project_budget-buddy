@@ -9,6 +9,7 @@ import {
   StyledAmoutDisplay,
   StyledDropdownContainer,
   StyledAllFormButtonsContainer,
+  Main,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 
@@ -109,26 +110,28 @@ export default function HomePage({
     <div>
       <StyledHeading>Budget Buddy</StyledHeading>
       {modalType && <Modal>{renderModalContent()}</Modal>}
-      <StyledAllFormButtonsContainer>
-        <button onClick={() => setModalType("transaction")}>
-          New Transaction
-        </button>
-        <button onClick={() => setModalType("saving")}>New Transfer</button>
-      </StyledAllFormButtonsContainer>
-      {displayTotalSum(transactionFilter)}
-      {transactionFilter === "all" && (
-        <StyledAmoutDisplay>
-          Balance: {calculateBalance()} EUR
-        </StyledAmoutDisplay>
-      )}
-      <StyledDropdownContainer>
-        <FilterCategory onSetSelectedCategory={setSelectedCategory} />
-        <FilterButtons onHandleSetFilter={handleSetFilter} />
-      </StyledDropdownContainer>
-      <List
-        transactions={filterTransactions(transactions)}
-        onDeleteTransaction={onDeleteTransaction}
-      />
+      <Main>
+        <StyledAllFormButtonsContainer>
+          <button onClick={() => setModalType("transaction")}>
+            New Transaction
+          </button>
+          <button onClick={() => setModalType("saving")}>New Transfer</button>
+        </StyledAllFormButtonsContainer>
+        {displayTotalSum(transactionFilter)}
+        {transactionFilter === "all" && (
+          <StyledAmoutDisplay>
+            Balance: {calculateBalance()} EUR
+          </StyledAmoutDisplay>
+        )}
+        <StyledDropdownContainer>
+          <FilterCategory onSetSelectedCategory={setSelectedCategory} />
+          <FilterButtons onHandleSetFilter={handleSetFilter} />
+        </StyledDropdownContainer>
+        <List
+          transactions={filterTransactions(transactions)}
+          onDeleteTransaction={onDeleteTransaction}
+        />
+      </Main>
       <Nav />
     </div>
   );

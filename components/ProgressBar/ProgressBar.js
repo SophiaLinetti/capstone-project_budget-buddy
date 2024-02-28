@@ -24,8 +24,7 @@ const ProgressWrapper = styled.div`
 const ProgressInput = styled.div`
   height: 20px;
   width: ${({ $progress }) => $progress}%;
-  background-color: ${({ $progress }) =>
-    $progress === 100 ? "#4caf50" : "#2196f3"};
+  background-color: ${({ $progress }) => ($progress === 100 ? "" : "#2196f3")};
   position: absolute;
   top: 0;
   left: 0;

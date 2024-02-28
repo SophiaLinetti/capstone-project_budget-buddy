@@ -8,20 +8,29 @@ export default createGlobalStyle`
    font-family: 'Montserrat', sans-serif;
   };
 
-
+:root {
+  --primary-color: ;
+  --secondary-color:
+}
   
   body {
     margin: 100px 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: ;
+    background-color: var(--primary-color);
   }
+`;
+
+export const Main = styled.div`
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 `;
 
 export const StyledHeading = styled.h1`
   text-align: center;
   width: 100%;
-  color: ;
-  background-color: ;
   margin-top: 0;
   padding: 10px;
   position: fixed;
@@ -34,7 +43,6 @@ export const StyledAmoutDisplay = styled.div`
   text-align: center;
   border: 1px solid;
   border-radius: 7px;
-  color: ;
   background-color: ;
   margin: 3% 20% 3% 20%;
   padding: 8px;
@@ -43,7 +51,6 @@ export const StyledAmoutDisplay = styled.div`
 export const StyledText = styled.p`
   margin-top: 100px;
   text-align: center;
-  color: ;
 `;
 
 export const StyledCardContainer = styled.div`
@@ -57,12 +64,9 @@ export const StyledSavingContainer = styled.div`
   margin-left: 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
-  color: ;
 `;
 
 export const StyledDropdownContainer = styled.div`
-  background-color: ;
-  color: white;
   border: white solid 1px;
   border-radius: 5px;
   display: inline;

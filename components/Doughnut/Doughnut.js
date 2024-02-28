@@ -12,7 +12,11 @@ export default function DoughnutComponent({ transactions }) {
     responsive: "true",
     cutoutPercentage: 100,
     radius: "85%",
-
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
     animation: {
       animateScale: false,
       animateRotate: true,

@@ -19,7 +19,7 @@ export const TransactionCard = styled.li`
     rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 `;
 export const TransactionDetails = styled.div`
-  padding-right: 10%;
+  padding-right: 15%;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -50,7 +50,7 @@ export const Description = styled.p`
 export const DeleteButton = styled.button`
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 10px;
   background: transparent;
   border: none;
   padding: 0;
@@ -67,7 +67,7 @@ export const DeleteIcon = styled.span`
     vertical-align: middle;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: white;
+    color: black;
     cursor: pointer;
   }
 `;
