@@ -5,10 +5,11 @@ export default function FilterCategory({ onSetSelectedCategory }) {
   function handleCategoryChange(event) {
     onSetSelectedCategory(event.target.value);
   }
+
   return (
     <>
-      <StyledDropdown onChange={handleCategoryChange}>
-        <option value="Filter" selected disabled>
+      <StyledDropdown onChange={handleCategoryChange} defaultValue="Filter">
+        <option value="Filter" disabled>
           Filter by...
         </option>
         <option value="">All</option>
