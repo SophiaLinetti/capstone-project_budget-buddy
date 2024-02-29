@@ -4,10 +4,9 @@ import useSWR, {mutate} from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
-
 export default function App({ Component, pageProps }) {
 
-  const { data: transactions, error } = useSWR('/api/transactions', fetcher);
+  const { data: transactions  } = useSWR('/api/transactions', fetcher);
 
   async function handleAddTransaction(newTransaction) {
     const response = await fetch('/api/transactions', {
@@ -32,16 +31,12 @@ export default function App({ Component, pageProps }) {
   async function handleDeleteTransaction(_id) {
     const response = await fetch(`/api/transactions/${_id}`, {
       method: 'DELETE',
-    });
-  
-    if (!response.ok) {
-      // Handle errors
-      console.error('Failed to delete transaction');
-    } else {
-      // Update local state to remove the deleted transaction
-      setTransactions((currentTransactions) =>
-        currentTransactions.filter((transaction) => transaction._id !== _id)
-      );
+    });  
+    if (!response.ok) {      
+      console.error(`Failed to delete transaction: ${_id}`);
+    } else { 
+        // Optimistically update the local data and revalidate
+      mutate('/api/transactions', transactions.filter((transaction) => transaction._id !== _id), false);
     }
   }
 

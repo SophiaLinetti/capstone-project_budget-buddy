@@ -18,7 +18,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Goals({  transactions, onAddTransaction }) {
   
-const { data: goals, goalsError, mutate: mutateGoals } = useSWR('/api/goals', fetcher);
+const { data: goals,  mutate: mutateGoals } = useSWR('/api/goals', fetcher);
 
   const [totalSavings, setTotalSavings] = useState(0);
   const [modalType, setModalType] = useState(null);
@@ -28,7 +28,6 @@ const { data: goals, goalsError, mutate: mutateGoals } = useSWR('/api/goals', fe
   function handleCloseModal() {
     setModalType(null);
   }
-
 
 
   function renderModalContent() {

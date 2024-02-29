@@ -16,10 +16,8 @@ import useSWR, {mutate} from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
-export default function HomePage({
- 
+export default function HomePage({ 
   onAddTransaction,
-
 }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
