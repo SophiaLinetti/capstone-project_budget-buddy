@@ -11,40 +11,37 @@ import {
   StyledAllFormButtonsContainer,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
-import useSWR, {mutate} from "swr";
+import useSWR, { mutate } from "swr";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-
-export default function HomePage({ 
-  onAddTransaction,
-}) {
+export default function HomePage({ onAddTransaction }) {
   const [transactionFilter, setTransactionFilter] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [modalType, setModalType] = useState(null);
-  const { data: transactions, error } = useSWR('/api/transactions', fetcher); 
-   
+  const { data: transactions, error } = useSWR("/api/transactions");
 
   if (error) return <div>Failed to load transactions</div>;
   if (!transactions) return <div>Loading...</div>;
-  
 
   async function handleDeleteTransaction(_id) {
-    const response = await fetch(`/api/transactions/${_id}`, { method: 'DELETE' });
+    const response = await fetch(`/api/transactions/${_id}`, {
+      method: "DELETE",
+    });
 
     if (response.ok) {
-      mutate('/api/transactions', transactions.filter((transaction) => transaction._id !== _id), false);
+      mutate(
+        "/api/transactions",
+        transactions.filter((transaction) => transaction._id !== _id),
+        false
+      );
     } else {
-      console.error('Failed to delete transaction');
+      console.error("Failed to delete transaction");
     }
   }
-
 
   function handleCloseModal() {
     setModalType(null);
   }
   function renderModalContent() {
-
     const accountBalance = calculateBalance();
 
     if (modalType === "transaction") {
@@ -72,11 +69,13 @@ export default function HomePage({
     setTransactionFilter(filter);
   }
   function filterTransactions(transactions) {
-    return transactions.filter(transaction => 
-      transaction.internalGoalAllocation !== "yes" &&
-      (transactionFilter === "all" ? 
-        !selectedCategory || transaction.category === selectedCategory :
-        transaction.type === transactionFilter && (!selectedCategory || transaction.category === selectedCategory))
+    return transactions.filter(
+      (transaction) =>
+        transaction.internalGoalAllocation !== "yes" &&
+        (transactionFilter === "all"
+          ? !selectedCategory || transaction.category === selectedCategory
+          : transaction.type === transactionFilter &&
+            (!selectedCategory || transaction.category === selectedCategory))
     );
   }
   function calculateSum(transactions) {
@@ -106,8 +105,9 @@ export default function HomePage({
     );
   }
   const filterGoalTransactions = transactions.filter(
-    (transaction) => transaction.type !== "Saving Goal" &&
-    transaction.internalGoalAllocation !== "yes" 
+    (transaction) =>
+      transaction.type !== "Saving Goal" &&
+      transaction.internalGoalAllocation !== "yes"
   );
   function calculateBalance() {
     let balance = 0;
@@ -144,7 +144,7 @@ export default function HomePage({
         transactions={filterTransactions(transactions)}
         onDeleteTransaction={handleDeleteTransaction}
       />
-      
+
       <Nav />
     </div>
   );
