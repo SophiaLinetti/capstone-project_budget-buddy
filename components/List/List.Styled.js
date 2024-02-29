@@ -7,12 +7,9 @@ export const TransactionsList = styled.ul`
 `;
 export const TransactionCard = styled.li`
   position: relative;
-  display: flex;
   justify-content: space-between;
   gap: 0.8rem;
-  background-color: ;
   border-radius: 5px;
-  color: ;
   margin: 10px 0px;
   padding: 7px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
@@ -39,7 +36,13 @@ export const Flexbox = styled.div`
     `}
 `;
 export const Chip = styled.span`
-  background-color: ${(props) => (props.$variant === "type" ? "" : "")};
+  border: 1px solid
+    ${(props) =>
+      props.$variant === "Income"
+        ? "var(--lightgreen-color)"
+        : props.$variant === "Expense"
+        ? "var(--red-color)"
+        : "var(--secondary-color)"};
   padding: 0.2rem 0.5rem;
   border-radius: 50px;
   font-size: 0.8rem;
@@ -47,26 +50,3 @@ export const Chip = styled.span`
 export const Description = styled.p`
   margin: 0;
 `;
-// export const DeleteButton = styled.button`
-//   position: absolute;
-//   top: 5px;
-//   right: 10px;
-//   background: transparent;
-//   border: none;
-//   padding: 0;
-//   cursor: pointer;
-// `;
-
-// export const DeleteIcon = styled.span`
-//   &:before {
-//     content: "delete";
-//     font-family: "Material Symbols Outlined";
-//     font-weight: 200px;
-//     font-size: 24px;
-//     display: inline-block;
-//     vertical-align: middle;
-//     -webkit-font-smoothing: antialiased;
-//     color: black;
-//     cursor: pointer;
-//   }
-// `;

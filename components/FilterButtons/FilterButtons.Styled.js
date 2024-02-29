@@ -5,7 +5,7 @@ export const StyledFilterButtons = styled.button`
   font-size: 0.75rem;
   padding: 8px;
   font-weight: 400;
-  border-radius: 7px;
+  border-radius: 99rem;
   border: 0.5px solid;
   margin: 0 4px;
 `;

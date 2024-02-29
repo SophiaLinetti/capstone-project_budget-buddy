@@ -3,7 +3,7 @@ import { Doughnut } from "react-chartjs-2";
 import { useState } from "react";
 import { categories } from "@/utils/transactionCategories";
 import {
-  StyledAmoutDisplay,
+  AmountDisplayDashboard,
   ActionButtonDashboard,
   StyledAllButtonsContainer,
 } from "@/styles";
@@ -106,9 +106,9 @@ export default function DoughnutComponent({ transactions }) {
         </ActionButtonDashboard>
       </StyledAllButtonsContainer>
       <Doughnut data={data} options={options} />
-      <StyledAmoutDisplay>
+      <AmountDisplayDashboard>
         Account Balance: {calculateBalance(transactions)} EUR
-      </StyledAmoutDisplay>
+      </AmountDisplayDashboard>
     </>
   );
 }

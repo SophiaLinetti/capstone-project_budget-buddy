@@ -28,6 +28,7 @@ export const Main = styled.div`
 `;
 
 export const StyledHeading = styled.h1`
+  background-color: var(--primary-color);
   text-align: center;
   width: 100%;
   margin-top: 0;
@@ -41,10 +42,18 @@ export const StyledHeading = styled.h1`
 // hier bleiben
 export const StyledAmoutDisplay = styled.div`
   text-align: center;
-  border-radius: 7px;
-  background-color: ;
+  color: var(--secondary-color);
+  border-radius: 99rem;
+  border: 1px solid var(--secondary-color);
   padding: 8px;
-  margin: 60px 0 10px 0;
+`;
+
+export const AmountDisplayTransactions = styled(StyledAmoutDisplay)`
+  margin: 90px 0.5rem 15px 0.5rem;
+`;
+
+export const AmountDisplayDashboard = styled(StyledAmoutDisplay)`
+  margin: 20px 0.5rem 0 0.5rem;
 `;
 
 export const StyledText = styled.p`
@@ -76,7 +85,7 @@ export const FilterFlexBox = styled.div`
   justify-content: space-evenly;
   align-items: center;
   padding: 8px;
-  margin: 0 0.5rem;
+  margin: 10px 0 25px 0;
   font-size: 0.9rem;
   height: 50px;
 `;
@@ -91,18 +100,18 @@ export const ActionButton = styled.button`
   font-size: 1rem;
   background-color: var(--secondary-color);
   color: var(--primary-color);
-  border-radius: 20px;
+  border-radius: 99rem;
   padding: 0.75rem 1.5rem;
   border: 0.5px solid;
 `;
 export const ActionButtonGoalsPage = styled(ActionButton)``;
 
 export const ActionButtonTransaction = styled(ActionButton)`
-  margin-bottom: 10px;
+  margin: 15px 0;
 `;
 
 export const ActionButtonDashboard = styled(ActionButton)`
-  margin-top: 60px;
+  margin: 90px 0 20px 0;
 `;
 
 export const DeleteButton = styled.button`

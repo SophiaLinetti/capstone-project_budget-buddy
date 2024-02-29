@@ -23,7 +23,7 @@ export default function List({ transactions, onDeleteTransaction }) {
                     <strong>{amount} EUR</strong>
                   </Flexbox>
                   <Flexbox $justifyContent="evenly">
-                    <Chip $variant="type">{type}</Chip>
+                    <Chip $variant={type}>{type}</Chip>
                     <Chip>{category}</Chip>
                   </Flexbox>
                   <Description>{description}</Description>

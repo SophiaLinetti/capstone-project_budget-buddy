@@ -6,7 +6,7 @@ import Nav from "@/components/Nav/Nav";
 import Modal from "@/components/Modal";
 import {
   StyledHeading,
-  StyledAmoutDisplay,
+  AmountDisplayTransactions,
   FilterFlexBox,
   StyledAllButtonsContainer,
   Main,
@@ -114,9 +114,9 @@ export default function HomePage({
       <Main>
         {displayTotalSum(transactionFilter)}
         {transactionFilter === "all" && (
-          <StyledAmoutDisplay>
+          <AmountDisplayTransactions>
             Account Balance: {calculateBalance()} EUR
-          </StyledAmoutDisplay>
+          </AmountDisplayTransactions>
         )}
         <StyledAllButtonsContainer>
           <ActionButtonTransaction onClick={() => setModalType("transaction")}>
