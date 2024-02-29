@@ -17,6 +17,7 @@ import {
   ActionButtonGoalsPage,
   StyledAllButtonsContainer,
   StyledTotalSavingContainer,
+  HeadingWrapper,
 } from "@/styles";
 
 export default function Goals({ transactions, onAddTransaction }) {
@@ -129,7 +130,9 @@ export default function Goals({ transactions, onAddTransaction }) {
   return (
     <>
       {modalType && <Modal>{renderModalContent()}</Modal>}
-      <StyledHeading>Saving Goals</StyledHeading>
+      <HeadingWrapper>
+        <StyledHeading>Saving Goals</StyledHeading>
+      </HeadingWrapper>
       <Main>
         <StyledCardContainer>
           <StyledSavingContainer>

@@ -1,11 +1,13 @@
 import Navbar from "@/components/Nav/Nav";
-import { StyledHeading, Main } from "@/styles";
+import { StyledHeading, Main, HeadingWrapper } from "@/styles";
 import DoughnutComponent from "@/components/Doughnut/Doughnut";
 
 export default function Dashboard({ transactions }) {
   return (
     <>
-      <StyledHeading>Dashboard</StyledHeading>
+      <HeadingWrapper>
+        <StyledHeading>Dashboard</StyledHeading>
+      </HeadingWrapper>
       <Main>
         <DoughnutComponent transactions={transactions} />
       </Main>

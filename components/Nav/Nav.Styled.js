@@ -16,6 +16,7 @@ export const NavbarWrapper = styled.div`
   left: 0;
   right: 0;
   height: 50px;
+  border-top: 2px solid var(--secondary-color);
 `;
 
 export const NavbarLink = styled.div`
@@ -38,6 +39,9 @@ export const IconeBase = styled.span`
     color: black;
     cursor: pointer;
     transition: font-size 0.5s;
+    background-image: linear-gradient(to left, var(--secondary-color), #b393d3);
+    color: transparent;
+    background-clip: text;
   }
 `;
 

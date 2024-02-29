@@ -11,6 +11,7 @@ import {
   StyledAllButtonsContainer,
   Main,
   ActionButtonTransaction,
+  HeadingWrapper,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 
@@ -109,7 +110,9 @@ export default function HomePage({
   }
   return (
     <div>
-      <StyledHeading>Transactions</StyledHeading>
+      <HeadingWrapper>
+        <StyledHeading>Transactions</StyledHeading>
+      </HeadingWrapper>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <Main>
         {displayTotalSum(transactionFilter)}

@@ -28,15 +28,34 @@ export const Main = styled.div`
 `;
 
 export const StyledHeading = styled.h1`
-  background-color: var(--primary-color);
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    to right,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  -webkit-background-clip: text;
+  color: transparent; /* Macht den Text transparent, damit der Gradient sichtbar wird */
+  text-align: center;
+  margin: 0; /* Entfernt Margin, das durch den Wrapper kontrolliert wird */
+  padding: 0; /* Anpassung, falls nötig */
+  position: relative; /* Stellt die Positionierung sicher */
+  z-index: 1000; /* Stellt sicher, dass der Text über dem Wrapper liegt */
+  background-clip: text; /* Wichtig, damit der Gradient nur innerhalb des Textes angewendet wird */
+  -webkit-text-fill-color: transparent; /* Für Safari */
+  border-bottom: 2px solid var(--secondary-color);
+`;
+
+export const HeadingWrapper = styled.div`
   text-align: center;
   width: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 10px;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  background-color: var(--primary-color); /* Fester Hintergrund */
+  padding: 10px;
+  z-index: 999;
 `;
 
 // hier bleiben
