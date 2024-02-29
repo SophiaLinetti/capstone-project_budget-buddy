@@ -6,8 +6,8 @@ export default function List({ transactions, onDeleteTransaction }) {
       {transactions.length > 0 ? (
         <TransactionsList>
           {transactions.map(
-            ({ id, date, amount, category, type, description }) => (
-              <TransactionCard key={id}>
+            ({ _id, date, amount, category, type, description }) => (
+              <TransactionCard key={_id}>
                 <TransactionDetails>
                   <Flexbox $justifyContent="between">
                     <em>{date}</em>
@@ -19,7 +19,7 @@ export default function List({ transactions, onDeleteTransaction }) {
                   </Flexbox>
                   <Description>{description}</Description>
                 </TransactionDetails>
-                <DeleteButton onClick={() => onDeleteTransaction(id)}>
+                <DeleteButton onClick={() => onDeleteTransaction(_id)}>
                   ❌
                 </DeleteButton>
               </TransactionCard>

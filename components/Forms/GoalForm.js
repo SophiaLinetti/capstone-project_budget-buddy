@@ -13,6 +13,7 @@ export default function GoalForm({
     onSaveGoal({
       ...goal,
       ...data,
+      _id: goal._id, 
       savedAmount: parseInt(data.savedAmount),
       goalAmount: parseInt(data.goalAmount),
       date: formatDate(new Date()),
