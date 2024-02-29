@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
-import styled from "styled-components";
 import { initialGoals } from "@/ressources/data";
 import { formatDate } from "../utils/normalizeUtils.js";
 import Navbar from "@/components/Nav/Nav";
@@ -15,8 +14,9 @@ import {
   StyledCardContainer,
   StyledSavingContainer,
   Main,
-  ActionButton,
+  ActionButtonGoalsPage,
   StyledAllButtonsContainer,
+  StyledTotalSavingContainer,
 } from "@/styles";
 
 export default function Goals({ transactions, onAddTransaction }) {
@@ -132,20 +132,24 @@ export default function Goals({ transactions, onAddTransaction }) {
       <StyledHeading>Saving Goals</StyledHeading>
       <Main>
         <StyledCardContainer>
+          <StyledSavingContainer>
+            Current Savings Balance: {savingsTransferSum}
+          </StyledSavingContainer>
           {goals.length === 0 && (
             <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
         the + Button on the bottom right of the Screen`}</StyledText>
           )}
-          <StyledSavingContainer>
-            Current Savings Balance: {savingsTransferSum}
-          </StyledSavingContainer>
           <StyledAllButtonsContainer>
-            <ActionButton onClick={() => setModalType("savings withdrawal")}>
+            <ActionButtonGoalsPage
+              onClick={() => setModalType("savings withdrawal")}
+            >
               Back to Account
-            </ActionButton>
-            <ActionButton onClick={() => setModalType("add saving goal")}>
+            </ActionButtonGoalsPage>
+            <ActionButtonGoalsPage
+              onClick={() => setModalType("add saving goal")}
+            >
               Add Goal
-            </ActionButton>
+            </ActionButtonGoalsPage>
           </StyledAllButtonsContainer>
           <GoalsCard
             goals={goals}
@@ -153,9 +157,9 @@ export default function Goals({ transactions, onAddTransaction }) {
             onEditGoal={handleEditGoal}
           />
         </StyledCardContainer>
-        <StyledSavingContainer>
+        <StyledTotalSavingContainer>
           Total Saved Amount: {totalSavings}
-        </StyledSavingContainer>
+        </StyledTotalSavingContainer>
       </Main>
       <Navbar />
     </>

@@ -10,7 +10,7 @@ import {
   FilterFlexBox,
   StyledAllButtonsContainer,
   Main,
-  ActionButton,
+  ActionButtonTransaction,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 
@@ -112,20 +112,21 @@ export default function HomePage({
       <StyledHeading>Transactions</StyledHeading>
       {modalType && <Modal>{renderModalContent()}</Modal>}
       <Main>
-        <StyledAllButtonsContainer>
-          <ActionButton onClick={() => setModalType("transaction")}>
-            New Transaction
-          </ActionButton>
-          <ActionButton onClick={() => setModalType("saving")}>
-            New Transfer
-          </ActionButton>
-        </StyledAllButtonsContainer>
         {displayTotalSum(transactionFilter)}
         {transactionFilter === "all" && (
           <StyledAmoutDisplay>
             Account Balance: {calculateBalance()} EUR
           </StyledAmoutDisplay>
         )}
+        <StyledAllButtonsContainer>
+          <ActionButtonTransaction onClick={() => setModalType("transaction")}>
+            New Transaction
+          </ActionButtonTransaction>
+          <ActionButtonTransaction onClick={() => setModalType("saving")}>
+            New Transfer
+          </ActionButtonTransaction>
+        </StyledAllButtonsContainer>
+
         <FilterFlexBox>
           <FilterCategory onSetSelectedCategory={setSelectedCategory} />
           <FilterButtons onHandleSetFilter={handleSetFilter} />

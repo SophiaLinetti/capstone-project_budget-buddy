@@ -16,7 +16,7 @@ export default createGlobalStyle`
 }
   
   body {
-    margin: 100px 0;
+    /* margin: 100px 0; */
     font-family: 'Montserrat', sans-serif;
     background-color: var(--primary-color);
   }
@@ -24,13 +24,15 @@ export default createGlobalStyle`
 
 export const Main = styled.div`
   max-width: 600px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const StyledHeading = styled.h1`
   text-align: center;
   width: 100%;
   margin-top: 0;
+  margin-bottom: 0;
   padding: 10px;
   position: fixed;
   top: 0;
@@ -43,24 +45,32 @@ export const StyledAmoutDisplay = styled.div`
 
   border-radius: 7px;
   background-color: ;
-  margin: 5% 10%;
+  /* margin: 5% 10%; */
   padding: 8px;
+  margin: 60px 0 10px 0;
 `;
 
 export const StyledText = styled.p`
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
 `;
 
 export const StyledCardContainer = styled.div`
-  margin-top: 80px;
+  /* margin-top: 80px; */
 `;
 
 export const StyledSavingContainer = styled.div`
   border: 1px solid;
   border-radius: 7px;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  margin: 60px 0.5rem 0.5rem 0.5rem;
+  text-align: center;
+  padding: 10px 0 10px 0;
+`;
+
+export const StyledTotalSavingContainer = styled.div`
+  border: 1px solid;
+  border-radius: 7px;
+  margin: 1.5rem 0.5rem 0.5rem 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
 `;
@@ -89,4 +99,13 @@ export const ActionButton = styled.button`
   border-radius: 20px;
   padding: 0.75rem 1.5rem;
   border: 0.5px solid;
+`;
+export const ActionButtonGoalsPage = styled(ActionButton)``;
+
+export const ActionButtonTransaction = styled(ActionButton)`
+  margin-bottom: 10px;
+`;
+
+export const ActionButtonDashboard = styled(ActionButton)`
+  margin-top: 60px;
 `;

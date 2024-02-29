@@ -4,7 +4,7 @@ import { useState } from "react";
 import { categories } from "@/utils/transactionCategories";
 import {
   StyledAmoutDisplay,
-  ActionButton,
+  ActionButtonDashboard,
   StyledAllButtonsContainer,
 } from "@/styles";
 
@@ -98,12 +98,12 @@ export default function DoughnutComponent({ transactions }) {
   return (
     <>
       <StyledAllButtonsContainer>
-        <ActionButton onClick={() => handleTypeOnClick("Expense")}>
+        <ActionButtonDashboard onClick={() => handleTypeOnClick("Expense")}>
           Expenses
-        </ActionButton>
-        <ActionButton onClick={() => handleTypeOnClick("Income")}>
+        </ActionButtonDashboard>
+        <ActionButtonDashboard onClick={() => handleTypeOnClick("Income")}>
           Income
-        </ActionButton>
+        </ActionButtonDashboard>
       </StyledAllButtonsContainer>
       <Doughnut data={data} options={options} />
       <StyledAmoutDisplay>

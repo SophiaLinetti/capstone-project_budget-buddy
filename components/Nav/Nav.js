@@ -14,19 +14,19 @@ export default function Navbar() {
   return (
     <NavbarWrapper>
       <LinkStyles href="/">
-        <NavbarLink $active={router.pathname === "/"}>
+        <NavbarLink>
           <TransactionIcon $active={router.pathname === "/"} />
         </NavbarLink>
       </LinkStyles>
 
       <LinkStyles href="/dashboard">
-        <NavbarLink $active={router.pathname === "/dashboard"}>
+        <NavbarLink>
           <DashboardIcon $active={router.pathname === "/dashboard"} />
         </NavbarLink>
       </LinkStyles>
 
       <LinkStyles href="/goals">
-        <NavbarLink $active={router.pathname === "/goals"}>
+        <NavbarLink>
           <SavingsIcon $active={router.pathname === "/goals"} />
         </NavbarLink>
       </LinkStyles>
