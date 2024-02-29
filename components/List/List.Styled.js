@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const TransactionsList = styled.ul`
   padding: 0;
-  margin: 0 0.5rem;
+  margin: 0 0.5rem 5rem 0.5rem;
   list-style: none;
 `;
 export const TransactionCard = styled.li`

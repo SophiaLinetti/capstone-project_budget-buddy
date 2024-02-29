@@ -24,8 +24,7 @@ export default createGlobalStyle`
 
 export const Main = styled.div`
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 5rem auto;
 `;
 
 export const StyledHeading = styled.h1`
