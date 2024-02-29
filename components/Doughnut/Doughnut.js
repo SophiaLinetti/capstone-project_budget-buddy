@@ -11,7 +11,7 @@ import {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function DoughnutComponent({ transactions, currentFilter }) {
+export default function DoughnutComponent({ transactions }) {
   const [type, setType] = useState("Expense");
   const options = {
     responsive: "true",
