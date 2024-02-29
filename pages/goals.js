@@ -143,7 +143,7 @@ export default function Goals({ transactions, onAddTransaction }) {
             <ActionButtonGoalsPage
               onClick={() => setModalType("savings withdrawal")}
             >
-              Back to Account
+              Transfer back to Account
             </ActionButtonGoalsPage>
             <ActionButtonGoalsPage
               onClick={() => setModalType("add saving goal")}
