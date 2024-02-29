@@ -33,7 +33,7 @@ export const IconBase = styled.span`
   &:before {
     font-family: "Material Symbols Outlined";
     font-size: ${(props) =>
-      props.$active ? "40px" : "30px"}; // Größere Icons für aktiven Link
+      props.$active ? "40px" : "30px"}; // bigger icon for active link
     display: inline-block;
     vertical-align: middle;
     color: black;

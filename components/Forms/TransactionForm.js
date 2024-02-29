@@ -42,7 +42,7 @@ export default function TransactionForm({
         date: data.date ? formatDate(data.date) : formatDate(new Date()),
         internalGoalAllocation: "no",
       });
-      // interne Ausgleichzahlung auf GoalKonto
+      // internal equalization payment to GoalsPage
       onAddTransaction({
         category: "Savings transfer",
         description: "Withdrawal from savings",
