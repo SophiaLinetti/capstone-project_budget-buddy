@@ -8,7 +8,7 @@ BudgetBuddy allows you to record transactions, categorize them for better financ
 
 We hope BudgetBuddy empowers you to take control of your finances and achieve your financial goals with confidence. Happy budgeting!
 
-### Key Features
+## Key Features
 
 💰 **Transaction Management**:
 Efficiently log and categorize your income and expenses. BudgetBuddy's streamlined process makes it simple to keep track of your financial activity and understand where your money is going.
@@ -19,7 +19,7 @@ Set and manage your savings goals with BudgetBuddy. Whether it's for a vacation,
 📊 **Visual Insights**:
 Get a clear picture of your financial health with our visual dashboard. BudgetBuddy provides graphs and charts that make it easy to digest your financial data and make informed decisions.
 
-### Technologies and Tools
+## Technologies and Tools
 
 - **Frontend**: React, Next.js, styled-components for a polished, responsive UI.
 - **Visualization**: Customized Chart.js doughnut chart for spending habits.
@@ -29,7 +29,7 @@ Get a clear picture of your financial health with our visual dashboard. BudgetBu
 - **Deployment**: Vercel for seamless deployment and hosting of the Next.js application.
 
 
-### Local Development
+## Local Development
 
 To get started with local development:
 
@@ -37,7 +37,7 @@ To get started with local development:
 2. Start the development server using `npm run dev` and navigate to the displayed URL in your browser.
 3. Run tests with `npm run test` to ensure everything is set up correctly.
 
-### Available Scripts
+## Available Scripts
 
 Utilize the following npm scripts for development and production:
 
