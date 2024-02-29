@@ -1,6 +1,6 @@
 # BudgetBuddy
 
-### Project Overview
+## Project Overview
 
 Welcome to BudgetBuddy, the Next.js application designed to help you manage your finances with ease and insight. Whether you're looking to track your savings, monitor expenses, or set financial goals, BudgetBuddy is your go-to solution for personal finance management.
 
