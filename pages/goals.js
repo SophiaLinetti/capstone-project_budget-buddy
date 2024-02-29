@@ -14,11 +14,11 @@ import {
 } from "@/styles";
 import useSWR, {mutate} from "swr";
 
-
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Goals({  transactions, onAddTransaction }) {
   
-const { data: goals,  mutate: mutateGoals } = useSWR('/api/goals');
+const { data: goals,  mutate: mutateGoals } = useSWR('/api/goals', fetcher);
 
   const [totalSavings, setTotalSavings] = useState(0);
   const [modalType, setModalType] = useState(null);
@@ -110,9 +110,7 @@ const { data: goals,  mutate: mutateGoals } = useSWR('/api/goals');
           internalGoalAllocation: "yes",
         };
         onAddTransaction(transactionForNewGoal);
-  
-        
-        mutateGoals([...goals, updatedGoal], false);
+        mutateGoals(Array.isArray(goals) ? [...goals, updatedGoal] : [updatedGoal], false);
       }
       handleCloseModal(); 
     }
