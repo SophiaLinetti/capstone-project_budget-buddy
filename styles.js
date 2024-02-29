@@ -41,11 +41,14 @@ export const StyledHeading = styled.h1`
 
 // hier bleiben
 export const StyledAmoutDisplay = styled.div`
+  font-weight: bold;
   text-align: center;
   color: var(--secondary-color);
   border-radius: 99rem;
   border: 1px solid var(--secondary-color);
   padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 `;
 
 export const AmountDisplayTransactions = styled(StyledAmoutDisplay)`
@@ -67,21 +70,27 @@ export const StyledCardContainer = styled.div`
 `;
 
 export const StyledSavingContainer = styled.div`
+  font-weight: bold;
   border: 1px solid var(--secondary-color);
   color: var(--secondary-color);
   border-radius: 99rem;
   margin: 60px 0.5rem 0.5rem 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 `;
 
 export const StyledTotalSavingContainer = styled.div`
   border: 1px solid var(--secondary-color);
   color: var(--secondary-color);
+  font-weight: bold;
   border-radius: 99rem;
   margin: 1.5rem 0.5rem 0.5rem 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 `;
 
 export const FilterFlexBox = styled.div`
