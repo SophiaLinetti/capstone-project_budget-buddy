@@ -4,7 +4,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { initialGoals } from "@/ressources/data";
 import { formatDate } from "../utils/normalizeUtils.js";
 import Navbar from "@/components/Nav/Nav";
-import GoalsCard from "@/components/GoalsCard/GoalsCard";
+import GoalsCard from "@/components/GoalsCard/GoalsCard.js";
 import GoalsForm from "@/components/Forms/GoalForm.js";
 import Modal from "@/components/Modal";
 import TransactionForm from "@/components/Forms/TransactionForm.js";
