@@ -29,7 +29,7 @@ export const NavbarLink = styled.div`
   transition: font-size 0.3s;
 `;
 
-export const IconeBase = styled.span`
+export const IconBase = styled.span`
   &:before {
     font-family: "Material Symbols Outlined";
     font-size: ${(props) =>
@@ -49,19 +49,19 @@ export const IconeBase = styled.span`
   }
 `;
 
-export const TransactionIcon = styled(IconeBase)`
+export const TransactionIcon = styled(IconBase)`
   &:before {
     content: "account_balance";
   }
 `;
 
-export const DashboardIcon = styled(IconeBase)`
+export const DashboardIcon = styled(IconBase)`
   &:before {
     content: "query_stats";
   }
 `;
 
-export const SavingsIcon = styled(IconeBase)`
+export const SavingsIcon = styled(IconBase)`
   &:before {
     content: "savings";
   }

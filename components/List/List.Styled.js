@@ -2,13 +2,11 @@ import styled, { css } from "styled-components";
 
 export const TransactionsList = styled.ul`
   padding: 0;
-  margin: 0 0.5rem 0 0.5rem;
+  margin: 0 0.5rem;
   list-style: none;
 `;
 export const TransactionCard = styled.li`
   position: relative;
-  justify-content: space-between;
-  gap: 0.8rem;
   border-radius: 5px;
   margin: 10px 0px;
   padding: 7px;

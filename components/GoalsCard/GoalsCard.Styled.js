@@ -11,7 +11,7 @@ export const StyledList = styled.ul`
 export const StyledItem = styled.li`
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
     rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0;
   display: flex;
   padding: 7px;
   position: relative;
@@ -36,7 +36,6 @@ export const GoalCardAmount = styled.div`
   display: block;
   width: 100%;
   margin: 5px 0;
-  gap: 1rem;
 `;
 
 export const StyledEditSavingButton = styled.button`
@@ -47,10 +46,6 @@ export const StyledEditSavingButton = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
-`;
-
-export const StyledGoalCardContent = styled.div`
-  gap: 3rem;
 `;
 
 export const EditIcon = styled.span`
