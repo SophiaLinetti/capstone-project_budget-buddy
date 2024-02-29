@@ -13,6 +13,7 @@ export default createGlobalStyle`
   --secondary-color: #5532c8;
   --lightgreen-color: #008657;
   --red-color: #D32F2F;
+  --icon-color:#b393d3;
 }
   
   body {

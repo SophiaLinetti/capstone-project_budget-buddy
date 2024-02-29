@@ -39,7 +39,11 @@ export const IconeBase = styled.span`
     color: black;
     cursor: pointer;
     transition: font-size 0.5s;
-    background-image: linear-gradient(to left, var(--secondary-color), #b393d3);
+    background-image: linear-gradient(
+      to left,
+      var(--secondary-color),
+      var(--icon-color)
+    );
     color: transparent;
     background-clip: text;
   }
