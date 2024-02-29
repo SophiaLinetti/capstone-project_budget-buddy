@@ -7,7 +7,7 @@ import {
   StyledGoalCardContent,
   EditIcon,
 } from "./GoalsCard.Styled";
-import { DeleteIcon, DeleteButton } from "../List/List.Styled";
+import { DeleteButton, DeleteIcon } from "@/styles";
 
 import ProgressBar from "../ProgressBar/ProgressBar";
 

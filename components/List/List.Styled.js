@@ -47,26 +47,26 @@ export const Chip = styled.span`
 export const Description = styled.p`
   margin: 0;
 `;
-export const DeleteButton = styled.button`
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-`;
+// export const DeleteButton = styled.button`
+//   position: absolute;
+//   top: 5px;
+//   right: 10px;
+//   background: transparent;
+//   border: none;
+//   padding: 0;
+//   cursor: pointer;
+// `;
 
-export const DeleteIcon = styled.span`
-  &:before {
-    content: "delete";
-    font-family: "Material Symbols Outlined";
-    font-weight: 200px;
-    font-size: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-font-smoothing: antialiased;
-    color: black;
-    cursor: pointer;
-  }
-`;
+// export const DeleteIcon = styled.span`
+//   &:before {
+//     content: "delete";
+//     font-family: "Material Symbols Outlined";
+//     font-weight: 200px;
+//     font-size: 24px;
+//     display: inline-block;
+//     vertical-align: middle;
+//     -webkit-font-smoothing: antialiased;
+//     color: black;
+//     cursor: pointer;
+//   }
+// `;

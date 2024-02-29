@@ -6,9 +6,8 @@ import {
   Flexbox,
   Chip,
   Description,
-  DeleteButton,
-  DeleteIcon,
 } from "./List.Styled";
+import { DeleteButton, DeleteIcon } from "@/styles";
 
 export default function List({ transactions, onDeleteTransaction }) {
   return (
