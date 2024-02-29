@@ -83,10 +83,10 @@ export default function HomePage({
       text = "Balance: ";
     }
     return (
-      <StyledAmoutDisplay>
+      <AmountDisplayTransactions>
         {text}
         {sum} EUR
-      </StyledAmoutDisplay>
+      </AmountDisplayTransactions>
     );
   }
 

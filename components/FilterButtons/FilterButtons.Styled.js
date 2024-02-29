@@ -6,8 +6,19 @@ export const StyledFilterButtons = styled.button`
   padding: 8px;
   font-weight: 400;
   border-radius: 99rem;
-  border: 0.5px solid;
-  margin: 0 4px;
+  margin: 0 4px auto;
+`;
+
+export const FilterButtonIncome = styled(StyledFilterButtons)`
+  border: 1px solid var(--lightgreen-color);
+`;
+
+export const FilterButtonExpense = styled(StyledFilterButtons)`
+  border: 1px solid var(--red-color);
+`;
+
+export const FilterButtonBalance = styled(StyledFilterButtons)`
+  border: 1px solid var(--secondary-color);
 `;
 
 export const StyledFilterContainer = styled.div`

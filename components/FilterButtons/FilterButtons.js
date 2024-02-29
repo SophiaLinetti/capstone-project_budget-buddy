@@ -1,20 +1,22 @@
 import {
-  StyledFilterButtons,
+  FilterButtonIncome,
+  FilterButtonExpense,
+  FilterButtonBalance,
   StyledFilterContainer,
 } from "./FilterButtons.Styled";
 
 export default function FilterButtons({ onHandleSetFilter }) {
   return (
     <StyledFilterContainer>
-      <StyledFilterButtons onClick={() => onHandleSetFilter("Income")}>
+      <FilterButtonIncome onClick={() => onHandleSetFilter("Income")}>
         Income
-      </StyledFilterButtons>
-      <StyledFilterButtons onClick={() => onHandleSetFilter("Expense")}>
+      </FilterButtonIncome>
+      <FilterButtonExpense onClick={() => onHandleSetFilter("Expense")}>
         Expense
-      </StyledFilterButtons>
-      <StyledFilterButtons onClick={() => onHandleSetFilter("all")}>
+      </FilterButtonExpense>
+      <FilterButtonBalance onClick={() => onHandleSetFilter("all")}>
         Balance
-      </StyledFilterButtons>
+      </FilterButtonBalance>
     </StyledFilterContainer>
   );
 }

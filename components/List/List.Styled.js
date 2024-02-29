@@ -42,7 +42,7 @@ export const Chip = styled.span`
         ? "var(--lightgreen-color)"
         : props.$variant === "Expense"
         ? "var(--red-color)"
-        : "var(--secondary-color)"};
+        : "black"};
   padding: 0.2rem 0.5rem;
   border-radius: 50px;
   font-size: 0.8rem;
