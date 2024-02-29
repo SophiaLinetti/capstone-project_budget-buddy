@@ -35,14 +35,14 @@ export const StyledHeading = styled.h1`
     var(--primary-color)
   );
   -webkit-background-clip: text;
-  color: transparent; /* Macht den Text transparent, damit der Gradient sichtbar wird */
+  color: transparent;
   text-align: center;
-  margin: 0; /* Entfernt Margin, das durch den Wrapper kontrolliert wird */
-  padding: 0; /* Anpassung, falls nötig */
-  position: relative; /* Stellt die Positionierung sicher */
-  z-index: 1000; /* Stellt sicher, dass der Text über dem Wrapper liegt */
-  background-clip: text; /* Wichtig, damit der Gradient nur innerhalb des Textes angewendet wird */
-  -webkit-text-fill-color: transparent; /* Für Safari */
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1000;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   border-bottom: 2px solid var(--secondary-color);
 `;
 
