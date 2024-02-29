@@ -1,11 +1,8 @@
 import Goal from '@/db/models/Goal';
-
-
 const connectToDatabase = require('../../../utils/mongodb');
 
 export default async function handler(req, res) {
   await connectToDatabase();
-
   const { query: { id }, method } = req;
 
   switch (method) {
@@ -22,7 +19,6 @@ export default async function handler(req, res) {
       break;
       case 'DELETE':
         try {
-          /* const objectId = mongoose.Types.ObjectId(id); */
           const deleteResult = await Goal.findByIdAndDelete(id);
         
           if (!deleteResult) {

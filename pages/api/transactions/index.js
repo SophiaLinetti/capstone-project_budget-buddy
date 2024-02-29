@@ -1,11 +1,9 @@
-/* import { connectToDatabase } from '../../../utils/mongodb'; */
 import Transaction from '@/db/models/Transaction';
-
 const connectToDatabase = require('../../../utils/mongodb');
 
 export default async function handler(req, res) {
   await connectToDatabase();
-  try {
+  
   switch (req.method) {
     case 'GET':
       try {
@@ -26,30 +24,14 @@ export default async function handler(req, res) {
         }
         break;
       case 'PUT':
-        
         const { id, ...updateData } = req.body;
         await collection.updateOne({ id }, { $set: updateData });
         res.status(200).json({ message: 'Transaction updated' });
         break;
-      case 'DELETE':
-      
-          const { query: { _id } } = req;
-          const objectId = new ObjectId(_id);
-        
-          const deleteResult = await collection.deleteOne({ _id: objectId });
-          if (deleteResult.deletedCount === 1) {
-            res.status(200).json({ message: 'Transaction deleted' });
-          } else {
-            res.status(404).json({ message: 'Transaction not found' });
-          }
-          break;
     default:
       res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
       res.status(405).end(`Method ${req.method} Not Allowed`);
         }
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: error.message });
-    }
+    } 
   
-  }
+  

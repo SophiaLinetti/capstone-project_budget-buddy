@@ -6,12 +6,7 @@ const goalSchema = new mongoose.Schema({
     goalAmount: Number,
 
 
-
 });
-
-
-
-
 
 
 module.exports = mongoose.models.Goal || mongoose.model('Goal', goalSchema);

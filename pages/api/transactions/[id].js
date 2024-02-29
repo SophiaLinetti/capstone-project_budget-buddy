@@ -1,5 +1,5 @@
-import connectToDatabase from '../../../utils/mongodb';
 import Transaction from '../../../db/models/Transaction';
+const connectToDatabase = require('../../../utils/mongodb');
 
 export default async function handler(req, res) {
   await connectToDatabase();
