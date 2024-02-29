@@ -47,6 +47,11 @@ export const Chip = styled.span`
   border-radius: 50px;
   font-size: 0.8rem;
 `;
+
+export const ChipIncomeExpense = styled(Chip)``;
+
+export const ChipCategory = styled(Chip)``;
+
 export const Description = styled.p`
   margin: 0;
 `;

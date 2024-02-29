@@ -82,7 +82,7 @@ export const StyledTotalSavingContainer = styled.div`
 export const FilterFlexBox = styled.div`
   border-radius: 5px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   padding: 8px;
   margin: 10px 0 25px 0;

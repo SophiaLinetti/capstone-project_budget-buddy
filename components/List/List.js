@@ -4,8 +4,10 @@ import {
   TransactionCard,
   TransactionDetails,
   Flexbox,
-  Chip,
+  // Chip,
   Description,
+  ChipIncomeExpense,
+  ChipCategory,
 } from "./List.Styled";
 import { DeleteButton, DeleteIcon } from "@/styles";
 
@@ -23,8 +25,10 @@ export default function List({ transactions, onDeleteTransaction }) {
                     <strong>{amount} EUR</strong>
                   </Flexbox>
                   <Flexbox $justifyContent="evenly">
-                    <Chip $variant={type}>{type}</Chip>
-                    <Chip>{category}</Chip>
+                    <ChipIncomeExpense $variant={type}>
+                      {type}
+                    </ChipIncomeExpense>
+                    <ChipCategory>{category}</ChipCategory>
                   </Flexbox>
                   <Description>{description}</Description>
                 </TransactionDetails>
