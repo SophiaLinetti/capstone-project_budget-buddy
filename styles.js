@@ -53,7 +53,7 @@ export const HeadingWrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--primary-color); /* Fester Hintergrund */
+  background-color: var(--primary-color); /* set background */
   padding: 10px;
   z-index: 999;
 `;
