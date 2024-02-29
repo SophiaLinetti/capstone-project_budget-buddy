@@ -30,10 +30,10 @@ Get a clear picture of your financial health with our visual dashboard. BudgetBu
 
 ## Team
 
-[nadine-grantz](https://github.com/nadine-grantz)
-[SophiaZett](https://github.com/SophiaZett)
-[Melonexx](https://github.com/Melonexx)
-[somaSeb](somaSeb)
+- [nadine-grantz](https://github.com/nadine-grantz)
+- [SophiaZett](https://github.com/SophiaZett)
+- [Melonexx](https://github.com/Melonexx)
+- [somaSeb](somaSeb)
 
 ## Local Development
 
