@@ -28,6 +28,12 @@ Get a clear picture of your financial health with our visual dashboard. BudgetBu
 - **Database**: MongoDB with Mongoose for a flexible, schema-based approach to modeling financial data.
 - **Deployment**: Vercel for seamless deployment and hosting of the Next.js application.
 
+## Team
+
+[nadine-grantz](https://github.com/nadine-grantz)
+[SophiaZett](https://github.com/SophiaZett)
+[Melonexx](https://github.com/Melonexx)
+[somaSeb](somaSeb)
 
 ## Local Development
 
