@@ -4,7 +4,6 @@ import {
   TransactionCard,
   TransactionDetails,
   Flexbox,
-  // Chip,
   Description,
   ChipIncomeExpense,
   ChipCategory,

@@ -69,11 +69,8 @@ export default function DoughnutComponent({ transactions, currentFilter }) {
 
     return income - expense;
   }
-  console.log(calculateBalance(transactions));
 
   const sumByCategory = sumByCategoryFunction(categories);
-  console.log(sumByCategory);
-  console.log(categories);
 
   const data = {
     labels: categories,
