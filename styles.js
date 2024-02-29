@@ -16,7 +16,6 @@ export default createGlobalStyle`
 }
   
   body {
-    /* margin: 100px 0; */
     font-family: 'Montserrat', sans-serif;
     background-color: var(--primary-color);
   }
@@ -42,10 +41,8 @@ export const StyledHeading = styled.h1`
 // hier bleiben
 export const StyledAmoutDisplay = styled.div`
   text-align: center;
-
   border-radius: 7px;
   background-color: ;
-  /* margin: 5% 10%; */
   padding: 8px;
   margin: 60px 0 10px 0;
 `;
@@ -55,9 +52,7 @@ export const StyledText = styled.p`
   text-align: center;
 `;
 
-export const StyledCardContainer = styled.div`
-  /* margin-top: 80px; */
-`;
+export const StyledCardContainer = styled.div``;
 
 export const StyledSavingContainer = styled.div`
   border: 1px solid;
