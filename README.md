@@ -10,7 +10,7 @@ We hope BudgetBuddy empowers you to take control of your finances and achieve yo
 
 ## Key Features
 
-💰 [Transaction Management](https://github.com/user/BudgetBuddy/tree/main/transaction)
+💰 [**Transaction Management**](https://github.com/user/BudgetBuddy/tree/main/transaction)
 Efficiently log and categorize your income and expenses. BudgetBuddy's streamlined process makes it simple to keep track of your financial activity and understand where your money is going.
 
 🎯 [**Goal Setting**:](https://github.com/user/BudgetBuddy/tree/main/goals)
