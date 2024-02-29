@@ -58,7 +58,6 @@ export const HeadingWrapper = styled.div`
   z-index: 999;
 `;
 
-// hier bleiben
 export const StyledAmoutDisplay = styled.div`
   font-weight: bold;
   text-align: center;
