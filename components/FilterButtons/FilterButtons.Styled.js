@@ -11,14 +11,23 @@ export const StyledFilterButtons = styled.button`
 
 export const FilterButtonIncome = styled(StyledFilterButtons)`
   border: 1px solid var(--lightgreen-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--lightgreen-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "")};
 `;
 
 export const FilterButtonExpense = styled(StyledFilterButtons)`
   border: 1px solid var(--red-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--red-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "")};
 `;
 
 export const FilterButtonBalance = styled(StyledFilterButtons)`
   border: 1px solid var(--secondary-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--secondary-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "")};
 `;
 
 export const StyledFilterContainer = styled.div`

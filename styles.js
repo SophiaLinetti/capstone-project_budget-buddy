@@ -10,8 +10,8 @@ export default createGlobalStyle`
 
 :root {
   --primary-color: #fffcf4;
-  --secondary-color: #5532C8;
-  --lightgreen-color: #00cf74;
+  --secondary-color: #5532c8;
+  --lightgreen-color: #008657;
   --red-color: #D32F2F;
 }
   
@@ -59,21 +59,26 @@ export const AmountDisplayDashboard = styled(StyledAmoutDisplay)`
 export const StyledText = styled.p`
   margin-top: 20px;
   text-align: center;
+  font-weight: bold;
 `;
 
-export const StyledCardContainer = styled.div``;
+export const StyledCardContainer = styled.div`
+  margin: 90px 0 40px 0;
+`;
 
 export const StyledSavingContainer = styled.div`
-  border: 1px solid;
-  border-radius: 7px;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  border-radius: 99rem;
   margin: 60px 0.5rem 0.5rem 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
 `;
 
 export const StyledTotalSavingContainer = styled.div`
-  border: 1px solid;
-  border-radius: 7px;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  border-radius: 99rem;
   margin: 1.5rem 0.5rem 0.5rem 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
@@ -104,7 +109,9 @@ export const ActionButton = styled.button`
   padding: 0.75rem 1.5rem;
   border: 0.5px solid;
 `;
-export const ActionButtonGoalsPage = styled(ActionButton)``;
+export const ActionButtonGoalsPage = styled(ActionButton)`
+  margin: 30px 0;
+`;
 
 export const ActionButtonTransaction = styled(ActionButton)`
   margin: 15px 0;
@@ -112,6 +119,20 @@ export const ActionButtonTransaction = styled(ActionButton)`
 
 export const ActionButtonDashboard = styled(ActionButton)`
   margin: 90px 0 20px 0;
+`;
+
+export const DashboardButtonExpense = styled(ActionButtonDashboard)`
+  border: 1px solid var(--red-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--red-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "black")};
+`;
+
+export const DashboardButtonIcome = styled(ActionButtonDashboard)`
+  border: 1px solid var(--lightgreen-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--lightgreen-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "black")};
 `;
 
 export const DeleteButton = styled.button`

@@ -4,13 +4,14 @@ import { useState } from "react";
 import { categories } from "@/utils/transactionCategories";
 import {
   AmountDisplayDashboard,
-  ActionButtonDashboard,
+  DashboardButtonExpense,
+  DashboardButtonIcome,
   StyledAllButtonsContainer,
 } from "@/styles";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function DoughnutComponent({ transactions }) {
+export default function DoughnutComponent({ transactions, currentFilter }) {
   const [type, setType] = useState("Expense");
   const options = {
     responsive: "true",
@@ -98,12 +99,18 @@ export default function DoughnutComponent({ transactions }) {
   return (
     <>
       <StyledAllButtonsContainer>
-        <ActionButtonDashboard onClick={() => handleTypeOnClick("Expense")}>
+        <DashboardButtonExpense
+          $active={type === "Expense"}
+          onClick={() => handleTypeOnClick("Expense")}
+        >
           Expenses
-        </ActionButtonDashboard>
-        <ActionButtonDashboard onClick={() => handleTypeOnClick("Income")}>
+        </DashboardButtonExpense>
+        <DashboardButtonIcome
+          $active={type === "Income"}
+          onClick={() => handleTypeOnClick("Income")}
+        >
           Income
-        </ActionButtonDashboard>
+        </DashboardButtonIcome>
       </StyledAllButtonsContainer>
       <Doughnut data={data} options={options} />
       <AmountDisplayDashboard>

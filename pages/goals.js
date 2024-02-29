@@ -135,10 +135,7 @@ export default function Goals({ transactions, onAddTransaction }) {
           <StyledSavingContainer>
             Current Savings Balance: {savingsTransferSum}
           </StyledSavingContainer>
-          {goals.length === 0 && (
-            <StyledText>{`You do not have any Goals added yet. Please submit a Goal by Pressing
-        the + Button on the bottom right of the Screen`}</StyledText>
-          )}
+
           <StyledAllButtonsContainer>
             <ActionButtonGoalsPage
               onClick={() => setModalType("savings withdrawal")}
@@ -156,6 +153,9 @@ export default function Goals({ transactions, onAddTransaction }) {
             onHandleDeleteGoal={handleDeleteGoal}
             onEditGoal={handleEditGoal}
           />
+          {goals.length === 0 && (
+            <StyledText>{`You do not have any Goals added yet. `}</StyledText>
+          )}
         </StyledCardContainer>
         <StyledTotalSavingContainer>
           Total Saved Amount: {totalSavings}

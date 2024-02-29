@@ -44,7 +44,7 @@ export const Chip = styled.span`
         ? "var(--red-color)"
         : "black"};
   padding: 0.2rem 0.5rem;
-  border-radius: 50px;
+  border-radius: 99rem;
   font-size: 0.8rem;
 `;
 

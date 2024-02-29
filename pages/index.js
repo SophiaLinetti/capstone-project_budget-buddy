@@ -129,7 +129,10 @@ export default function HomePage({
 
         <FilterFlexBox>
           <FilterCategory onSetSelectedCategory={setSelectedCategory} />
-          <FilterButtons onHandleSetFilter={handleSetFilter} />
+          <FilterButtons
+            currentFilter={transactionFilter}
+            onHandleSetFilter={handleSetFilter}
+          />
         </FilterFlexBox>
         <List
           transactions={filterTransactions(transactions)}
