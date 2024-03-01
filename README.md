@@ -10,13 +10,13 @@ We hope BudgetBuddy empowers you to take control of your finances and achieve yo
 
 ## Key Features
 
-💰 [**Transaction Management**](https://github.com/user/BudgetBuddy/tree/main/transaction)
+💰 [**Transaction Management**](https://capstone-project-budget-buddy.vercel.app/)
 Efficiently log and categorize your income and expenses. BudgetBuddy's streamlined process makes it simple to keep track of your financial activity and understand where your money is going.
 
-🎯 [**Goal Setting**:](https://github.com/user/BudgetBuddy/tree/main/goals)
+🎯 [**Goal Setting**:](https://capstone-project-budget-buddy.vercel.app/goals)
 Set and manage your savings goals with BudgetBuddy. Whether it's for a vacation, emergency fund, or a new gadget, our app helps you stay on track with your financial objectives.
 
-📊 [**Visual Insights**:](https://github.com/user/BudgetBuddy/tree/main/dashboard)
+📊 [**Visual Insights**:](https://capstone-project-budget-buddy.vercel.app/dashboard)
 Get a clear picture of your financial health with our visual dashboard. BudgetBuddy provides graphs and charts that make it easy to digest your financial data and make informed decisions.
 
 ## Technologies and Tools
