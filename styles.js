@@ -32,7 +32,7 @@ export const StyledHeading = styled.h1`
   background: linear-gradient(
     to right,
     var(--secondary-color),
-    var(--primary-color)
+    var(--icon-color)
   );
   -webkit-background-clip: text;
   color: transparent;

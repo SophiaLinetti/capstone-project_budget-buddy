@@ -4,7 +4,6 @@ import {
   GoalCardName,
   GoalCardAmount,
   StyledEditSavingButton,
-  StyledGoalCardContent,
   EditIcon,
 } from "./GoalsCard.Styled";
 import { DeleteButton, DeleteIcon } from "@/styles";
@@ -16,13 +15,13 @@ export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
     <StyledList>
       {goals.map(({ id, goalName, savedAmount, goalAmount }) => (
         <StyledItem key={id}>
-          <StyledGoalCardContent>
+          <div>
             <GoalCardName>{goalName}</GoalCardName>
             <GoalCardAmount>
               saved {savedAmount} EUR of {goalAmount} EUR
             </GoalCardAmount>
             <ProgressBar savedAmount={savedAmount} goalAmount={goalAmount} />
-          </StyledGoalCardContent>
+          </div>
           <div>
             <DeleteButton onClick={() => onHandleDeleteGoal(id)}>
               <DeleteIcon />
