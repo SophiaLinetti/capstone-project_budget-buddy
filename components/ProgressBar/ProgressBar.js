@@ -26,7 +26,7 @@ const ProgressInput = styled.div`
   height: 20px;
   width: ${({ $progress }) => $progress}%;
   background-color: ${({ $progress }) =>
-    $progress === 100 ? "" : "var(--secondary-color)"};
+    $progress <= 100 && "var(--lightgreen-color)"};
   position: absolute;
   top: 0;
   left: 0;
