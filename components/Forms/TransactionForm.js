@@ -1,6 +1,12 @@
 import { formatDate } from "../../utils/normalizeUtils.js";
 import { categories } from "../../utils/transactionCategories.js";
-import { StyledForm, StyledHint, StyledButton } from "./Forms.Styled.js";
+import {
+  StyledForm,
+  StyledHint,
+  CancleButton,
+  AddButton,
+} from "./Forms.Styled.js";
+
 export default function TransactionForm({
   onAddTransaction,
   formType,
@@ -16,8 +22,7 @@ export default function TransactionForm({
 
     if (formType === "saving transaction") {
       const transactionAmount = parseInt(data.amount);
-      if (transactionAmount <= accountBalance) { 
-        
+      if (transactionAmount <= accountBalance) {
         onAddTransaction({
           category: "Savings transfer",
           description: "Transfer to savings",
@@ -27,15 +32,13 @@ export default function TransactionForm({
           internalGoalAllocation: "no",
         });
       } else {
-        
         alert("Transfer amount exceeds account balance.");
         return;
       }
-    
     } else if (formType === "savings withdrawal") {
       const withdrawalAmount = parseInt(data.amount);
       if (withdrawalAmount <= savingsTransferSum) {
-          onAddTransaction({
+        onAddTransaction({
           category: "Savings withdrawal",
           description: "Transfer from savings",
           type: "Income",
@@ -53,7 +56,6 @@ export default function TransactionForm({
           internalGoalAllocation: "yes",
         });
       } else {
-        
         alert("Withdrawal amount exceeds the savings transfer sum.");
         return;
       }
@@ -129,10 +131,10 @@ export default function TransactionForm({
           </>
         )}
         <StyledHint>All fields with * are required!</StyledHint>
-        <StyledButton type="submit">Add {formType}</StyledButton>
-        <StyledButton type="button" onClick={() => onCloseModal(null)}>
+        <AddButton type="submit">Add {formType}</AddButton>
+        <CancleButton type="button" onClick={() => onCloseModal(null)}>
           Cancel {formType}
-        </StyledButton>
+        </CancleButton>
       </StyledForm>
     </section>
   );

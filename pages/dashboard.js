@@ -1,12 +1,7 @@
 import Navbar from "@/components/Nav/Nav";
-import { StyledHeading, FilterButtons } from "@/styles";
-import styled from "styled-components";
+import { StyledHeading, Main, HeadingWrapper } from "@/styles";
 import DoughnutComponent from "@/components/Doughnut/Doughnut";
 import useSWR from "swr";
-
-const StyledText = styled.p`
-  padding-top: 60px;
-`;
 
 export default function Dashboard() {
   const { data: transactions, error } = useSWR("/api/transactions");
@@ -16,8 +11,12 @@ export default function Dashboard() {
 
   return (
     <>
-      <StyledHeading>Dashboard</StyledHeading>
-      <DoughnutComponent transactions={transactions} />
+      <HeadingWrapper>
+        <StyledHeading>Dashboard</StyledHeading>
+      </HeadingWrapper>
+      <Main>
+        <DoughnutComponent transactions={transactions} />
+      </Main>
       <Navbar />
     </>
   );

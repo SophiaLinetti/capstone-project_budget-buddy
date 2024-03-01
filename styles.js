@@ -7,136 +7,181 @@ export default createGlobalStyle`
     box-sizing: border-box;
    font-family: 'Montserrat', sans-serif;
   };
+
+:root {
+  --primary-color: #fffcf4;
+  --secondary-color: #5532c8;
+  --lightgreen-color: #008657;
+  --red-color: #D32F2F;
+  --icon-color:#b393d3;
+}
+  
   body {
-    margin: 100px 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: #424769;
+    background-color: var(--primary-color);
   }
 `;
-export const FormItems = styled.fieldset`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin: 80px 20px 0 20px;
-  gap: 0.5rem;
-  background-color: #2d3250;
-  color: #ffffff;
+
+export const Main = styled.div`
+  max-width: 600px;
+  margin: 0 auto 5rem auto;
 `;
-export const StyledList = styled.ul`
-  padding: 0;
-  margin: 0 0.5rem 0 0.5rem;
-  justify-content: space-between;
-  list-style: none;
-  gap: 1rem;
-`;
-export const StyledItem = styled.li`
-  background-color: #2d3250;
-  color: #ffffff;
-  border: 1px solid;
-  margin: 10px 0px 10px 0px;
-  display: flex;
-  padding: 7px;
-  position: relative;
-`;
-export const StyledHint = styled.p`
-  font-size: 13px;
-  text-align: center;
-  color: #ffb228;
-`;
-export const StyledDeleteDiv = styled.div`
-  margin: 5%;
-`;
-export const StyledDeleteButton = styled.button`
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-`;
+
 export const StyledHeading = styled.h1`
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    to right,
+    var(--secondary-color),
+    var(--icon-color)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1000;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid var(--secondary-color);
+`;
+
+export const HeadingWrapper = styled.div`
   text-align: center;
   width: 100%;
-  color: #ffb228;
-  background-color: #2d3250;
-  margin-top: 0;
-  padding: 10px;
-  border-bottom: 1px solid #ffffff;
-  border-radius: 0 0 10px 10px;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary-color); /* set background */
+  padding: 10px;
+  z-index: 999;
 `;
-export const StyledFilterButtons = styled.button`
-  width: 17%;
-  text-align: center;
-  font-size: 0.7rem;
-  padding: 8px 0 8px 0;
-  font-weight: 500;
-  background-color: white;
-`;
-export const StyledFilterContainer = styled.div`
-  margin: 0 0 0 5px;
-  display: inline;
-`;
+
 export const StyledAmoutDisplay = styled.div`
+  font-weight: bold;
   text-align: center;
-  border: 1px solid #ffffff;
-  border-radius: 7px;
-  color: #ffb228;
-  background-color: #2d3250;
-  margin: 3% 20% 3% 20%;
+  color: var(--secondary-color);
+  border-radius: 99rem;
+  border: 1px solid var(--secondary-color);
   padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 `;
+
+export const AmountDisplayTransactions = styled(StyledAmoutDisplay)`
+  margin: 90px 0.5rem 15px 0.5rem;
+`;
+
+export const AmountDisplayDashboard = styled(StyledAmoutDisplay)`
+  margin: 20px 0.5rem 0 0.5rem;
+`;
+
 export const StyledText = styled.p`
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
-  color: #ffb228;
+  font-weight: bold;
 `;
-export const StyledGoalCard = styled.div`
-  display: block;
-  text-align: center;
-  width: 100%;
-`;
+
 export const StyledCardContainer = styled.div`
-  margin-top: 80px;
+  margin: 90px 0 40px 0;
 `;
-export const StyledBr = styled.div`
-  display: block;
-`;
+
 export const StyledSavingContainer = styled.div`
-  border: 1px solid;
-  border-radius: 7px;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  font-weight: bold;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  border-radius: 99rem;
+  margin: 60px 0.5rem 0.5rem 0.5rem;
   text-align: center;
   padding: 10px 0 10px 0;
-  color: #ffb228;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 `;
-export const StyledDropdownContainer = styled.div`
-  background-color: #2d3250;
-  color: white;
-  border: white solid 1px;
+
+export const StyledTotalSavingContainer = styled.div`
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  font-weight: bold;
+  border-radius: 99rem;
+  margin: 1.5rem 0.5rem 0.5rem 0.5rem;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+`;
+
+export const FilterFlexBox = styled.div`
   border-radius: 5px;
-  display: inline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px;
-  margin: 0 0.5rem 0 0.5rem;
+  margin: 10px 0 25px 0;
   font-size: 0.9rem;
-  display: block;
   height: 50px;
 `;
-export const StyledAllFormButtonsContainer = styled.div`
+
+export const StyledAllButtonsContainer = styled.div`
   text-align: center;
   display: flex;
-  justify-content: space-between;
-  padding: 0 30px 0 30px;
+  justify-content: space-around;
 `;
-export const StyledEditSavingButton = styled.button`
-  padding: 1px 6px 1px 6px;
-  height: 25px;
-  margin-left: 20px;
+
+export const ActionButton = styled.button`
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 99rem;
+  padding: 0.75rem 1.5rem;
+  border: 0.5px solid;
+`;
+export const ActionButtonGoalsPage = styled(ActionButton)`
+  margin: 30px 0;
+`;
+
+export const ActionButtonTransaction = styled(ActionButton)`
+  margin: 15px 0;
+`;
+
+export const ActionButtonDashboard = styled(ActionButton)`
+  margin: 90px 0 20px 0;
+`;
+
+export const DashboardButtonExpense = styled(ActionButtonDashboard)`
+  border: 1px solid var(--red-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--red-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "black")};
+`;
+
+export const DashboardButtonIcome = styled(ActionButtonDashboard)`
+  border: 1px solid var(--lightgreen-color);
+  background-color: ${(props) =>
+    props.$active ? "var(--lightgreen-color)" : "var(--primary-color)"};
+  color: ${(props) => (props.$active ? "var(--primary-color)" : "black")};
+`;
+
+export const DeleteButton = styled.button`
   position: absolute;
-  bottom: 3px;
-  right: 35px;
+  top: 5px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 `;
-export const StyledGoalCardContent = styled.div`
-  padding: 0 0 0 20px;
+
+export const DeleteIcon = styled.span`
+  &:before {
+    content: "delete";
+    font-family: "Material Symbols Outlined";
+    font-weight: 200px;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    cursor: pointer;
+  }
 `;

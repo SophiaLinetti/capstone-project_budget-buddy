@@ -6,9 +6,12 @@ import Nav from "@/components/Nav/Nav";
 import Modal from "@/components/Modal";
 import {
   StyledHeading,
-  StyledAmoutDisplay,
-  StyledDropdownContainer,
-  StyledAllFormButtonsContainer,
+  AmountDisplayTransactions,
+  FilterFlexBox,
+  StyledAllButtonsContainer,
+  Main,
+  ActionButtonTransaction,
+  HeadingWrapper,
 } from "@/styles";
 import FilterCategory from "@/components/FilterCategory/FilterCategory";
 import useSWR, { mutate } from "swr";
@@ -65,10 +68,19 @@ export default function HomePage({ onAddTransaction }) {
       return null;
     }
   }
+
   function handleSetFilter(filter) {
     setTransactionFilter(filter);
   }
+
   function filterTransactions(transactions) {
+    return transactions.filter(
+      (transaction) =>
+        transaction.internalGoalAllocation !== "yes" &&
+        (transactionFilter === "all"
+          ? !selectedCategory || transaction.category === selectedCategory
+          : transaction.type === transactionFilter &&
+            (!selectedCategory || transaction.category === selectedCategory))
     return transactions.filter(
       (transaction) =>
         transaction.internalGoalAllocation !== "yes" &&
@@ -78,12 +90,14 @@ export default function HomePage({ onAddTransaction }) {
             (!selectedCategory || transaction.category === selectedCategory))
     );
   }
+
   function calculateSum(transactions) {
     return transactions.reduce(
       (sum, transaction) => sum + transaction.amount,
       0
     );
   }
+
   function displayTotalSum(filter) {
     if (filter === "all") {
       return null;
@@ -98,17 +112,22 @@ export default function HomePage({ onAddTransaction }) {
       text = "Balance: ";
     }
     return (
-      <StyledAmoutDisplay>
+      <AmountDisplayTransactions>
         {text}
         {sum} EUR
-      </StyledAmoutDisplay>
+      </AmountDisplayTransactions>
     );
   }
+
   const filterGoalTransactions = transactions.filter(
     (transaction) =>
       transaction.type !== "Saving Goal" &&
       transaction.internalGoalAllocation !== "yes"
+    (transaction) =>
+      transaction.type !== "Saving Goal" &&
+      transaction.internalGoalAllocation !== "yes"
   );
+
   function calculateBalance() {
     let balance = 0;
     filterGoalTransactions.forEach((transaction) => {
@@ -122,29 +141,38 @@ export default function HomePage({ onAddTransaction }) {
   }
   return (
     <div>
-      <StyledHeading>Budget Buddy</StyledHeading>
+      <HeadingWrapper>
+        <StyledHeading>Transactions</StyledHeading>
+      </HeadingWrapper>
       {modalType && <Modal>{renderModalContent()}</Modal>}
-      <StyledAllFormButtonsContainer>
-        <button onClick={() => setModalType("transaction")}>
-          New Transaction
-        </button>
-        <button onClick={() => setModalType("saving")}>New Transfer</button>
-      </StyledAllFormButtonsContainer>
-      {displayTotalSum(transactionFilter)}
-      {transactionFilter === "all" && (
-        <StyledAmoutDisplay>
-          Balance: {calculateBalance()} EUR
-        </StyledAmoutDisplay>
-      )}
-      <StyledDropdownContainer>
-        <FilterCategory onSetSelectedCategory={setSelectedCategory} />
-        <FilterButtons onHandleSetFilter={handleSetFilter} />
-      </StyledDropdownContainer>
-      <List
-        transactions={filterTransactions(transactions)}
-        onDeleteTransaction={handleDeleteTransaction}
-      />
+      <Main>
+        {displayTotalSum(transactionFilter)}
+        {transactionFilter === "all" && (
+          <AmountDisplayTransactions>
+            Account Balance: {calculateBalance()} EUR
+          </AmountDisplayTransactions>
+        )}
+        <StyledAllButtonsContainer>
+          <ActionButtonTransaction onClick={() => setModalType("transaction")}>
+            New Transaction
+          </ActionButtonTransaction>
+          <ActionButtonTransaction onClick={() => setModalType("saving")}>
+            New Transfer
+          </ActionButtonTransaction>
+        </StyledAllButtonsContainer>
 
+        <FilterFlexBox>
+          <FilterCategory onSetSelectedCategory={setSelectedCategory} />
+          <FilterButtons
+            currentFilter={transactionFilter}
+            onHandleSetFilter={handleSetFilter}
+          />
+        </FilterFlexBox>
+        <List
+          transactions={filterTransactions(transactions)}
+          onDeleteTransaction={handleDeleteTransaction}
+        />
+      </Main>
       <Nav />
     </div>
   );

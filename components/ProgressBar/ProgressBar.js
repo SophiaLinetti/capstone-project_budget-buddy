@@ -19,16 +19,18 @@ const ProgressWrapper = styled.div`
   background-color: #e0e0de;
   position: relative;
   height: 20px;
+  border-radius: 99rem;
 `;
 
 const ProgressInput = styled.div`
   height: 20px;
   width: ${({ $progress }) => $progress}%;
   background-color: ${({ $progress }) =>
-    $progress === 100 ? "#4caf50" : "#2196f3"};
+    $progress <= 100 && "var(--lightgreen-color)"};
   position: absolute;
   top: 0;
   left: 0;
+  border-radius: 99rem;
 `;
 
 const Percentage = styled.div`

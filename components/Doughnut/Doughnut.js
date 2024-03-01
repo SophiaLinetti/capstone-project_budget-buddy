@@ -2,7 +2,12 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { useState } from "react";
 import { categories } from "@/utils/transactionCategories";
-import { StyledAmoutDisplay } from "@/styles";
+import {
+  AmountDisplayDashboard,
+  DashboardButtonExpense,
+  DashboardButtonIcome,
+  StyledAllButtonsContainer,
+} from "@/styles";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -12,7 +17,11 @@ export default function DoughnutComponent({ transactions }) {
     responsive: "true",
     cutoutPercentage: 100,
     radius: "85%",
-
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
     animation: {
       animateScale: false,
       animateRotate: true,
@@ -20,13 +29,6 @@ export default function DoughnutComponent({ transactions }) {
       easing: "easeInSine",
     },
   };
-
-  /*  function handleToggleTypeOnClick() {
-    if(type === 'Expense') {
-      setType('Income');
-    } else {
-      setType('Expense');
-    } */
 
   function handleTypeOnClick(transactionType) {
     setType(transactionType);
@@ -67,11 +69,8 @@ export default function DoughnutComponent({ transactions }) {
 
     return income - expense;
   }
-  console.log(calculateBalance(transactions));
 
   const sumByCategory = sumByCategoryFunction(categories);
-  console.log(sumByCategory);
-  console.log(categories);
 
   const data = {
     labels: categories,
@@ -80,12 +79,14 @@ export default function DoughnutComponent({ transactions }) {
         label: "€",
         data: sumByCategory,
         backgroundColor: [
-          "rgb(255,132,46)",
-          "rgb(204,255,90)",
-          "rgb(40,184,255)",
-          "rgb(40,81,255)",
-          "rgb(105,255,71)",
-          "rgb(255,105,66)",
+          "#6B4EDA",
+          "#765CE3",
+          "#817AEC",
+          "#8C98F5",
+          "#97B6FE",
+          "#A2D4FF",
+          "#ADE2FF",
+          "#B8F0FF",
         ],
         hoverOffset: 50,
       },
@@ -94,14 +95,24 @@ export default function DoughnutComponent({ transactions }) {
 
   return (
     <>
-      <button onClick={() => handleTypeOnClick("Expense")}> Expenses </button>
-      <button onClick={() => handleTypeOnClick("Income")}> Income </button>
-      <p>Distribution of {type}</p>
+      <StyledAllButtonsContainer>
+        <DashboardButtonExpense
+          $active={type === "Expense"}
+          onClick={() => handleTypeOnClick("Expense")}
+        >
+          Expenses
+        </DashboardButtonExpense>
+        <DashboardButtonIcome
+          $active={type === "Income"}
+          onClick={() => handleTypeOnClick("Income")}
+        >
+          Income
+        </DashboardButtonIcome>
+      </StyledAllButtonsContainer>
       <Doughnut data={data} options={options} />
-      <StyledAmoutDisplay>
-        {" "}
-        Your Current Account Balance: {calculateBalance(transactions)} EUR
-      </StyledAmoutDisplay>
+      <AmountDisplayDashboard>
+        Account Balance: {calculateBalance(transactions)} EUR
+      </AmountDisplayDashboard>
     </>
   );
 }

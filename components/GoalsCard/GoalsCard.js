@@ -1,11 +1,13 @@
 import {
   StyledItem,
   StyledList,
-  StyledGoalCard,
-  StyledDeleteButton,
+  GoalCardName,
+  GoalCardAmount,
   StyledEditSavingButton,
-  StyledGoalCardContent,
-} from "@/styles";
+  EditIcon,
+} from "./GoalsCard.Styled";
+import { DeleteButton, DeleteIcon } from "@/styles";
+
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
@@ -13,23 +15,23 @@ export default function GoalsCard({ goals, onHandleDeleteGoal, onEditGoal }) {
     <StyledList>
       {goals?.map(({ _id, goalName, savedAmount, goalAmount }) => (
         <StyledItem key={_id}>
-          <StyledGoalCardContent>
-            <StyledGoalCard>{goalName}</StyledGoalCard>
-            <StyledGoalCard>
-              saved {savedAmount} EUR of {goalAmount} EUR
-            </StyledGoalCard>
-            <ProgressBar savedAmount={savedAmount} goalAmount={goalAmount} />
-          </StyledGoalCardContent>
           <div>
-            <StyledDeleteButton onClick={() => onHandleDeleteGoal(_id)}>
-              ❌
-            </StyledDeleteButton>
+            <GoalCardName>{goalName}</GoalCardName>
+            <GoalCardAmount>
+              saved {savedAmount} EUR of {goalAmount} EUR
+            </GoalCardAmount>
+            <ProgressBar savedAmount={savedAmount} goalAmount={goalAmount} />
+          </div>
+          <div>
+            <DeleteButton onClick={() => onHandleDeleteGoal(_id)}>
+              <DeleteIcon />
+            </DeleteButton>
             <StyledEditSavingButton
               onClick={() =>
                 onEditGoal({ _id, goalName, savedAmount, goalAmount })
               }
             >
-              Edit
+              <EditIcon />
             </StyledEditSavingButton>
           </div>
         </StyledItem>

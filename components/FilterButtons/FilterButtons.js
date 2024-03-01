@@ -1,16 +1,31 @@
-import { StyledFilterButtons, StyledFilterContainer } from "@/styles";
-export default function FilterButtons({ onHandleSetFilter }) {
+import {
+  FilterButtonIncome,
+  FilterButtonExpense,
+  FilterButtonBalance,
+  StyledFilterContainer,
+} from "./FilterButtons.Styled";
+
+export default function FilterButtons({ onHandleSetFilter, currentFilter }) {
   return (
     <StyledFilterContainer>
-      <StyledFilterButtons onClick={() => onHandleSetFilter("Income")}>
-        Income
-      </StyledFilterButtons>
-      <StyledFilterButtons onClick={() => onHandleSetFilter("Expense")}>
+      <FilterButtonExpense
+        $active={currentFilter === "Expense"}
+        onClick={() => onHandleSetFilter("Expense")}
+      >
         Expense
-      </StyledFilterButtons>
-      <StyledFilterButtons onClick={() => onHandleSetFilter("all")}>
+      </FilterButtonExpense>
+      <FilterButtonIncome
+        $active={currentFilter === "Income"}
+        onClick={() => onHandleSetFilter("Income")}
+      >
+        Income
+      </FilterButtonIncome>
+      <FilterButtonBalance
+        $active={currentFilter === "all"}
+        onClick={() => onHandleSetFilter("all")}
+      >
         Balance
-      </StyledFilterButtons>
+      </FilterButtonBalance>
     </StyledFilterContainer>
   );
 }

@@ -1,5 +1,11 @@
 import { formatDate } from "../../utils/normalizeUtils.js";
-import { StyledForm, StyledHint, StyledButton } from "./Forms.Styled.js";
+import {
+  StyledForm,
+  StyledHint,
+  CancleButton,
+  AddButton,
+} from "./Forms.Styled.js";
+
 export default function GoalForm({
   goal = {},
   onSaveGoal,
@@ -69,10 +75,10 @@ export default function GoalForm({
           defaultValue={goal ? goal.goalAmount : ""}
         />
         <StyledHint>All fields with * are required!</StyledHint>
-        <StyledButton type="submit">Add saving goal</StyledButton>
-        <StyledButton type="button" onClick={() => onCloseModal(null)}>
+        <AddButton type="submit">Save Goal</AddButton>
+        <CancleButton type="button" onClick={() => onCloseModal(null)}>
           cancel
-        </StyledButton>
+        </CancleButton>
       </StyledForm>
     </>
   );

@@ -1,18 +1,27 @@
 import styled from "styled-components";
-const StyledForm = styled.form`
+
+export const StyledForm = styled.form`
   display: grid;
   gap: 1rem;
 `;
-const StyledHint = styled.p`
+export const StyledHint = styled.p`
   font-size: 13px;
   text-align: center;
-  color: #ffb228;
+  color: var(--red-color);
 `;
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   border: none;
   width: fit-content;
   padding: 0.7rem 1rem;
-  border-radius: 3px;
+  border-radius: 99rem;
   text-transform: uppercase;
 `;
-export { StyledForm, StyledHint, StyledButton };
+export const CancleButton = styled(StyledButton)`
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+`;
+
+export const AddButton = styled(StyledButton)`
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+`;
