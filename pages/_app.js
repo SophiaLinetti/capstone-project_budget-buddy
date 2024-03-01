@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
     } else {
       const addedTransaction = await response.json();
       // Optimistically update the local data and revalidate
-      mutate("/api/transactions", [...transactions, addedTransaction], false);
+      mutate("/api/transactions", [addedTransaction, ...transactions], false);
     }
   }
 
