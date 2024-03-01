@@ -81,13 +81,6 @@ export default function HomePage({ onAddTransaction }) {
           ? !selectedCategory || transaction.category === selectedCategory
           : transaction.type === transactionFilter &&
             (!selectedCategory || transaction.category === selectedCategory))
-    return transactions.filter(
-      (transaction) =>
-        transaction.internalGoalAllocation !== "yes" &&
-        (transactionFilter === "all"
-          ? !selectedCategory || transaction.category === selectedCategory
-          : transaction.type === transactionFilter &&
-            (!selectedCategory || transaction.category === selectedCategory))
     );
   }
 
@@ -120,9 +113,6 @@ export default function HomePage({ onAddTransaction }) {
   }
 
   const filterGoalTransactions = transactions.filter(
-    (transaction) =>
-      transaction.type !== "Saving Goal" &&
-      transaction.internalGoalAllocation !== "yes"
     (transaction) =>
       transaction.type !== "Saving Goal" &&
       transaction.internalGoalAllocation !== "yes"
