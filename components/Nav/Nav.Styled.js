@@ -66,3 +66,9 @@ export const SavingsIcon = styled(IconBase)`
     content: "savings";
   }
 `;
+
+export const PlusIcon = styled(IconBase)`
+  &:before {
+    content: "key";
+  }
+`;
