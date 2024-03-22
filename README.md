@@ -52,3 +52,4 @@ Utilize the following npm scripts for development and production:
 - `npm run start`: Run the built application in production mode.
 - `npm run test`: Execute tests to ensure code integrity.
 - `npm run lint`: Run the linter to maintain code quality.
+# capstone-project_budget-buddy
