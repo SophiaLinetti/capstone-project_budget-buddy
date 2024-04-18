@@ -9,8 +9,8 @@ export default function BudgetPlus() {
       <HeadingWrapper>
         <StyledHeading>BudgetPlus</StyledHeading>
       </HeadingWrapper>
-      <Main>
-      <Product />
+      <Main style={{ marginTop: "5rem" }}>
+        <Product />
       </Main>
       <Navbar />
     </>
